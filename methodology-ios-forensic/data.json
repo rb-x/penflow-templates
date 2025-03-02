@@ -1,0 +1,2539 @@
+{
+    "id": "9e9648b1-96f1-40b2-83d2-b366f959d73b",
+    "identifier": "45e8dc63-ee1a-4705-a6f9-0d4b0fd2dfd2",
+    "name": "ios1",
+    "description": "",
+    "tags": [],
+    "template": {
+      "id": "3a26a70d-ede2-42b0-9a8c-262dd35bf7e5",
+      "name": "iOS Forensic",
+      "description": "",
+      "flowData": {
+        "nodes": [
+          {
+            "id": "455d08dd-00b9-4e74-b4d7-d647b53d2810",
+            "type": "custom",
+            "position": {
+              "x": 0,
+              "y": 775
+            },
+            "data": {
+              "name": "iOS Forensics",
+              "expanded": true,
+              "description": "",
+              "findings": [],
+              "commands": [],
+              "status": "NOT_STARTED",
+              "tags": [],
+              "properties": {
+                "showPosition": false,
+                "showId": false
+              },
+              "expandable": true
+            },
+            "measured": {
+              "width": 195,
+              "height": 64
+            },
+            "selected": false,
+            "style": {
+              "opacity": 1
+            },
+            "sourcePosition": "right",
+            "targetPosition": "left"
+          },
+          {
+            "id": "37d14310-4ed7-4871-a751-9bfae848ab50",
+            "type": "custom",
+            "position": {
+              "x": 336,
+              "y": 215
+            },
+            "data": {
+              "name": "Operating System",
+              "expanded": true,
+              "description": "",
+              "findings": [],
+              "commands": [],
+              "status": "NOT_STARTED",
+              "tags": [],
+              "properties": {
+                "showPosition": false,
+                "showId": false
+              },
+              "expandable": true
+            },
+            "measured": {
+              "width": 222,
+              "height": 64
+            },
+            "selected": false,
+            "style": {
+              "opacity": 1
+            },
+            "sourcePosition": "right",
+            "targetPosition": "left"
+          },
+          {
+            "id": "ebd9b92b-10fb-4242-ad8f-c4b3538bdd13",
+            "type": "custom",
+            "position": {
+              "x": 772.5,
+              "y": 0
+            },
+            "data": {
+              "name": "iOS internals",
+              "expanded": true,
+              "description": "### Base UNIX Kernel and iOS\n\niOS is built on a foundation that includes elements from the UNIX family, specifically the BSD branch. The core operating system of iOS is based on **Darwin**, which uses the **XNU (X is Not Unix)** kernel. This kernel is a hybrid, combining features of both monolithic and microkernel architectures.\n\n#### XNU Kernel\n\n- **Composition**: XNU includes components from the Mach microkernel and the 4.3BSD monolithic kernel.\n- **Features**: It supports preemption, memory protection, and enhanced networking capabilities.\n- **POSIX Compliance**: XNU adheres to the POSIX standard, ensuring compatibility with many UNIX utilities and APIs.\n\n#### Darwin and iOS\n\n- **Darwin Layer**: This is the open-source part of iOS and macOS, providing a foundation for both operating systems.\n- **iOS Evolution**: Early versions of iOS were essentially stripped-down macOS versions adapted for mobile devices.\n\n#### UNIX Influence on iOS\n\n- **BSD Heritage**: iOS inherits many features from the BSD branch of UNIX, including networking and file system management.\n- **POSIX Compliance**: This ensures that iOS can run many UNIX-based tools and scripts, albeit with modifications for its unique environment.\n\n#### Key Features of the XNU Kernel\n\n| **Feature**                  | **Description**                                                                 | **Impact on iOS**                                       |\n|---------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------|\n| **Hybrid Architecture**   | Combines Mach microkernel with 4.3BSD monolithic kernel components.             | Offers modularity and performance benefits.            |\n| **POSIX Compliance**      | Adheres to the Portable Operating System Interface standard.                    | Ensures compatibility with UNIX tools and APIs.         |\n| **Memory Protection**     | Provides robust memory management and protection.                              | Enhances system stability and security.                |\n| **Networking**            | Supports advanced networking features inherited from BSD.                       | Enables efficient network communication.               |",
+              "findings": [],
+              "commands": [],
+              "status": "NOT_STARTED",
+              "tags": [],
+              "properties": {
+                "showPosition": false,
+                "showId": false
+              },
+              "expandable": true
+            },
+            "measured": {
+              "width": 188,
+              "height": 98
+            },
+            "selected": false,
+            "style": {
+              "opacity": 1
+            },
+            "sourcePosition": "right",
+            "targetPosition": "left"
+          },
+          {
+            "id": "81a9c8f5-e8eb-4d8e-a965-bd90ae74faad",
+            "type": "custom",
+            "position": {
+              "x": 744,
+              "y": 198
+            },
+            "data": {
+              "name": "File System",
+              "expanded": true,
+              "description": "### HFS+ and APFS in iOS Devices\n\niOS devices, unlike traditional computers, store all user data internally using NAND Flash Memory. This storage is managed by file systems like HFS+ (previously) and APFS (currently).\n\n#### HFS+ (Hierarchical File System Plus)\n\n- **Overview**: HFS+ was the file system used by Apple devices before APFS. It was designed to optimize storage capacity on hard disk drives but was also used on early iOS devices.\n- **Features**:\n  - **Allocation Blocks**: Optimized for larger hard drives by reducing wasted space.\n  - **File Naming**: Supports UTF-16 encoding and file names up to 255 characters.\n  - **Journaling**: Introduced in Mac OS X 10.2.2 to improve data stability by logging changes before they are written to disk.\n- **Limitations**: Not optimized for flash storage, lacks advanced features like snapshots and encryption.\n\n#### APFS (Apple File System)\n\n- **Overview**: APFS is the current file system used by iOS devices, introduced with iOS 10.3. It is optimized for flash storage and offers several improvements over HFS+.\n- **Features**:\n  - **Optimized for Flash/SSD**: Designed to work efficiently with NAND Flash Memory.\n  - **Encryption**: Supports full-disk encryption with options for single-key and multi-key encryption.\n  - **Snapshots**: Allows for point-in-time snapshots of the file system.\n  - **Space Sharing**: Multiple volumes can share space within a container, improving storage efficiency.\n- **Advantages**: Offers better performance, security, and data integrity compared to HFS+.\n\n#### No External Storage\n\niOS devices do not use external storage for user data; instead, all data is stored internally in NAND Flash Memory. This approach enhances security and performance by keeping data within the device's secure environment.\n\n#### Comparison Table\n\n| **Feature**                  | **HFS+**                                                                 | **APFS**                                      |\n|---------------------------|---------------------------------------------------------------------------------|-------------------------------------------------|\n| **Optimization**           | Designed for hard disk drives, not optimized for flash storage.               | Optimized for flash storage (NAND Flash Memory). |\n| **Encryption**             | Limited encryption capabilities.                                             | Full-disk encryption with single-key and multi-key options. |\n| **Snapshots**              | Does not support snapshots.                                                 | Supports snapshots for point-in-time file system images. |\n| **Space Management**       | Uses allocation blocks to manage space.                                     | Uses space sharing among volumes within a container. |\n| **Data Integrity**         | Uses journaling for data stability.                                          | Uses checksums for metadata integrity and redirect-on-write for crash protection. |\n\n---\n\n### Forensic Implications\nUnderstanding the file system used by iOS devices is crucial for forensic analysis. APFS's features like encryption and snapshots can complicate data extraction but also provide valuable insights into device activity. Forensic tools must be compatible with APFS to effectively analyze data stored in NAND Flash Memory.",
+              "findings": [],
+              "commands": [],
+              "status": "NOT_STARTED",
+              "tags": [],
+              "properties": {
+                "showPosition": false,
+                "showId": false
+              },
+              "expandable": true
+            },
+            "measured": {
+              "width": 181,
+              "height": 98
+            },
+            "selected": false,
+            "style": {
+              "opacity": 1
+            },
+            "sourcePosition": "right",
+            "targetPosition": "left"
+          },
+          {
+            "id": "66e869fe-d33c-4356-836e-afeb2ce86759",
+            "type": "custom",
+            "position": {
+              "x": 739,
+              "y": 396
+            },
+            "data": {
+              "name": "Data Storage",
+              "expanded": true,
+              "description": "",
+              "findings": [],
+              "commands": [],
+              "status": "NOT_STARTED",
+              "tags": [],
+              "properties": {
+                "showPosition": false,
+                "showId": false
+              },
+              "expandable": true
+            },
+            "measured": {
+              "width": 191,
+              "height": 64
+            },
+            "selected": false,
+            "style": {
+              "opacity": 1
+            },
+            "sourcePosition": "right",
+            "targetPosition": "left"
+          },
+          {
+            "id": "7be0acc9-b6f6-4222-82d1-2b207cc0781a",
+            "type": "custom",
+            "position": {
+              "x": 1070,
+              "y": 375
+            },
+            "data": {
+              "name": "Primarily in SQLite databases and plists.",
+              "expanded": true,
+              "description": "### SQLite and Plist in iOS Forensics\n\nIn iOS forensics, both SQLite and Plist files are crucial for extracting valuable data from devices.\n\n#### SQLite\n\n**SQLite** is a lightweight relational database engine used extensively in iOS apps for storing structured data. It is particularly useful for forensic analysis because it can store critical information such as call logs, text messages, and app data.\n\n**Key Features of SQLite in Forensics:**\n\n- **Structured Data**: Supports complex data relationships, making it ideal for preserving data integrity.\n- **Deleted Data Recovery**: Forensic tools can recover deleted records from SQLite databases, which is essential for investigations.\n- **Common Use Cases**: Calendar, messages, notes, and phone information are often stored in SQLite databases.\n\n#### Plist\n\n**Property List (Plist)** files are used to store data in key-value pairs, typically for app settings and configurations. They are found in XML or binary formats and can contain sensitive information like usernames or passwords.\n\n**Key Features of Plist in Forensics:**\n\n- **Configurations and Settings**: Stores user and system-related information.\n- **Easy to Parse**: Human-readable format makes it straightforward to analyze.\n- **Use Cases**: Often used for storing app preferences, device settings, and sometimes sensitive data.\n\n#### Comparison Table\n\n| **Feature**                  | **SQLite**                                                                 | **Plist**                                      |\n|---------------------------|---------------------------------------------------------------------------------|-------------------------------------------------|\n| **Data Structure**         | Relational database with SQL support                                         | Key-value pairs in XML or binary format        |\n| **Data Size**              | Can handle large datasets                                                    | Suitable for small data storage                |\n| **Offline Access**         | Supports offline data access                                                 | No specific offline access features            |\n| **Complexity**             | Requires SQL knowledge and database management                               | Simple, easy to implement                     |\n| **Use Cases**              | Complex data structures, large datasets, offline apps                       | App settings, small configurations             |\n\n---\n\n### Forensic Tools for SQLite and Plist Analysis\n\n- **SQLite Analysis Tools**: Belkasoft Evidence Center, Magnet AXIOM, and Systools SQLite Forensics can analyze SQLite databases, including recovering deleted data.\n- **Plist Analysis Tools**: OpenText EnCase with EnScript plugins provides comprehensive parsing and analysis of Plist files.\n\n### Example Use Cases\n\n- **SQLite**: Analyzing the `Photos.sqlite` database to correlate photos with albums and timestamps.\n- **Plist**: Examining `device_values.plist` for backup timestamps and device settings (plist will contain the start date and time for an iTunes backup).\n\n### Forensic Implications\nBoth SQLite and Plist files are essential in iOS forensics for extracting and analyzing user data. Understanding their structures and using appropriate tools can significantly enhance the effectiveness of forensic investigations.",
+              "findings": [],
+              "commands": [],
+              "status": "NOT_STARTED",
+              "tags": [],
+              "properties": {
+                "showPosition": false,
+                "showId": false
+              },
+              "expandable": true
+            },
+            "measured": {
+              "width": 304,
+              "height": 106
+            },
+            "selected": false,
+            "style": {
+              "opacity": 1
+            },
+            "sourcePosition": "right",
+            "targetPosition": "left"
+          },
+          {
+            "id": "927ec1e8-61d5-44eb-b011-218d1c541aff",
+            "type": "custom",
+            "position": {
+              "x": 295,
+              "y": 754
+            },
+            "data": {
+              "name": "iOS Forensic Acquisition Methods",
+              "expanded": true,
+              "description": "### iOS Forensic Acquisition Considerations\n\niOS devices have several features that impact forensic acquisition, particularly USB Restricted Mode and iOS updates.\n\n#### USB Restricted Mode\n\n**USB Restricted Mode**, also known as **Accessories Mode** or **Lock**, is a security feature introduced in iOS 11.4.1. It locks the Lightning port after an hour of inactivity, requiring a password to unlock and allow USB connectivity. This feature complicates forensic acquisition by limiting the time window for connecting devices without user interaction.\n\n#### Impact of iOS Updates\n\nPost iOS 11.4.1 updates, USB Restricted Mode is enabled by default, disabling USB connectivity if the device is locked. This means that forensic tools relying on USB connections must be used within a short time frame after the device was last unlocked.\n\n#### Acquisition Challenges\n\n| **Feature**                  | **Description**                                                                 | **Impact on Forensics**                                       |\n|---------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------------|\n| **USB Restricted Mode**   | Locks Lightning port after 1 hour of inactivity, requiring password to unlock. | Limits time for USB-based forensic tools; requires device to be unlocked. |\n| **iOS Updates (Post 11.4.1)** | Enables USB Restricted Mode by default when device is locked.            | Complicates acquisition by disabling USB if device is locked. |\n\n---\n\n### Mitigation Strategies\n\nTo overcome these challenges, forensic investigators can use techniques such as:\n\n- **Immediate Acquisition**: Connect the device to forensic tools as soon as possible after it is unlocked.\n- **Jailbreaking**: Use exploits to bypass security restrictions and maintain USB connectivity.\n- **Hardware-Based Tools**: Utilize tools like GrayKey that can bypass passcodes and maintain connectivity.\n\n### Forensic Tools Adaptation\n\nTools like Cellebrite UFED and Elcomsoft iOS Forensic Toolkit are adapting to these challenges by incorporating methods to bypass or work around USB Restricted Mode, ensuring that forensic acquisition remains effective despite these security enhancements.",
+              "findings": [],
+              "commands": [],
+              "status": "NOT_STARTED",
+              "tags": [],
+              "properties": {
+                "showPosition": false,
+                "showId": false
+              },
+              "expandable": true
+            },
+            "measured": {
+              "width": 304,
+              "height": 106
+            },
+            "selected": false,
+            "style": {
+              "opacity": 1
+            },
+            "sourcePosition": "right",
+            "targetPosition": "left"
+          },
+          {
+            "id": "e8daa247-9751-413d-b85a-6a78d0a944ab",
+            "type": "custom",
+            "position": {
+              "x": 758.5,
+              "y": 560
+            },
+            "data": {
+              "name": "Logical",
+              "expanded": true,
+              "description": "### iOS Forensic Acquisition Methods: Logical\n\nLogical acquisition is a method used in iOS forensics to extract data from devices by leveraging user-accessible information, typically through iTunes backups or direct device access when unlocked. This approach is widely used due to its ease of implementation and compatibility with most iOS versions.\n\n#### Key Features of Logical Acquisition\n\n- **Data Scope**: Includes user data such as messages, contacts, photos, and app data that is accessible via iTunes backup or direct device access.\n- **Device Requirements**: The device must be unlocked or paired with a computer using a lockdown record.\n- **Tools Used**: Commercial tools like Elcomsoft iOS Forensic Toolkit, Cellebrite UFED, and Oxygen Forensic Suite support logical acquisition.\n\n#### Logical Acquisition Process\n\n1. **Device Preparation**: Ensure the device is unlocked or use a lockdown record for pairing.\n2. **Backup Creation**: Use iTunes to create a backup of the device.\n3. **Data Extraction**: Utilize forensic tools to parse the backup and extract relevant data.\n\n#### Advantages\n\n- **Ease of Use**: Logical acquisition is generally straightforward and less invasive.\n- **Wide Compatibility**: Works with most iOS versions and devices.\n- **Cost-Effective**: Often less expensive than physical acquisition methods.\n\n#### Limitations\n\n- **Data Accessibility**: Limited to user-accessible data; encrypted data may not be accessible without additional exploits.\n- **Deleted Data Recovery**: Less effective for recovering deleted data compared to physical acquisition.\n\n#### Tools for Logical Acquisition\n\n| **Tool**                  | **Description**                                                                 | **Key Features**                                         |\n|---------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------|\n| **Elcomsoft iOS Forensic Toolkit** | Supports logical acquisition for all iOS devices.                        | Extracts media, crash logs, and shared files.            |\n| **Cellebrite UFED**       | Offers advanced logical file system extraction.                                  | Comprehensive data extraction from iOS devices.         |\n| **Oxygen Forensic Suite** | Provides logical acquisition capabilities with extensive data parsing.           | Analyzes app data, messages, and other user-accessible files. |\n",
+              "findings": [],
+              "commands": [],
+              "status": "NOT_STARTED",
+              "tags": [],
+              "properties": {
+                "showPosition": false,
+                "showId": false
+              },
+              "expandable": true
+            },
+            "measured": {
+              "width": 152,
+              "height": 98
+            },
+            "selected": false,
+            "style": {
+              "opacity": 1
+            },
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "dragging": false
+          },
+          {
+            "id": "ff9df7e9-c6cb-41c8-9a4c-45820afad7cf",
+            "type": "custom",
+            "position": {
+              "x": 723.5,
+              "y": 758
+            },
+            "data": {
+              "name": "Advanced Logical",
+              "expanded": true,
+              "description": "### Advanced Logical Acquisition in iOS Forensics\n\nAdvanced logical acquisition is an enhanced method of extracting data from iOS devices, combining both logical and file system extraction techniques. This approach provides a more comprehensive dataset compared to standard logical acquisition, while maintaining the ease of use and non-invasive nature.\n\n#### Key Features of Advanced Logical Acquisition\n\n- **Data Scope**: Includes user-accessible data (e.g., messages, contacts, photos) plus additional system files and crash logs.\n- **Device Requirements**: Typically requires the device to be unlocked or paired with a computer using a lockdown record.\n- **Tools Used**: Commercial tools like Elcomsoft iOS Forensic Toolkit, Cellebrite UFED, and Mobile Device Investigator support advanced logical acquisition.\n\n#### Advanced Logical Acquisition Process\n\n1. **Device Preparation**: Ensure the device is unlocked or use a lockdown record for pairing.\n2. **Extraction Method**: Utilize forensic tools to extract both user data and system files.\n3. **Data Analysis**: Analyze extracted data using specialized software for insights.\n\n#### Advantages\n\n- **Comprehensive Data**: Offers more detailed data extraction compared to standard logical methods.\n- **Ease of Use**: Less complex than physical acquisition methods.\n- **Wide Compatibility**: Works with most iOS versions and devices.\n\n#### Limitations\n\n- **Data Accessibility**: Limited to user-accessible data; encrypted data may not be accessible without additional exploits.\n- **Deleted Data Recovery**: Less effective for recovering deleted data compared to physical acquisition.\n\n#### Tools for Advanced Logical Acquisition\n\n| **Tool**                  | **Description**                                                                 | **Key Features**                                         |\n|---------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------|\n| **Elcomsoft iOS Forensic Toolkit** | Supports advanced logical acquisition for all iOS devices.                        | Extracts media, crash logs, and shared files.            |\n| **Cellebrite UFED**       | Offers advanced logical file system extraction.                                  | Comprehensive data extraction from iOS devices.         |\n| **Mobile Device Investigator (MDI)** | Performs advanced logical acquisitions using AI and ML for data extraction.           | Analyzes app data, messages, and other user-accessible files. |\n",
+              "findings": [],
+              "commands": [],
+              "status": "NOT_STARTED",
+              "tags": [],
+              "properties": {
+                "showPosition": false,
+                "showId": false
+              },
+              "expandable": true
+            },
+            "measured": {
+              "width": 222,
+              "height": 98
+            },
+            "selected": false,
+            "style": {
+              "opacity": 1
+            },
+            "sourcePosition": "right",
+            "targetPosition": "left"
+          },
+          {
+            "id": "bf96b6d8-c811-4634-a2c5-74692c8c663d",
+            "type": "custom",
+            "position": {
+              "x": 730,
+              "y": 956
+            },
+            "data": {
+              "name": "Full File System",
+              "expanded": true,
+              "description": "### Full File System Acquisition in iOS Forensics\n\nFull file system acquisition is a comprehensive method used in iOS forensics to extract all data from a device, including both user-accessible and system files. This approach provides the most detailed dataset possible, making it invaluable for thorough investigations.\n\n#### Key Features of Full File System Acquisition\n\n- **Data Scope**: Includes all files on the device, such as user data, system logs, app data, and even deleted files if not overwritten.\n- **Device Requirements**: Typically requires jailbreaking or using specific exploits to gain root access.\n- **Tools Used**: Commercial tools like Cellebrite UFED, Elcomsoft iOS Forensic Toolkit, GrayKey and Oxygen Forensic Suite support full file system extraction.\n\n#### Full File System Acquisition Process\n\n1. **Device Preparation**: Jailbreak the device or use an exploit to gain root access.\n2. **Extraction Method**: Utilize forensic tools to extract the entire file system.\n3. **Data Analysis**: Analyze extracted data using specialized software for insights.\n\n#### Advantages\n\n- **Comprehensive Data**: Offers the most detailed dataset possible, including system files and potentially deleted data.\n- **Deep Analysis**: Enables thorough examination of device activity and user behavior.\n- **Recovery of Deleted Data**: More effective for recovering deleted files compared to logical acquisition methods.\n\n#### Limitations\n\n- **Complexity**: Requires technical expertise to jailbreak or exploit the device.\n- **Device Integrity**: Jailbreaking can alter device state, potentially impacting evidence integrity.\n- **Legal Considerations**: Ensure legal authorization before jailbreaking a device for forensic purposes.\n\n#### Tools for Full File System Acquisition\n\n| **Tool**                  | **Description**                                                                 | **Key Features**                                         |\n|---------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------|\n| **Cellebrite UFED**       | Offers full file system extraction capabilities.                                  | Comprehensive data extraction from iOS devices.         |\n| **Elcomsoft iOS Forensic Toolkit** | Supports full file system extraction for jailbroken devices.                        | Extracts all files, including system logs and app data.  |\n| **Oxygen Forensic Suite** | Provides full file system extraction capabilities with extensive data parsing.           | Analyzes app data, messages, and other system files.     |",
+              "findings": [],
+              "commands": [],
+              "status": "NOT_STARTED",
+              "tags": [],
+              "properties": {
+                "showPosition": false,
+                "showId": false
+              },
+              "expandable": true
+            },
+            "measured": {
+              "width": 209,
+              "height": 98
+            },
+            "selected": false,
+            "style": {
+              "opacity": 1
+            },
+            "sourcePosition": "right",
+            "targetPosition": "left"
+          },
+          {
+            "id": "27d60add-5a85-4a8f-a175-ee07269f0946",
+            "type": "custom",
+            "position": {
+              "x": 298.5,
+              "y": 1352
+            },
+            "data": {
+              "name": "Handling Locked iOS Devices",
+              "expanded": true,
+              "description": "# Locking states\n\n**Key Differences**:\n| **Aspect**       | DFU Mode                          | Before First Unlock (BFU)       | After First Unlock (AFU)        |\n|-------------------|-----------------------------------|----------------------------------|----------------------------------|\n| **Definition**    | Hardware recovery mode (OS not loaded) | Post-reboot state (device locked) | Post-unlock state (keys loaded)  |\n| **Purpose**       | Firmware updates/device restore   | Security layer (encrypted data)  | Full data accessibility          |\n| **Temporal Scope**| Initiated manually at any time    | Between reboot and first unlock  | After successful passcode entry  |\n| **Data Access**   | No user data accessible           | Limited via exploits (e.g., checkm8) | Full decryption capabilities     |\n\n---\n\n## Temporal Flow\n1. **Device Reboot** → Enters **BFU** state (all data encrypted via Secure Enclave)  \n2. **User Unlocks** → Transitions to **AFU** (decryption keys loaded to RAM)  \n3. **DFU** can be activated **at any time** (bypasses OS boot process entirely)\n\n---\n\n## Forensic Implications\n- **BFU**:  \n  - Requires physical extraction tools (e.g., GrayKey, Cellebrite Premium)  \n  - Only file system metadata accessible without exploit  \n- **AFU**:  \n  - Full logical extraction possible (keychain, health data, messages)  \n- **DFU**:  \n  - Used for jailbreaking/exploit-based extraction (e.g., checkm8 on A5-A11 chips)  \n  - Doesn't affect BFU/AFU state but enables low-level access  \n\n**Tools**:  \n- **BFU**: Elcomsoft iOS Forensic Toolkit (requires pre-installed agent)  \n- **DFU**: checkra1n (bootrom exploit) + r2frida for RAM analysis  \n",
+              "findings": [],
+              "commands": [],
+              "status": "NOT_STARTED",
+              "tags": [],
+              "properties": {
+                "showPosition": false,
+                "showId": false
+              },
+              "expandable": true
+            },
+            "measured": {
+              "width": 297,
+              "height": 98
+            },
+            "selected": false,
+            "style": {
+              "opacity": 1
+            },
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "dragging": false
+          },
+          {
+            "id": "513dafaa-face-4ea8-836c-fa70c07c8713",
+            "type": "custom",
+            "position": {
+              "x": 699,
+              "y": 1154
+            },
+            "data": {
+              "name": "BFU (Before First Unlock)",
+              "expanded": false,
+              "description": "#### **What is BFU?**\n- BFU (Before First Unlock) refers to the state of an iOS device after it is powered on but before the user has entered their passcode to unlock it for the first time.\n- In this state, most user data remains encrypted due to the iOS encryption hierarchy, with only limited access to certain files and metadata.\n\n---\n\n#### **Key Characteristics of BFU**\n1. **Encryption Status**:\n   - The majority of user data is protected by \"Complete Protection\" encryption, which requires the device to be unlocked for decryption.\n   - Only files with weaker protection attributes (e.g., `kSecAttrAccessibleAlways`) are accessible.\n\n2. **Accessible Data**:\n   - Limited types of data can be acquired in BFU mode, including:\n     - Call logs: Found in paths like `/Library/CallHistory/call_history.db`.\n     - OS configuration files.\n     - App usage metadata.\n\n3. **Security Features**:\n   - The Secure Enclave enforces strict brute-force protections, making passcode cracking extremely difficult in BFU mode.\n\n#### **Limitations of BFU**\n- Most critical user data remains inaccessible without unlocking the device.\n- Brute-forcing passcodes is impractical due to Secure Enclave protections and enforced delays after failed attempts.\n",
+              "findings": [],
+              "commands": [],
+              "status": "NOT_STARTED",
+              "tags": [],
+              "properties": {
+                "showPosition": false,
+                "showId": false
+              },
+              "expandable": true
+            },
+            "measured": {
+              "width": 271,
+              "height": 98
+            },
+            "selected": false,
+            "style": {
+              "opacity": 1
+            },
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "dragging": false
+          },
+          {
+            "id": "ee5bfc2f-7fcf-4725-89b8-ac9821456898",
+            "position": {
+              "x": 1096.5,
+              "y": 1154
+            },
+            "type": "custom",
+            "data": {
+              "name": "Preserve Device State",
+              "expanded": true,
+              "description": "- Place the device in a **Faraday bag** to block remote wiping or tampering.\n- If powered on, avoid rebooting or powering off to prevent losing any potential unlocked state.\n- Record every step taken during the forensic process, including timestamps and tools used, to maintain evidence integrity.\n",
+              "findings": [],
+              "commands": [],
+              "status": "NOT_STARTED",
+              "tags": [],
+              "properties": {
+                "showPosition": false,
+                "showId": false
+              }
+            },
+            "measured": {
+              "width": 251,
+              "height": 98
+            },
+            "style": {
+              "opacity": 1,
+              "visibility": "hidden",
+              "pointerEvents": "none",
+              "zIndex": -1
+            },
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "selected": false,
+            "dragging": false
+          },
+          {
+            "id": "2e9c8897-ffda-426f-a5c1-712805ced67c",
+            "position": {
+              "x": 1474,
+              "y": 1154
+            },
+            "type": "custom",
+            "data": {
+              "name": "Accessible Data Extraction",
+              "expanded": false,
+              "description": "**Extract Accessible Data**:\n   - Use forensic tools like **Cellebrite UFED**, **Magnet AXIOM**, or **Elcomsoft iOS Forensic Toolkit** to retrieve accessible files.\n   - Focus on logs, metadata, and system files that may provide investigative leads.",
+              "findings": [],
+              "commands": [],
+              "status": "NOT_STARTED",
+              "tags": [],
+              "properties": {
+                "showPosition": false,
+                "showId": false
+              }
+            },
+            "measured": {
+              "width": 283,
+              "height": 98
+            },
+            "style": {
+              "opacity": 1,
+              "visibility": "hidden",
+              "pointerEvents": "none",
+              "zIndex": -1
+            },
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "selected": false,
+            "dragging": false
+          },
+          {
+            "id": "37cd260a-e1ac-42ef-89fc-2a0ca88cc1f5",
+            "position": {
+              "x": 1138.5,
+              "y": 1352
+            },
+            "type": "custom",
+            "data": {
+              "name": "Jailbreak",
+              "expanded": true,
+              "description": "### Jailbreaks for iOS Forensic Analysis\n\n#### Purpose in iOS Forensics\nJailbreaking is a critical step in iOS forensic analysis as it allows investigators to bypass certain security restrictions and gain deeper access to device data. This is particularly useful for extracting semi-encrypted data, accessing the file system directly, and utilizing low-level forensic tools that require root privileges.\n\n#### Jailbreak Comparison Table\n\n| **Jailbreak**      | **iOS Compatibility**          | **Device Support**                  | **Exploit Type**          | **Notes**                                      |\n|--------------------|--------------------------------|-------------------------------------|---------------------------|------------------------------------------------|\n| **checkra1n**      | iOS 12.0 to iOS 14.8.1         | A5-A11 chips (e.g., iPhone 5s to X) | checkm8 bootrom exploit   | Semi-tethered, older devices                    |\n| **unc0ver**        | iOS 11.0 to iOS 14.3           | All devices                         | Kernel exploit            | Semi-tethered, wide device support              |\n| **Taurine**        | iOS 14.0 to iOS 14.3           | All devices                         | Kernel exploit            | Semi-tethered, similar to unc0ver               |\n| **Fugu**           | iOS 15.0 to iOS 15.4.1         | All devices                         | Kernel exploit            | Semi-tethered, newer devices                     |\n| **Cheyote**        | iOS 15.0 to iOS 15.4.1         | All devices                         | Kernel exploit            | Semi-tethered, similar to Fugu                  |\n| **Palera1n**       | iOS 15.0 to iOS 16.3.1         | A11 and later chips                 | checkm8 + kernel exploit  | Semi-tethered, newer devices with A11+ chips    |\n| **xinaA15**        | iOS 15.0 to iOS 15.4.1         | A12-A15 chips                       | Kernel exploit            | Semi-tethered, newer devices                     |\n| **Linus Henze's**  | iOS 15.0 to iOS 15.4.1         | A12-A15 chips                       | Kernel exploit            | Semi-tethered, similar to xinaA15               |\n\n---\n\n### Forensic Implications\n1. **Data Extraction**: Jailbreaking allows for more comprehensive data extraction, including semi-encrypted files and app data.\n2. **Device Integrity**: It's crucial to ensure that jailbreaking does not compromise evidence integrity, which can impact legal proceedings.\n3. **Legal Authorization**: Always obtain legal authorization before jailbreaking a device for forensic purposes.\n\n### Tools for Forensic Analysis\n- **checkra1n**: Useful for older devices with checkm8 exploit.\n- **unc0ver/Taurine**: Supports a wide range of devices but requires kernel exploits.\n- **Fugu/Cheyote**: Targets newer devices with kernel exploits.",
+              "findings": [],
+              "commands": [],
+              "status": "NOT_STARTED",
+              "tags": [],
+              "properties": {
+                "showPosition": false,
+                "showId": false
+              },
+              "children": []
+            },
+            "measured": {
+              "width": 167,
+              "height": 98
+            },
+            "style": {
+              "opacity": 1
+            },
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "selected": false,
+            "dragging": false
+          },
+          {
+            "id": "957c8dca-37c3-41bb-a339-579bb7c3098a",
+            "position": {
+              "x": 704.5,
+              "y": 1666
+            },
+            "type": "custom",
+            "data": {
+              "name": "AFU (After First Unlock)",
+              "expanded": true,
+              "description": "",
+              "findings": [],
+              "commands": [],
+              "status": "NOT_STARTED",
+              "tags": [],
+              "properties": {
+                "showPosition": false,
+                "showId": false
+              }
+            },
+            "measured": {
+              "width": 260,
+              "height": 64
+            },
+            "style": {
+              "opacity": 1,
+              "zIndex": 1000
+            },
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "selected": false,
+            "dragging": false
+          },
+          {
+            "id": "327489ea-cec9-4bba-b0a5-48f62153938d",
+            "position": {
+              "x": 1122.5,
+              "y": 1550
+            },
+            "type": "custom",
+            "data": {
+              "name": "iCloud backup",
+              "expanded": false,
+              "description": "## Key Forensic Artifacts in iCloud Backups\n\n### Communication Data  \n- **Messages**  \n  Includes iMessage/SMS/MMS content, attachments, timestamps, and read receipts. Parsed by Cellebrite UFED and Magnet AXIOM.  \n- **Call History**  \n  Stores dialed/received/missed calls with timestamps and duration.  \n- **Visual Voicemail**  \n  Contains password (if stored) and audio recordings.  \n\n### Media Content  \n- **Photos/Videos**  \n  Original files with EXIF metadata including geolocation and creation dates. iCloud Photos synchronization status provides usage patterns.  \n- **Voice Memos**  \n  Audio recordings with creation timestamps and duration data.  \n\n### Device Configuration  \n- **Installed Apps**  \n  Complete list including installation/update timestamps. Purchase history from App Store receipts.  \n- **Home Screen Layout**  \n  Folder organization and app positioning patterns.  \n- **System Settings**  \n  Wi-Fi networks, VPN configurations, and restrictions passcodes.  \n\n### Productivity Data  \n- **Calendar Events**  \n  Meetings, reminders, and appointments with participant details. Reconstructs timelines using Cellebrite or Oxygen Forensic Detective.  \n- **Email Accounts**  \n  Configured mail services (even if not content) showing communication channels.  \n- **Safari Browsing**  \n  Bookmarks, frequently visited sites, and search history.  \n\n### Health & Activity  \n- **Apple Watch Data**  \n  Exercise records, heart rate metrics, and sleep patterns. Extracted via iPhone Backup Extractor.  \n- **Health App Data**  \n  Medical records, medication schedules, and reproductive health info.  \n\n### Authentication Data  \n- **Keychain** (if enabled)  \n  Contains WiFi passwords, website credentials, and credit card info.  \n- **Biometric Templates**  \n  Face ID/Touch ID mathematical representations (encrypted).  \n\n### Location Data  \n- **Significant Locations**  \n  Frequently visited places with timestamps.  \n- **Siri Locations**  \n  Location-based reminders and geofenced alerts.  \n",
+              "findings": [],
+              "commands": [],
+              "status": "NOT_STARTED",
+              "tags": [],
+              "properties": {
+                "showPosition": false,
+                "showId": false
+              }
+            },
+            "measured": {
+              "width": 199,
+              "height": 98
+            },
+            "style": {
+              "opacity": 1,
+              "visibility": "visible",
+              "pointerEvents": "all"
+            },
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "selected": false,
+            "dragging": false
+          },
+          {
+            "id": "0b1b391d-f5c9-4491-b0ec-d1fa24286207",
+            "position": {
+              "x": 1118.5,
+              "y": 1748
+            },
+            "type": "custom",
+            "data": {
+              "name": "System Backup",
+              "expanded": false,
+              "description": "# iOS System Backup Forensics\n\n**Definition**:  \nFull copy of device data (apps, settings, user content) preserved for investigation.\n\n**Relevance**:  \n- Critical for accessing deleted/archived data  \n- Only encrypted backups contain health data, keychain, and app credentials  \n- Preserves app sandboxes with behavioral artifacts  \n\n**Key Tools**:  \n- **iLEAPP**: CLI parser for backup artifacts (messages, logs, plists)  \n- **Autopsy**: GUI analysis with iOS plugin integration  \n- **Cellebrite UFED**: Commercial physical/backup extraction  \n- **Elcomsoft EIFT**: Encrypted backup decryption  \n\n**Backup Types**:  \n| | Encrypted | Unencrypted |  \n|-|-----------|-------------|  \n**Health Data** | ✅ | ❌ |  \n**Keychain** | ✅ | ❌ |  \n**App Passwords** | ✅ | ❌ |  \n\n**Process**:  \n1. Acquire encrypted iTunes/iCloud backup\n2. Parse with iLEAPP/Autopsy\n3. Cross-reference with cloud extractions\n4. Validate via commercial tools (AXIOM/UFED)  ",
+              "findings": [],
+              "commands": [
+                {
+                  "id": "ff377727-7412-4a07-8396-3af4b4cde047",
+                  "title": "ileapp.py CLI",
+                  "description": "",
+                  "command": "python ileapp.py -t <archive_type> -i <input_path> -output <output_path>",
+                  "variables": []
+                },
+                {
+                  "id": "0aa8b633-6425-422d-9bbe-53c8a6e4fdfd",
+                  "title": "ileapp GUI",
+                  "description": "",
+                  "command": "python ileappGUI.py",
+                  "variables": []
+                }
+              ],
+              "status": "NOT_STARTED",
+              "tags": [],
+              "properties": {
+                "showPosition": false,
+                "showId": false
+              }
+            },
+            "measured": {
+              "width": 207,
+              "height": 98
+            },
+            "style": {
+              "opacity": 1,
+              "visibility": "visible",
+              "pointerEvents": "all"
+            },
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "selected": false,
+            "dragging": false
+          },
+          {
+            "id": "64cc0d03-5ff6-4755-b807-00d0cae17ec6",
+            "position": {
+              "x": 720.5,
+              "y": 1352
+            },
+            "type": "custom",
+            "data": {
+              "name": "Jailbreak methods",
+              "expanded": false,
+              "description": "### Types of Jailbreaks\n\nJailbreaking is a process that allows users to gain root access to their iOS devices, bypassing Apple's security restrictions. There are several types of jailbreaks, each with its own characteristics and implications for forensic analysis.\n\n#### Types of Jailbreaks\n\n1. **Tethered Jailbreak**:  \n   Requires the device to be connected to a computer every time it is booted to maintain jailbroken status.\n\n2. **Semi-Tethered Jailbreak**:  \n   Allows the device to boot normally but requires a computer connection to re-enable jailbreak features after reboot.\n\n3. **Untethered Jailbreak**:  \n   Permits the device to boot and maintain jailbroken status without needing a computer connection.\n\n4. **Semi-Untethered Jailbreak**:  \n   Similar to semi-tethered but can be re-enabled using an app on the device itself after reboot.\n\n5. **Rootless Jailbreak**:  \n   Does not provide full root access but allows for some modifications and tweaks.\n\n#### Jailbreak Comparison Table\n\n| **Jailbreak Type**        | **Description**                                                                 | **Reboot Requirement** | **Forensic Impact**                                       |\n|---------------------------|---------------------------------------------------------------------------------|------------------------|----------------------------------------------------------|\n| **Tethered**              | Requires computer connection at every boot                                    | Yes                    | Limited forensic use due to reboot dependency           |\n| **Semi-Tethered**         | Boots normally but needs computer to re-enable jailbreak after reboot          | Yes                    | Commonly used in forensics; allows for some device use    |\n| **Untethered**            | Maintains jailbreak without computer connection                               | No                     | Ideal for forensic analysis; full device access          |\n| **Semi-Untethered**       | Re-enables jailbreak using an app on the device after reboot                  | No (via app)           | Offers flexibility in forensic scenarios                 |\n| **Rootless**              | Limited modifications without full root access                                | No                     | Less useful for deep forensic analysis                   |\n\n---\n\n### Forensic Implications\n- **Data Extraction**: Jailbreaking can facilitate deeper data extraction by bypassing security restrictions.\n- **Device Integrity**: It's crucial to ensure that jailbreaking does not compromise evidence integrity.\n- **Legal Authorization**: Always obtain legal authorization before jailbreaking a device for forensic purposes.\n\n### Tools for Forensic Analysis\n- **checkra1n**: Semi-tethered jailbreak for older devices.\n- **unc0ver/Taurine**: Semi-tethered jailbreaks supporting a wide range of devices.\n- **Fugu/Cheyote**: Semi-tethered jailbreaks for newer devices.",
+              "findings": [],
+              "commands": [],
+              "status": "NOT_STARTED",
+              "tags": [],
+              "properties": {
+                "showPosition": false,
+                "showId": false
+              }
+            },
+            "measured": {
+              "width": 228,
+              "height": 98
+            },
+            "style": {
+              "opacity": 1
+            },
+            "sourcePosition": "right",
+            "targetPosition": "left",
+            "selected": false,
+            "dragging": false
+          }
+        ],
+        "edges": [
+          {
+            "id": "455d08dd-00b9-4e74-b4d7-d647b53d2810->37d14310-4ed7-4871-a751-9bfae848ab50",
+            "source": "455d08dd-00b9-4e74-b4d7-d647b53d2810",
+            "target": "37d14310-4ed7-4871-a751-9bfae848ab50",
+            "style": {
+              "opacity": 1
+            },
+            "type": "bezier"
+          },
+          {
+            "id": "37d14310-4ed7-4871-a751-9bfae848ab50->ebd9b92b-10fb-4242-ad8f-c4b3538bdd13",
+            "source": "37d14310-4ed7-4871-a751-9bfae848ab50",
+            "target": "ebd9b92b-10fb-4242-ad8f-c4b3538bdd13",
+            "style": {
+              "opacity": 1
+            },
+            "type": "bezier"
+          },
+          {
+            "id": "37d14310-4ed7-4871-a751-9bfae848ab50->81a9c8f5-e8eb-4d8e-a965-bd90ae74faad",
+            "source": "37d14310-4ed7-4871-a751-9bfae848ab50",
+            "target": "81a9c8f5-e8eb-4d8e-a965-bd90ae74faad",
+            "style": {
+              "opacity": 1
+            },
+            "type": "bezier"
+          },
+          {
+            "id": "37d14310-4ed7-4871-a751-9bfae848ab50->66e869fe-d33c-4356-836e-afeb2ce86759",
+            "source": "37d14310-4ed7-4871-a751-9bfae848ab50",
+            "target": "66e869fe-d33c-4356-836e-afeb2ce86759",
+            "style": {
+              "opacity": 1
+            },
+            "type": "bezier"
+          },
+          {
+            "id": "66e869fe-d33c-4356-836e-afeb2ce86759->7be0acc9-b6f6-4222-82d1-2b207cc0781a",
+            "source": "66e869fe-d33c-4356-836e-afeb2ce86759",
+            "target": "7be0acc9-b6f6-4222-82d1-2b207cc0781a",
+            "style": {
+              "opacity": 1
+            },
+            "type": "bezier"
+          },
+          {
+            "id": "455d08dd-00b9-4e74-b4d7-d647b53d2810->927ec1e8-61d5-44eb-b011-218d1c541aff",
+            "source": "455d08dd-00b9-4e74-b4d7-d647b53d2810",
+            "target": "927ec1e8-61d5-44eb-b011-218d1c541aff",
+            "style": {
+              "opacity": 1
+            },
+            "type": "bezier"
+          },
+          {
+            "id": "927ec1e8-61d5-44eb-b011-218d1c541aff->e8daa247-9751-413d-b85a-6a78d0a944ab",
+            "source": "927ec1e8-61d5-44eb-b011-218d1c541aff",
+            "target": "e8daa247-9751-413d-b85a-6a78d0a944ab",
+            "style": {
+              "opacity": 1
+            },
+            "type": "bezier"
+          },
+          {
+            "id": "927ec1e8-61d5-44eb-b011-218d1c541aff->ff9df7e9-c6cb-41c8-9a4c-45820afad7cf",
+            "source": "927ec1e8-61d5-44eb-b011-218d1c541aff",
+            "target": "ff9df7e9-c6cb-41c8-9a4c-45820afad7cf",
+            "style": {
+              "opacity": 1
+            },
+            "type": "bezier"
+          },
+          {
+            "id": "927ec1e8-61d5-44eb-b011-218d1c541aff->bf96b6d8-c811-4634-a2c5-74692c8c663d",
+            "source": "927ec1e8-61d5-44eb-b011-218d1c541aff",
+            "target": "bf96b6d8-c811-4634-a2c5-74692c8c663d",
+            "style": {
+              "opacity": 1
+            },
+            "type": "bezier"
+          },
+          {
+            "id": "455d08dd-00b9-4e74-b4d7-d647b53d2810->27d60add-5a85-4a8f-a175-ee07269f0946",
+            "source": "455d08dd-00b9-4e74-b4d7-d647b53d2810",
+            "target": "27d60add-5a85-4a8f-a175-ee07269f0946",
+            "style": {
+              "opacity": 1
+            },
+            "type": "bezier"
+          },
+          {
+            "id": "27d60add-5a85-4a8f-a175-ee07269f0946->513dafaa-face-4ea8-836c-fa70c07c8713",
+            "source": "27d60add-5a85-4a8f-a175-ee07269f0946",
+            "target": "513dafaa-face-4ea8-836c-fa70c07c8713",
+            "style": {
+              "opacity": 1
+            },
+            "type": "bezier",
+            "selected": false
+          },
+          {
+            "id": "513dafaa-face-4ea8-836c-fa70c07c8713->ee5bfc2f-7fcf-4725-89b8-ac9821456898",
+            "source": "513dafaa-face-4ea8-836c-fa70c07c8713",
+            "target": "ee5bfc2f-7fcf-4725-89b8-ac9821456898",
+            "type": "bezier",
+            "style": {
+              "opacity": 1,
+              "visibility": "hidden",
+              "zIndex": -1
+            }
+          },
+          {
+            "id": "ee5bfc2f-7fcf-4725-89b8-ac9821456898->2e9c8897-ffda-426f-a5c1-712805ced67c",
+            "source": "ee5bfc2f-7fcf-4725-89b8-ac9821456898",
+            "target": "2e9c8897-ffda-426f-a5c1-712805ced67c",
+            "type": "bezier",
+            "style": {
+              "opacity": 1,
+              "visibility": "hidden",
+              "zIndex": -1
+            }
+          },
+          {
+            "id": "27d60add-5a85-4a8f-a175-ee07269f0946->957c8dca-37c3-41bb-a339-579bb7c3098a",
+            "source": "27d60add-5a85-4a8f-a175-ee07269f0946",
+            "target": "957c8dca-37c3-41bb-a339-579bb7c3098a",
+            "type": "bezier",
+            "style": {
+              "opacity": 1
+            }
+          },
+          {
+            "id": "957c8dca-37c3-41bb-a339-579bb7c3098a->327489ea-cec9-4bba-b0a5-48f62153938d",
+            "source": "957c8dca-37c3-41bb-a339-579bb7c3098a",
+            "target": "327489ea-cec9-4bba-b0a5-48f62153938d",
+            "type": "bezier",
+            "style": {
+              "opacity": 1,
+              "visibility": "visible"
+            }
+          },
+          {
+            "id": "957c8dca-37c3-41bb-a339-579bb7c3098a->0b1b391d-f5c9-4491-b0ec-d1fa24286207",
+            "source": "957c8dca-37c3-41bb-a339-579bb7c3098a",
+            "target": "0b1b391d-f5c9-4491-b0ec-d1fa24286207",
+            "type": "bezier",
+            "style": {
+              "opacity": 1,
+              "visibility": "visible"
+            }
+          },
+          {
+            "id": "27d60add-5a85-4a8f-a175-ee07269f0946->64cc0d03-5ff6-4755-b807-00d0cae17ec6",
+            "source": "27d60add-5a85-4a8f-a175-ee07269f0946",
+            "target": "64cc0d03-5ff6-4755-b807-00d0cae17ec6",
+            "type": "bezier",
+            "style": {
+              "opacity": 1
+            }
+          },
+          {
+            "id": "64cc0d03-5ff6-4755-b807-00d0cae17ec6->37cd260a-e1ac-42ef-89fc-2a0ca88cc1f5",
+            "source": "64cc0d03-5ff6-4755-b807-00d0cae17ec6",
+            "target": "37cd260a-e1ac-42ef-89fc-2a0ca88cc1f5",
+            "type": "bezier",
+            "style": {
+              "opacity": 1
+            }
+          }
+        ]
+      },
+      "tags": [
+        "ios",
+        "forensic"
+      ],
+      "createdAt": "2025-02-09T02:29:06.148Z",
+      "updatedAt": "2025-02-09T02:29:06.148Z"
+    },
+    "methodologies": [],
+    "methodologyProgress": [],
+    "flowData": {
+      "nodes": [
+        {
+          "id": "455d08dd-00b9-4e74-b4d7-d647b53d2810",
+          "type": "custom",
+          "position": {
+            "x": 0,
+            "y": 874
+          },
+          "data": {
+            "name": "iOS Forensics",
+            "expanded": true,
+            "description": "",
+            "findings": [],
+            "commands": [],
+            "status": "NOT_STARTED",
+            "tags": [],
+            "properties": {
+              "showPosition": false,
+              "showId": false
+            },
+            "expandable": true
+          },
+          "measured": {
+            "width": 195,
+            "height": 64
+          },
+          "selected": false,
+          "style": {
+            "opacity": 1
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left"
+        },
+        {
+          "id": "37d14310-4ed7-4871-a751-9bfae848ab50",
+          "type": "custom",
+          "position": {
+            "x": 336,
+            "y": 215
+          },
+          "data": {
+            "name": "Operating System",
+            "expanded": true,
+            "description": "",
+            "findings": [],
+            "commands": [],
+            "status": "NOT_STARTED",
+            "tags": [],
+            "properties": {
+              "showPosition": false,
+              "showId": false
+            },
+            "expandable": true
+          },
+          "measured": {
+            "width": 222,
+            "height": 64
+          },
+          "selected": false,
+          "style": {
+            "opacity": 1
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left"
+        },
+        {
+          "id": "ebd9b92b-10fb-4242-ad8f-c4b3538bdd13",
+          "type": "custom",
+          "position": {
+            "x": 740.5,
+            "y": 0
+          },
+          "data": {
+            "name": "iOS internals",
+            "expanded": true,
+            "description": "### Base UNIX Kernel and iOS\n\niOS is built on a foundation that includes elements from the UNIX family, specifically the BSD branch. The core operating system of iOS is based on **Darwin**, which uses the **XNU (X is Not Unix)** kernel. This kernel is a hybrid, combining features of both monolithic and microkernel architectures.\n\n#### XNU Kernel\n\n- **Composition**: XNU includes components from the Mach microkernel and the 4.3BSD monolithic kernel.\n- **Features**: It supports preemption, memory protection, and enhanced networking capabilities.\n- **POSIX Compliance**: XNU adheres to the POSIX standard, ensuring compatibility with many UNIX utilities and APIs.\n\n#### Darwin and iOS\n\n- **Darwin Layer**: This is the open-source part of iOS and macOS, providing a foundation for both operating systems.\n- **iOS Evolution**: Early versions of iOS were essentially stripped-down macOS versions adapted for mobile devices.\n\n#### UNIX Influence on iOS\n\n- **BSD Heritage**: iOS inherits many features from the BSD branch of UNIX, including networking and file system management.\n- **POSIX Compliance**: This ensures that iOS can run many UNIX-based tools and scripts, albeit with modifications for its unique environment.\n\n#### Key Features of the XNU Kernel\n\n| **Feature**                  | **Description**                                                                 | **Impact on iOS**                                       |\n|---------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------|\n| **Hybrid Architecture**   | Combines Mach microkernel with 4.3BSD monolithic kernel components.             | Offers modularity and performance benefits.            |\n| **POSIX Compliance**      | Adheres to the Portable Operating System Interface standard.                    | Ensures compatibility with UNIX tools and APIs.         |\n| **Memory Protection**     | Provides robust memory management and protection.                              | Enhances system stability and security.                |\n| **Networking**            | Supports advanced networking features inherited from BSD.                       | Enables efficient network communication.               |",
+            "findings": [],
+            "commands": [],
+            "status": "NOT_STARTED",
+            "tags": [],
+            "properties": {
+              "showPosition": false,
+              "showId": false
+            },
+            "expandable": true
+          },
+          "measured": {
+            "width": 188,
+            "height": 98
+          },
+          "selected": false,
+          "style": {
+            "opacity": 1
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left"
+        },
+        {
+          "id": "81a9c8f5-e8eb-4d8e-a965-bd90ae74faad",
+          "type": "custom",
+          "position": {
+            "x": 744,
+            "y": 198
+          },
+          "data": {
+            "name": "File System",
+            "expanded": true,
+            "description": "### HFS+ and APFS in iOS Devices\n\niOS devices, unlike traditional computers, store all user data internally using NAND Flash Memory. This storage is managed by file systems like HFS+ (previously) and APFS (currently).\n\n#### HFS+ (Hierarchical File System Plus)\n\n- **Overview**: HFS+ was the file system used by Apple devices before APFS. It was designed to optimize storage capacity on hard disk drives but was also used on early iOS devices.\n- **Features**:\n  - **Allocation Blocks**: Optimized for larger hard drives by reducing wasted space.\n  - **File Naming**: Supports UTF-16 encoding and file names up to 255 characters.\n  - **Journaling**: Introduced in Mac OS X 10.2.2 to improve data stability by logging changes before they are written to disk.\n- **Limitations**: Not optimized for flash storage, lacks advanced features like snapshots and encryption.\n\n#### APFS (Apple File System)\n\n- **Overview**: APFS is the current file system used by iOS devices, introduced with iOS 10.3. It is optimized for flash storage and offers several improvements over HFS+.\n- **Features**:\n  - **Optimized for Flash/SSD**: Designed to work efficiently with NAND Flash Memory.\n  - **Encryption**: Supports full-disk encryption with options for single-key and multi-key encryption.\n  - **Snapshots**: Allows for point-in-time snapshots of the file system.\n  - **Space Sharing**: Multiple volumes can share space within a container, improving storage efficiency.\n- **Advantages**: Offers better performance, security, and data integrity compared to HFS+.\n\n#### No External Storage\n\niOS devices do not use external storage for user data; instead, all data is stored internally in NAND Flash Memory. This approach enhances security and performance by keeping data within the device's secure environment.\n\n#### Comparison Table\n\n| **Feature**                  | **HFS+**                                                                 | **APFS**                                      |\n|---------------------------|---------------------------------------------------------------------------------|-------------------------------------------------|\n| **Optimization**           | Designed for hard disk drives, not optimized for flash storage.               | Optimized for flash storage (NAND Flash Memory). |\n| **Encryption**             | Limited encryption capabilities.                                             | Full-disk encryption with single-key and multi-key options. |\n| **Snapshots**              | Does not support snapshots.                                                 | Supports snapshots for point-in-time file system images. |\n| **Space Management**       | Uses allocation blocks to manage space.                                     | Uses space sharing among volumes within a container. |\n| **Data Integrity**         | Uses journaling for data stability.                                          | Uses checksums for metadata integrity and redirect-on-write for crash protection. |\n\n---\n\n### Forensic Implications\nUnderstanding the file system used by iOS devices is crucial for forensic analysis. APFS's features like encryption and snapshots can complicate data extraction but also provide valuable insights into device activity. Forensic tools must be compatible with APFS to effectively analyze data stored in NAND Flash Memory.",
+            "findings": [],
+            "commands": [],
+            "status": "NOT_STARTED",
+            "tags": [],
+            "properties": {
+              "showPosition": false,
+              "showId": false
+            },
+            "expandable": true
+          },
+          "measured": {
+            "width": 181,
+            "height": 98
+          },
+          "selected": false,
+          "style": {
+            "opacity": 1
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left"
+        },
+        {
+          "id": "66e869fe-d33c-4356-836e-afeb2ce86759",
+          "type": "custom",
+          "position": {
+            "x": 739,
+            "y": 396
+          },
+          "data": {
+            "name": "Data Storage",
+            "expanded": true,
+            "description": "",
+            "findings": [],
+            "commands": [],
+            "status": "NOT_STARTED",
+            "tags": [],
+            "properties": {
+              "showPosition": false,
+              "showId": false
+            },
+            "expandable": true
+          },
+          "measured": {
+            "width": 191,
+            "height": 64
+          },
+          "selected": false,
+          "style": {
+            "opacity": 1
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left"
+        },
+        {
+          "id": "7be0acc9-b6f6-4222-82d1-2b207cc0781a",
+          "type": "custom",
+          "position": {
+            "x": 1070,
+            "y": 375
+          },
+          "data": {
+            "name": "Primarily in SQLite databases and plists.",
+            "expanded": true,
+            "description": "### SQLite and Plist in iOS Forensics\n\nIn iOS forensics, both SQLite and Plist files are crucial for extracting valuable data from devices.\n\n#### SQLite\n\n**SQLite** is a lightweight relational database engine used extensively in iOS apps for storing structured data. It is particularly useful for forensic analysis because it can store critical information such as call logs, text messages, and app data.\n\n**Key Features of SQLite in Forensics:**\n\n- **Structured Data**: Supports complex data relationships, making it ideal for preserving data integrity.\n- **Deleted Data Recovery**: Forensic tools can recover deleted records from SQLite databases, which is essential for investigations.\n- **Common Use Cases**: Calendar, messages, notes, and phone information are often stored in SQLite databases.\n\n#### Plist\n\n**Property List (Plist)** files are used to store data in key-value pairs, typically for app settings and configurations. They are found in XML or binary formats and can contain sensitive information like usernames or passwords.\n\n**Key Features of Plist in Forensics:**\n\n- **Configurations and Settings**: Stores user and system-related information.\n- **Easy to Parse**: Human-readable format makes it straightforward to analyze.\n- **Use Cases**: Often used for storing app preferences, device settings, and sometimes sensitive data.\n\n#### Comparison Table\n\n| **Feature**                  | **SQLite**                                                                 | **Plist**                                      |\n|---------------------------|---------------------------------------------------------------------------------|-------------------------------------------------|\n| **Data Structure**         | Relational database with SQL support                                         | Key-value pairs in XML or binary format        |\n| **Data Size**              | Can handle large datasets                                                    | Suitable for small data storage                |\n| **Offline Access**         | Supports offline data access                                                 | No specific offline access features            |\n| **Complexity**             | Requires SQL knowledge and database management                               | Simple, easy to implement                     |\n| **Use Cases**              | Complex data structures, large datasets, offline apps                       | App settings, small configurations             |\n\n---\n\n### Forensic Tools for SQLite and Plist Analysis\n\n- **SQLite Analysis Tools**: Belkasoft Evidence Center, Magnet AXIOM, and Systools SQLite Forensics can analyze SQLite databases, including recovering deleted data.\n- **Plist Analysis Tools**: OpenText EnCase with EnScript plugins provides comprehensive parsing and analysis of Plist files.\n\n### Example Use Cases\n\n- **SQLite**: Analyzing the `Photos.sqlite` database to correlate photos with albums and timestamps.\n- **Plist**: Examining `device_values.plist` for backup timestamps and device settings (plist will contain the start date and time for an iTunes backup).\n\n### Forensic Implications\nBoth SQLite and Plist files are essential in iOS forensics for extracting and analyzing user data. Understanding their structures and using appropriate tools can significantly enhance the effectiveness of forensic investigations.",
+            "findings": [],
+            "commands": [],
+            "status": "NOT_STARTED",
+            "tags": [],
+            "properties": {
+              "showPosition": false,
+              "showId": false
+            },
+            "expandable": true
+          },
+          "measured": {
+            "width": 304,
+            "height": 106
+          },
+          "selected": false,
+          "style": {
+            "opacity": 1
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left"
+        },
+        {
+          "id": "927ec1e8-61d5-44eb-b011-218d1c541aff",
+          "type": "custom",
+          "position": {
+            "x": 295,
+            "y": 853
+          },
+          "data": {
+            "name": "iOS Forensic Acquisition Methods",
+            "expanded": true,
+            "description": "### iOS Forensic Acquisition Considerations\n\niOS devices have several features that impact forensic acquisition, particularly USB Restricted Mode and iOS updates.\n\n#### USB Restricted Mode\n\n**USB Restricted Mode**, also known as **Accessories Mode** or **Lock**, is a security feature introduced in iOS 11.4.1. It locks the Lightning port after an hour of inactivity, requiring a password to unlock and allow USB connectivity. This feature complicates forensic acquisition by limiting the time window for connecting devices without user interaction.\n\n#### Impact of iOS Updates\n\nPost iOS 11.4.1 updates, USB Restricted Mode is enabled by default, disabling USB connectivity if the device is locked. This means that forensic tools relying on USB connections must be used within a short time frame after the device was last unlocked.\n\n#### Acquisition Challenges\n\n| **Feature**                  | **Description**                                                                 | **Impact on Forensics**                                       |\n|---------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------------|\n| **USB Restricted Mode**   | Locks Lightning port after 1 hour of inactivity, requiring password to unlock. | Limits time for USB-based forensic tools; requires device to be unlocked. |\n| **iOS Updates (Post 11.4.1)** | Enables USB Restricted Mode by default when device is locked.            | Complicates acquisition by disabling USB if device is locked. |\n\n---\n\n### Mitigation Strategies\n\nTo overcome these challenges, forensic investigators can use techniques such as:\n\n- **Immediate Acquisition**: Connect the device to forensic tools as soon as possible after it is unlocked.\n- **Jailbreaking**: Use exploits to bypass security restrictions and maintain USB connectivity.\n- **Hardware-Based Tools**: Utilize tools like GrayKey that can bypass passcodes and maintain connectivity.\n\n### Forensic Tools Adaptation\n\nTools like Cellebrite UFED and Elcomsoft iOS Forensic Toolkit are adapting to these challenges by incorporating methods to bypass or work around USB Restricted Mode, ensuring that forensic acquisition remains effective despite these security enhancements.",
+            "findings": [],
+            "commands": [],
+            "status": "NOT_STARTED",
+            "tags": [],
+            "properties": {
+              "showPosition": false,
+              "showId": false
+            },
+            "expandable": true
+          },
+          "measured": {
+            "width": 304,
+            "height": 106
+          },
+          "selected": false,
+          "style": {
+            "opacity": 1
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left"
+        },
+        {
+          "id": "e8daa247-9751-413d-b85a-6a78d0a944ab",
+          "type": "custom",
+          "position": {
+            "x": 758.5,
+            "y": 560
+          },
+          "data": {
+            "name": "Logical",
+            "expanded": true,
+            "description": "### iOS Forensic Acquisition Methods: Logical\n\nLogical acquisition is a method used in iOS forensics to extract data from devices by leveraging user-accessible information, typically through iTunes backups or direct device access when unlocked. This approach is widely used due to its ease of implementation and compatibility with most iOS versions.\n\n#### Key Features of Logical Acquisition\n\n- **Data Scope**: Includes user data such as messages, contacts, photos, and app data that is accessible via iTunes backup or direct device access.\n- **Device Requirements**: The device must be unlocked or paired with a computer using a lockdown record.\n- **Tools Used**: Commercial tools like Elcomsoft iOS Forensic Toolkit, Cellebrite UFED, and Oxygen Forensic Suite support logical acquisition.\n\n#### Logical Acquisition Process\n\n1. **Device Preparation**: Ensure the device is unlocked or use a lockdown record for pairing.\n2. **Backup Creation**: Use iTunes to create a backup of the device.\n3. **Data Extraction**: Utilize forensic tools to parse the backup and extract relevant data.\n\n#### Advantages\n\n- **Ease of Use**: Logical acquisition is generally straightforward and less invasive.\n- **Wide Compatibility**: Works with most iOS versions and devices.\n- **Cost-Effective**: Often less expensive than physical acquisition methods.\n\n#### Limitations\n\n- **Data Accessibility**: Limited to user-accessible data; encrypted data may not be accessible without additional exploits.\n- **Deleted Data Recovery**: Less effective for recovering deleted data compared to physical acquisition.\n\n#### Tools for Logical Acquisition\n\n| **Tool**                  | **Description**                                                                 | **Key Features**                                         |\n|---------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------|\n| **Elcomsoft iOS Forensic Toolkit** | Supports logical acquisition for all iOS devices.                        | Extracts media, crash logs, and shared files.            |\n| **Cellebrite UFED**       | Offers advanced logical file system extraction.                                  | Comprehensive data extraction from iOS devices.         |\n| **Oxygen Forensic Suite** | Provides logical acquisition capabilities with extensive data parsing.           | Analyzes app data, messages, and other user-accessible files. |\n",
+            "findings": [],
+            "commands": [],
+            "status": "NOT_STARTED",
+            "tags": [],
+            "properties": {
+              "showPosition": false,
+              "showId": false
+            },
+            "expandable": true
+          },
+          "measured": {
+            "width": 152,
+            "height": 98
+          },
+          "selected": false,
+          "style": {
+            "opacity": 1
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "dragging": false
+        },
+        {
+          "id": "ff9df7e9-c6cb-41c8-9a4c-45820afad7cf",
+          "type": "custom",
+          "position": {
+            "x": 723.5,
+            "y": 758
+          },
+          "data": {
+            "name": "Advanced Logical",
+            "expanded": true,
+            "description": "### Advanced Logical Acquisition in iOS Forensics\n\nAdvanced logical acquisition is an enhanced method of extracting data from iOS devices, combining both logical and file system extraction techniques. This approach provides a more comprehensive dataset compared to standard logical acquisition, while maintaining the ease of use and non-invasive nature.\n\n#### Key Features of Advanced Logical Acquisition\n\n- **Data Scope**: Includes user-accessible data (e.g., messages, contacts, photos) plus additional system files and crash logs.\n- **Device Requirements**: Typically requires the device to be unlocked or paired with a computer using a lockdown record.\n- **Tools Used**: Commercial tools like Elcomsoft iOS Forensic Toolkit, Cellebrite UFED, and Mobile Device Investigator support advanced logical acquisition.\n\n#### Advanced Logical Acquisition Process\n\n1. **Device Preparation**: Ensure the device is unlocked or use a lockdown record for pairing.\n2. **Extraction Method**: Utilize forensic tools to extract both user data and system files.\n3. **Data Analysis**: Analyze extracted data using specialized software for insights.\n\n#### Advantages\n\n- **Comprehensive Data**: Offers more detailed data extraction compared to standard logical methods.\n- **Ease of Use**: Less complex than physical acquisition methods.\n- **Wide Compatibility**: Works with most iOS versions and devices.\n\n#### Limitations\n\n- **Data Accessibility**: Limited to user-accessible data; encrypted data may not be accessible without additional exploits.\n- **Deleted Data Recovery**: Less effective for recovering deleted data compared to physical acquisition.\n\n#### Tools for Advanced Logical Acquisition\n\n| **Tool**                  | **Description**                                                                 | **Key Features**                                         |\n|---------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------|\n| **Elcomsoft iOS Forensic Toolkit** | Supports advanced logical acquisition for all iOS devices.                        | Extracts media, crash logs, and shared files.            |\n| **Cellebrite UFED**       | Offers advanced logical file system extraction.                                  | Comprehensive data extraction from iOS devices.         |\n| **Mobile Device Investigator (MDI)** | Performs advanced logical acquisitions using AI and ML for data extraction.           | Analyzes app data, messages, and other user-accessible files. |\n",
+            "findings": [],
+            "commands": [],
+            "status": "NOT_STARTED",
+            "tags": [],
+            "properties": {
+              "showPosition": false,
+              "showId": false
+            },
+            "expandable": true
+          },
+          "measured": {
+            "width": 222,
+            "height": 98
+          },
+          "selected": false,
+          "style": {
+            "opacity": 1
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left"
+        },
+        {
+          "id": "bf96b6d8-c811-4634-a2c5-74692c8c663d",
+          "type": "custom",
+          "position": {
+            "x": 730,
+            "y": 956
+          },
+          "data": {
+            "name": "Full File System",
+            "expanded": true,
+            "description": "### Full File System Acquisition in iOS Forensics\n\nFull file system acquisition is a comprehensive method used in iOS forensics to extract all data from a device, including both user-accessible and system files. This approach provides the most detailed dataset possible, making it invaluable for thorough investigations.\n\n#### Key Features of Full File System Acquisition\n\n- **Data Scope**: Includes all files on the device, such as user data, system logs, app data, and even deleted files if not overwritten.\n- **Device Requirements**: Typically requires jailbreaking or using specific exploits to gain root access.\n- **Tools Used**: Commercial tools like Cellebrite UFED, Elcomsoft iOS Forensic Toolkit, GrayKey and Oxygen Forensic Suite support full file system extraction.\n\n#### Full File System Acquisition Process\n\n1. **Device Preparation**: Jailbreak the device or use an exploit to gain root access.\n2. **Extraction Method**: Utilize forensic tools to extract the entire file system.\n3. **Data Analysis**: Analyze extracted data using specialized software for insights.\n\n#### Advantages\n\n- **Comprehensive Data**: Offers the most detailed dataset possible, including system files and potentially deleted data.\n- **Deep Analysis**: Enables thorough examination of device activity and user behavior.\n- **Recovery of Deleted Data**: More effective for recovering deleted files compared to logical acquisition methods.\n\n#### Limitations\n\n- **Complexity**: Requires technical expertise to jailbreak or exploit the device.\n- **Device Integrity**: Jailbreaking can alter device state, potentially impacting evidence integrity.\n- **Legal Considerations**: Ensure legal authorization before jailbreaking a device for forensic purposes.\n\n#### Tools for Full File System Acquisition\n\n| **Tool**                  | **Description**                                                                 | **Key Features**                                         |\n|---------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------|\n| **Cellebrite UFED**       | Offers full file system extraction capabilities.                                  | Comprehensive data extraction from iOS devices.         |\n| **Elcomsoft iOS Forensic Toolkit** | Supports full file system extraction for jailbroken devices.                        | Extracts all files, including system logs and app data.  |\n| **Oxygen Forensic Suite** | Provides full file system extraction capabilities with extensive data parsing.           | Analyzes app data, messages, and other system files.     |",
+            "findings": [],
+            "commands": [],
+            "status": "NOT_STARTED",
+            "tags": [],
+            "properties": {
+              "showPosition": false,
+              "showId": false
+            },
+            "expandable": true
+          },
+          "measured": {
+            "width": 209,
+            "height": 98
+          },
+          "selected": false,
+          "style": {
+            "opacity": 1
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left"
+        },
+        {
+          "id": "27d60add-5a85-4a8f-a175-ee07269f0946",
+          "type": "custom",
+          "position": {
+            "x": 298.5,
+            "y": 1615
+          },
+          "data": {
+            "name": "Handling Locked iOS Devices",
+            "expanded": true,
+            "description": "# Locking states\n\n**Key Differences**:\n| **Aspect**       | DFU Mode                          | Before First Unlock (BFU)       | After First Unlock (AFU)        |\n|-------------------|-----------------------------------|----------------------------------|----------------------------------|\n| **Definition**    | Hardware recovery mode (OS not loaded) | Post-reboot state (device locked) | Post-unlock state (keys loaded)  |\n| **Purpose**       | Firmware updates/device restore   | Security layer (encrypted data)  | Full data accessibility          |\n| **Temporal Scope**| Initiated manually at any time    | Between reboot and first unlock  | After successful passcode entry  |\n| **Data Access**   | No user data accessible           | Limited via exploits (e.g., checkm8) | Full decryption capabilities     |\n\n---\n\n## Temporal Flow\n1. **Device Reboot** → Enters **BFU** state (all data encrypted via Secure Enclave)  \n2. **User Unlocks** → Transitions to **AFU** (decryption keys loaded to RAM)  \n3. **DFU** can be activated **at any time** (bypasses OS boot process entirely)\n\n---\n\n## Forensic Implications\n- **BFU**:  \n  - Requires physical extraction tools (e.g., GrayKey, Cellebrite Premium)  \n  - Only file system metadata accessible without exploit  \n- **AFU**:  \n  - Full logical extraction possible (keychain, health data, messages)  \n- **DFU**:  \n  - Used for jailbreaking/exploit-based extraction (e.g., checkm8 on A5-A11 chips)  \n  - Doesn't affect BFU/AFU state but enables low-level access  \n\n**Tools**:  \n- **BFU**: Elcomsoft iOS Forensic Toolkit (requires pre-installed agent)  \n- **DFU**: checkra1n (bootrom exploit) + r2frida for RAM analysis  \n",
+            "findings": [],
+            "commands": [],
+            "status": "NOT_STARTED",
+            "tags": [],
+            "properties": {
+              "showPosition": false,
+              "showId": false
+            },
+            "expandable": true
+          },
+          "measured": {
+            "width": 297,
+            "height": 98
+          },
+          "selected": false,
+          "style": {
+            "opacity": 1
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "dragging": false
+        },
+        {
+          "id": "513dafaa-face-4ea8-836c-fa70c07c8713",
+          "type": "custom",
+          "position": {
+            "x": 699,
+            "y": 1318
+          },
+          "data": {
+            "name": "BFU (Before First Unlock)",
+            "expanded": false,
+            "description": "#### **What is BFU?**\n- BFU (Before First Unlock) refers to the state of an iOS device after it is powered on but before the user has entered their passcode to unlock it for the first time.\n- In this state, most user data remains encrypted due to the iOS encryption hierarchy, with only limited access to certain files and metadata.\n\n---\n\n#### **Key Characteristics of BFU**\n1. **Encryption Status**:\n   - The majority of user data is protected by \"Complete Protection\" encryption, which requires the device to be unlocked for decryption.\n   - Only files with weaker protection attributes (e.g., `kSecAttrAccessibleAlways`) are accessible.\n\n2. **Accessible Data**:\n   - Limited types of data can be acquired in BFU mode, including:\n     - Call logs: Found in paths like `/Library/CallHistory/call_history.db`.\n     - OS configuration files.\n     - App usage metadata.\n\n3. **Security Features**:\n   - The Secure Enclave enforces strict brute-force protections, making passcode cracking extremely difficult in BFU mode.\n\n#### **Limitations of BFU**\n- Most critical user data remains inaccessible without unlocking the device.\n- Brute-forcing passcodes is impractical due to Secure Enclave protections and enforced delays after failed attempts.\n",
+            "findings": [],
+            "commands": [],
+            "status": "NOT_STARTED",
+            "tags": [],
+            "properties": {
+              "showPosition": false,
+              "showId": false
+            },
+            "expandable": true
+          },
+          "measured": {
+            "width": 271,
+            "height": 98
+          },
+          "selected": false,
+          "style": {
+            "opacity": 1
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "dragging": false
+        },
+        {
+          "id": "ee5bfc2f-7fcf-4725-89b8-ac9821456898",
+          "position": {
+            "x": 1096.5,
+            "y": 1318
+          },
+          "type": "custom",
+          "data": {
+            "name": "Preserve Device State",
+            "expanded": true,
+            "description": "- Place the device in a **Faraday bag** to block remote wiping or tampering.\n- If powered on, avoid rebooting or powering off to prevent losing any potential unlocked state.\n- Record every step taken during the forensic process, including timestamps and tools used, to maintain evidence integrity.\n",
+            "findings": [],
+            "commands": [],
+            "status": "NOT_STARTED",
+            "tags": [],
+            "properties": {
+              "showPosition": false,
+              "showId": false
+            }
+          },
+          "measured": {
+            "width": 251,
+            "height": 98
+          },
+          "style": {
+            "opacity": 1,
+            "visibility": "hidden",
+            "pointerEvents": "none",
+            "zIndex": -1
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "selected": false,
+          "dragging": false
+        },
+        {
+          "id": "2e9c8897-ffda-426f-a5c1-712805ced67c",
+          "position": {
+            "x": 1474,
+            "y": 1318
+          },
+          "type": "custom",
+          "data": {
+            "name": "Accessible Data Extraction",
+            "expanded": false,
+            "description": "**Extract Accessible Data**:\n   - Use forensic tools like **Cellebrite UFED**, **Magnet AXIOM**, or **Elcomsoft iOS Forensic Toolkit** to retrieve accessible files.\n   - Focus on logs, metadata, and system files that may provide investigative leads.",
+            "findings": [],
+            "commands": [],
+            "status": "NOT_STARTED",
+            "tags": [],
+            "properties": {
+              "showPosition": false,
+              "showId": false
+            }
+          },
+          "measured": {
+            "width": 283,
+            "height": 98
+          },
+          "style": {
+            "opacity": 1,
+            "visibility": "hidden",
+            "pointerEvents": "none",
+            "zIndex": -1
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "selected": false,
+          "dragging": false
+        },
+        {
+          "id": "37cd260a-e1ac-42ef-89fc-2a0ca88cc1f5",
+          "position": {
+            "x": 1138.5,
+            "y": 1912
+          },
+          "type": "custom",
+          "data": {
+            "name": "Jailbreak",
+            "expanded": true,
+            "description": "### Jailbreaks for iOS Forensic Analysis\n\n#### Purpose in iOS Forensics\nJailbreaking is a critical step in iOS forensic analysis as it allows investigators to bypass certain security restrictions and gain deeper access to device data. This is particularly useful for extracting semi-encrypted data, accessing the file system directly, and utilizing low-level forensic tools that require root privileges.\n\n#### Jailbreak Comparison Table\n\n| **Jailbreak**      | **iOS Compatibility**          | **Device Support**                  | **Exploit Type**          | **Notes**                                      |\n|--------------------|--------------------------------|-------------------------------------|---------------------------|------------------------------------------------|\n| **checkra1n**      | iOS 12.0 to iOS 14.8.1         | A5-A11 chips (e.g., iPhone 5s to X) | checkm8 bootrom exploit   | Semi-tethered, older devices                    |\n| **unc0ver**        | iOS 11.0 to iOS 14.3           | All devices                         | Kernel exploit            | Semi-tethered, wide device support              |\n| **Taurine**        | iOS 14.0 to iOS 14.3           | All devices                         | Kernel exploit            | Semi-tethered, similar to unc0ver               |\n| **Fugu**           | iOS 15.0 to iOS 15.4.1         | All devices                         | Kernel exploit            | Semi-tethered, newer devices                     |\n| **Cheyote**        | iOS 15.0 to iOS 15.4.1         | All devices                         | Kernel exploit            | Semi-tethered, similar to Fugu                  |\n| **Palera1n**       | iOS 15.0 to iOS 16.3.1         | A11 and later chips                 | checkm8 + kernel exploit  | Semi-tethered, newer devices with A11+ chips    |\n| **xinaA15**        | iOS 15.0 to iOS 15.4.1         | A12-A15 chips                       | Kernel exploit            | Semi-tethered, newer devices                     |\n| **Linus Henze's**  | iOS 15.0 to iOS 15.4.1         | A12-A15 chips                       | Kernel exploit            | Semi-tethered, similar to xinaA15               |\n\n---\n\n### Forensic Implications\n1. **Data Extraction**: Jailbreaking allows for more comprehensive data extraction, including semi-encrypted files and app data.\n2. **Device Integrity**: It's crucial to ensure that jailbreaking does not compromise evidence integrity, which can impact legal proceedings.\n3. **Legal Authorization**: Always obtain legal authorization before jailbreaking a device for forensic purposes.\n\n### Tools for Forensic Analysis\n- **checkra1n**: Useful for older devices with checkm8 exploit.\n- **unc0ver/Taurine**: Supports a wide range of devices but requires kernel exploits.\n- **Fugu/Cheyote**: Targets newer devices with kernel exploits.",
+            "findings": [],
+            "commands": [],
+            "status": "NOT_STARTED",
+            "tags": [],
+            "properties": {
+              "showPosition": false,
+              "showId": false
+            },
+            "children": []
+          },
+          "measured": {
+            "width": 167,
+            "height": 98
+          },
+          "style": {
+            "opacity": 1
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "selected": false,
+          "dragging": false
+        },
+        {
+          "id": "957c8dca-37c3-41bb-a339-579bb7c3098a",
+          "position": {
+            "x": 704.5,
+            "y": 1632
+          },
+          "type": "custom",
+          "data": {
+            "name": "AFU (After First Unlock)",
+            "expanded": true,
+            "description": "",
+            "findings": [],
+            "commands": [],
+            "status": "NOT_STARTED",
+            "tags": [],
+            "properties": {
+              "showPosition": false,
+              "showId": false
+            }
+          },
+          "measured": {
+            "width": 260,
+            "height": 64
+          },
+          "style": {
+            "opacity": 1,
+            "zIndex": 1000
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "selected": false,
+          "dragging": false
+        },
+        {
+          "id": "327489ea-cec9-4bba-b0a5-48f62153938d",
+          "position": {
+            "x": 1122.5,
+            "y": 1516
+          },
+          "type": "custom",
+          "data": {
+            "name": "iCloud backup",
+            "expanded": false,
+            "description": "## Key Forensic Artifacts in iCloud Backups\n\n### Communication Data  \n- **Messages**  \n  Includes iMessage/SMS/MMS content, attachments, timestamps, and read receipts. Parsed by Cellebrite UFED and Magnet AXIOM.  \n- **Call History**  \n  Stores dialed/received/missed calls with timestamps and duration.  \n- **Visual Voicemail**  \n  Contains password (if stored) and audio recordings.  \n\n### Media Content  \n- **Photos/Videos**  \n  Original files with EXIF metadata including geolocation and creation dates. iCloud Photos synchronization status provides usage patterns.  \n- **Voice Memos**  \n  Audio recordings with creation timestamps and duration data.  \n\n### Device Configuration  \n- **Installed Apps**  \n  Complete list including installation/update timestamps. Purchase history from App Store receipts.  \n- **Home Screen Layout**  \n  Folder organization and app positioning patterns.  \n- **System Settings**  \n  Wi-Fi networks, VPN configurations, and restrictions passcodes.  \n\n### Productivity Data  \n- **Calendar Events**  \n  Meetings, reminders, and appointments with participant details. Reconstructs timelines using Cellebrite or Oxygen Forensic Detective.  \n- **Email Accounts**  \n  Configured mail services (even if not content) showing communication channels.  \n- **Safari Browsing**  \n  Bookmarks, frequently visited sites, and search history.  \n\n### Health & Activity  \n- **Apple Watch Data**  \n  Exercise records, heart rate metrics, and sleep patterns. Extracted via iPhone Backup Extractor.  \n- **Health App Data**  \n  Medical records, medication schedules, and reproductive health info.  \n\n### Authentication Data  \n- **Keychain** (if enabled)  \n  Contains WiFi passwords, website credentials, and credit card info.  \n- **Biometric Templates**  \n  Face ID/Touch ID mathematical representations (encrypted).  \n\n### Location Data  \n- **Significant Locations**  \n  Frequently visited places with timestamps.  \n- **Siri Locations**  \n  Location-based reminders and geofenced alerts.  \n",
+            "findings": [],
+            "commands": [],
+            "status": "NOT_STARTED",
+            "tags": [],
+            "properties": {
+              "showPosition": false,
+              "showId": false
+            }
+          },
+          "measured": {
+            "width": 199,
+            "height": 98
+          },
+          "style": {
+            "opacity": 1,
+            "visibility": "visible",
+            "pointerEvents": "all"
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "selected": false,
+          "dragging": false
+        },
+        {
+          "id": "0b1b391d-f5c9-4491-b0ec-d1fa24286207",
+          "position": {
+            "x": 1118.5,
+            "y": 1714
+          },
+          "type": "custom",
+          "data": {
+            "name": "System Backup",
+            "expanded": false,
+            "description": "# iOS System Backup Forensics\n\n**Definition**:  \nFull copy of device data (apps, settings, user content) preserved for investigation.\n\n**Relevance**:  \n- Critical for accessing deleted/archived data  \n- Only encrypted backups contain health data, keychain, and app credentials  \n- Preserves app sandboxes with behavioral artifacts  \n\n**Key Tools**:  \n- **iLEAPP**: CLI parser for backup artifacts (messages, logs, plists)  \n- **Autopsy**: GUI analysis with iOS plugin integration  \n- **Cellebrite UFED**: Commercial physical/backup extraction  \n- **Elcomsoft EIFT**: Encrypted backup decryption  \n\n**Backup Types**:  \n| | Encrypted | Unencrypted |  \n|-|-----------|-------------|  \n**Health Data** | ✅ | ❌ |  \n**Keychain** | ✅ | ❌ |  \n**App Passwords** | ✅ | ❌ |  \n\n**Process**:  \n1. Acquire encrypted iTunes/iCloud backup\n2. Parse with iLEAPP/Autopsy\n3. Cross-reference with cloud extractions\n4. Validate via commercial tools (AXIOM/UFED)  ",
+            "findings": [],
+            "commands": [
+              {
+                "id": "ff377727-7412-4a07-8396-3af4b4cde047",
+                "title": "ileapp.py CLI",
+                "description": "",
+                "command": "python ileapp.py -t <archive_type> -i <input_path> -output <output_path>",
+                "variables": []
+              },
+              {
+                "id": "0aa8b633-6425-422d-9bbe-53c8a6e4fdfd",
+                "title": "ileapp GUI",
+                "description": "",
+                "command": "python ileappGUI.py",
+                "variables": []
+              }
+            ],
+            "status": "NOT_STARTED",
+            "tags": [],
+            "properties": {
+              "showPosition": false,
+              "showId": false
+            }
+          },
+          "measured": {
+            "width": 207,
+            "height": 98
+          },
+          "style": {
+            "opacity": 1,
+            "visibility": "visible",
+            "pointerEvents": "all"
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "selected": false,
+          "dragging": false
+        },
+        {
+          "id": "64cc0d03-5ff6-4755-b807-00d0cae17ec6",
+          "position": {
+            "x": 720.5,
+            "y": 1912
+          },
+          "type": "custom",
+          "data": {
+            "name": "Jailbreak methods",
+            "expanded": false,
+            "description": "### Types of Jailbreaks\n\nJailbreaking is a process that allows users to gain root access to their iOS devices, bypassing Apple's security restrictions. There are several types of jailbreaks, each with its own characteristics and implications for forensic analysis.\n\n#### Types of Jailbreaks\n\n1. **Tethered Jailbreak**:  \n   Requires the device to be connected to a computer every time it is booted to maintain jailbroken status.\n\n2. **Semi-Tethered Jailbreak**:  \n   Allows the device to boot normally but requires a computer connection to re-enable jailbreak features after reboot.\n\n3. **Untethered Jailbreak**:  \n   Permits the device to boot and maintain jailbroken status without needing a computer connection.\n\n4. **Semi-Untethered Jailbreak**:  \n   Similar to semi-tethered but can be re-enabled using an app on the device itself after reboot.\n\n5. **Rootless Jailbreak**:  \n   Does not provide full root access but allows for some modifications and tweaks.\n\n#### Jailbreak Comparison Table\n\n| **Jailbreak Type**        | **Description**                                                                 | **Reboot Requirement** | **Forensic Impact**                                       |\n|---------------------------|---------------------------------------------------------------------------------|------------------------|----------------------------------------------------------|\n| **Tethered**              | Requires computer connection at every boot                                    | Yes                    | Limited forensic use due to reboot dependency           |\n| **Semi-Tethered**         | Boots normally but needs computer to re-enable jailbreak after reboot          | Yes                    | Commonly used in forensics; allows for some device use    |\n| **Untethered**            | Maintains jailbreak without computer connection                               | No                     | Ideal for forensic analysis; full device access          |\n| **Semi-Untethered**       | Re-enables jailbreak using an app on the device after reboot                  | No (via app)           | Offers flexibility in forensic scenarios                 |\n| **Rootless**              | Limited modifications without full root access                                | No                     | Less useful for deep forensic analysis                   |\n\n---\n\n### Forensic Implications\n- **Data Extraction**: Jailbreaking can facilitate deeper data extraction by bypassing security restrictions.\n- **Device Integrity**: It's crucial to ensure that jailbreaking does not compromise evidence integrity.\n- **Legal Authorization**: Always obtain legal authorization before jailbreaking a device for forensic purposes.\n\n### Tools for Forensic Analysis\n- **checkra1n**: Semi-tethered jailbreak for older devices.\n- **unc0ver/Taurine**: Semi-tethered jailbreaks supporting a wide range of devices.\n- **Fugu/Cheyote**: Semi-tethered jailbreaks for newer devices.",
+            "findings": [],
+            "commands": [],
+            "status": "NOT_STARTED",
+            "tags": [],
+            "properties": {
+              "showPosition": false,
+              "showId": false
+            }
+          },
+          "measured": {
+            "width": 228,
+            "height": 98
+          },
+          "style": {
+            "opacity": 1
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "selected": false,
+          "dragging": false
+        },
+        {
+          "id": "808cbbe2-6c51-45ab-9393-094e69f2377d",
+          "position": {
+            "x": 748.5,
+            "y": 1154
+          },
+          "type": "custom",
+          "data": {
+            "name": "New Node",
+            "expanded": false,
+            "description": "",
+            "findings": [],
+            "commands": [],
+            "status": "NOT_STARTED",
+            "tags": [],
+            "properties": {
+              "showPosition": false,
+              "showId": false
+            }
+          },
+          "measured": {
+            "width": 172,
+            "height": 64
+          },
+          "style": {
+            "opacity": 1
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left"
+        }
+      ],
+      "edges": [
+        {
+          "id": "455d08dd-00b9-4e74-b4d7-d647b53d2810->37d14310-4ed7-4871-a751-9bfae848ab50",
+          "source": "455d08dd-00b9-4e74-b4d7-d647b53d2810",
+          "target": "37d14310-4ed7-4871-a751-9bfae848ab50",
+          "style": {
+            "opacity": 1
+          },
+          "type": "bezier"
+        },
+        {
+          "id": "37d14310-4ed7-4871-a751-9bfae848ab50->ebd9b92b-10fb-4242-ad8f-c4b3538bdd13",
+          "source": "37d14310-4ed7-4871-a751-9bfae848ab50",
+          "target": "ebd9b92b-10fb-4242-ad8f-c4b3538bdd13",
+          "style": {
+            "opacity": 1
+          },
+          "type": "bezier"
+        },
+        {
+          "id": "37d14310-4ed7-4871-a751-9bfae848ab50->81a9c8f5-e8eb-4d8e-a965-bd90ae74faad",
+          "source": "37d14310-4ed7-4871-a751-9bfae848ab50",
+          "target": "81a9c8f5-e8eb-4d8e-a965-bd90ae74faad",
+          "style": {
+            "opacity": 1
+          },
+          "type": "bezier"
+        },
+        {
+          "id": "37d14310-4ed7-4871-a751-9bfae848ab50->66e869fe-d33c-4356-836e-afeb2ce86759",
+          "source": "37d14310-4ed7-4871-a751-9bfae848ab50",
+          "target": "66e869fe-d33c-4356-836e-afeb2ce86759",
+          "style": {
+            "opacity": 1
+          },
+          "type": "bezier"
+        },
+        {
+          "id": "66e869fe-d33c-4356-836e-afeb2ce86759->7be0acc9-b6f6-4222-82d1-2b207cc0781a",
+          "source": "66e869fe-d33c-4356-836e-afeb2ce86759",
+          "target": "7be0acc9-b6f6-4222-82d1-2b207cc0781a",
+          "style": {
+            "opacity": 1
+          },
+          "type": "bezier"
+        },
+        {
+          "id": "455d08dd-00b9-4e74-b4d7-d647b53d2810->927ec1e8-61d5-44eb-b011-218d1c541aff",
+          "source": "455d08dd-00b9-4e74-b4d7-d647b53d2810",
+          "target": "927ec1e8-61d5-44eb-b011-218d1c541aff",
+          "style": {
+            "opacity": 1
+          },
+          "type": "bezier"
+        },
+        {
+          "id": "927ec1e8-61d5-44eb-b011-218d1c541aff->e8daa247-9751-413d-b85a-6a78d0a944ab",
+          "source": "927ec1e8-61d5-44eb-b011-218d1c541aff",
+          "target": "e8daa247-9751-413d-b85a-6a78d0a944ab",
+          "style": {
+            "opacity": 1
+          },
+          "type": "bezier"
+        },
+        {
+          "id": "927ec1e8-61d5-44eb-b011-218d1c541aff->ff9df7e9-c6cb-41c8-9a4c-45820afad7cf",
+          "source": "927ec1e8-61d5-44eb-b011-218d1c541aff",
+          "target": "ff9df7e9-c6cb-41c8-9a4c-45820afad7cf",
+          "style": {
+            "opacity": 1
+          },
+          "type": "bezier"
+        },
+        {
+          "id": "927ec1e8-61d5-44eb-b011-218d1c541aff->bf96b6d8-c811-4634-a2c5-74692c8c663d",
+          "source": "927ec1e8-61d5-44eb-b011-218d1c541aff",
+          "target": "bf96b6d8-c811-4634-a2c5-74692c8c663d",
+          "style": {
+            "opacity": 1
+          },
+          "type": "bezier"
+        },
+        {
+          "id": "455d08dd-00b9-4e74-b4d7-d647b53d2810->27d60add-5a85-4a8f-a175-ee07269f0946",
+          "source": "455d08dd-00b9-4e74-b4d7-d647b53d2810",
+          "target": "27d60add-5a85-4a8f-a175-ee07269f0946",
+          "style": {
+            "opacity": 1
+          },
+          "type": "bezier"
+        },
+        {
+          "id": "27d60add-5a85-4a8f-a175-ee07269f0946->513dafaa-face-4ea8-836c-fa70c07c8713",
+          "source": "27d60add-5a85-4a8f-a175-ee07269f0946",
+          "target": "513dafaa-face-4ea8-836c-fa70c07c8713",
+          "style": {
+            "opacity": 1
+          },
+          "type": "bezier",
+          "selected": false
+        },
+        {
+          "id": "513dafaa-face-4ea8-836c-fa70c07c8713->ee5bfc2f-7fcf-4725-89b8-ac9821456898",
+          "source": "513dafaa-face-4ea8-836c-fa70c07c8713",
+          "target": "ee5bfc2f-7fcf-4725-89b8-ac9821456898",
+          "type": "bezier",
+          "style": {
+            "opacity": 1,
+            "visibility": "hidden",
+            "zIndex": -1
+          }
+        },
+        {
+          "id": "ee5bfc2f-7fcf-4725-89b8-ac9821456898->2e9c8897-ffda-426f-a5c1-712805ced67c",
+          "source": "ee5bfc2f-7fcf-4725-89b8-ac9821456898",
+          "target": "2e9c8897-ffda-426f-a5c1-712805ced67c",
+          "type": "bezier",
+          "style": {
+            "opacity": 1,
+            "visibility": "hidden",
+            "zIndex": -1
+          }
+        },
+        {
+          "id": "27d60add-5a85-4a8f-a175-ee07269f0946->957c8dca-37c3-41bb-a339-579bb7c3098a",
+          "source": "27d60add-5a85-4a8f-a175-ee07269f0946",
+          "target": "957c8dca-37c3-41bb-a339-579bb7c3098a",
+          "type": "bezier",
+          "style": {
+            "opacity": 1
+          }
+        },
+        {
+          "id": "957c8dca-37c3-41bb-a339-579bb7c3098a->327489ea-cec9-4bba-b0a5-48f62153938d",
+          "source": "957c8dca-37c3-41bb-a339-579bb7c3098a",
+          "target": "327489ea-cec9-4bba-b0a5-48f62153938d",
+          "type": "bezier",
+          "style": {
+            "opacity": 1,
+            "visibility": "visible"
+          }
+        },
+        {
+          "id": "957c8dca-37c3-41bb-a339-579bb7c3098a->0b1b391d-f5c9-4491-b0ec-d1fa24286207",
+          "source": "957c8dca-37c3-41bb-a339-579bb7c3098a",
+          "target": "0b1b391d-f5c9-4491-b0ec-d1fa24286207",
+          "type": "bezier",
+          "style": {
+            "opacity": 1,
+            "visibility": "visible"
+          }
+        },
+        {
+          "id": "27d60add-5a85-4a8f-a175-ee07269f0946->64cc0d03-5ff6-4755-b807-00d0cae17ec6",
+          "source": "27d60add-5a85-4a8f-a175-ee07269f0946",
+          "target": "64cc0d03-5ff6-4755-b807-00d0cae17ec6",
+          "type": "bezier",
+          "style": {
+            "opacity": 1
+          }
+        },
+        {
+          "id": "64cc0d03-5ff6-4755-b807-00d0cae17ec6->37cd260a-e1ac-42ef-89fc-2a0ca88cc1f5",
+          "source": "64cc0d03-5ff6-4755-b807-00d0cae17ec6",
+          "target": "37cd260a-e1ac-42ef-89fc-2a0ca88cc1f5",
+          "type": "bezier",
+          "style": {
+            "opacity": 1
+          }
+        },
+        {
+          "id": "927ec1e8-61d5-44eb-b011-218d1c541aff->808cbbe2-6c51-45ab-9393-094e69f2377d",
+          "source": "927ec1e8-61d5-44eb-b011-218d1c541aff",
+          "target": "808cbbe2-6c51-45ab-9393-094e69f2377d",
+          "type": "bezier",
+          "style": {
+            "opacity": 1
+          }
+        }
+      ],
+      "lastSaved": "2025-03-02T11:36:50.803Z"
+    },
+    "createdAt": "2025-02-09T02:29:22.046Z",
+    "updatedAt": "2025-03-02T11:36:50.803Z",
+    "lastSaved": "2025-03-02T11:36:50.803Z",
+    "nodes": [
+      {
+        "id": "455d08dd-00b9-4e74-b4d7-d647b53d2810",
+        "type": "custom",
+        "position": {
+          "x": 0,
+          "y": 874
+        },
+        "data": {
+          "name": "iOS Forensics",
+          "expanded": true,
+          "description": "",
+          "findings": [],
+          "commands": [],
+          "status": "NOT_STARTED",
+          "tags": [],
+          "properties": {
+            "showPosition": false,
+            "showId": false
+          },
+          "expandable": true
+        },
+        "measured": {
+          "width": 195,
+          "height": 64
+        },
+        "selected": false,
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "37d14310-4ed7-4871-a751-9bfae848ab50",
+        "type": "custom",
+        "position": {
+          "x": 336,
+          "y": 215
+        },
+        "data": {
+          "name": "Operating System",
+          "expanded": true,
+          "description": "",
+          "findings": [],
+          "commands": [],
+          "status": "NOT_STARTED",
+          "tags": [],
+          "properties": {
+            "showPosition": false,
+            "showId": false
+          },
+          "expandable": true
+        },
+        "measured": {
+          "width": 222,
+          "height": 64
+        },
+        "selected": false,
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "ebd9b92b-10fb-4242-ad8f-c4b3538bdd13",
+        "type": "custom",
+        "position": {
+          "x": 740.5,
+          "y": 0
+        },
+        "data": {
+          "name": "iOS internals",
+          "expanded": true,
+          "description": "### Base UNIX Kernel and iOS\n\niOS is built on a foundation that includes elements from the UNIX family, specifically the BSD branch. The core operating system of iOS is based on **Darwin**, which uses the **XNU (X is Not Unix)** kernel. This kernel is a hybrid, combining features of both monolithic and microkernel architectures.\n\n#### XNU Kernel\n\n- **Composition**: XNU includes components from the Mach microkernel and the 4.3BSD monolithic kernel.\n- **Features**: It supports preemption, memory protection, and enhanced networking capabilities.\n- **POSIX Compliance**: XNU adheres to the POSIX standard, ensuring compatibility with many UNIX utilities and APIs.\n\n#### Darwin and iOS\n\n- **Darwin Layer**: This is the open-source part of iOS and macOS, providing a foundation for both operating systems.\n- **iOS Evolution**: Early versions of iOS were essentially stripped-down macOS versions adapted for mobile devices.\n\n#### UNIX Influence on iOS\n\n- **BSD Heritage**: iOS inherits many features from the BSD branch of UNIX, including networking and file system management.\n- **POSIX Compliance**: This ensures that iOS can run many UNIX-based tools and scripts, albeit with modifications for its unique environment.\n\n#### Key Features of the XNU Kernel\n\n| **Feature**                  | **Description**                                                                 | **Impact on iOS**                                       |\n|---------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------|\n| **Hybrid Architecture**   | Combines Mach microkernel with 4.3BSD monolithic kernel components.             | Offers modularity and performance benefits.            |\n| **POSIX Compliance**      | Adheres to the Portable Operating System Interface standard.                    | Ensures compatibility with UNIX tools and APIs.         |\n| **Memory Protection**     | Provides robust memory management and protection.                              | Enhances system stability and security.                |\n| **Networking**            | Supports advanced networking features inherited from BSD.                       | Enables efficient network communication.               |",
+          "findings": [],
+          "commands": [],
+          "status": "NOT_STARTED",
+          "tags": [],
+          "properties": {
+            "showPosition": false,
+            "showId": false
+          },
+          "expandable": true
+        },
+        "measured": {
+          "width": 188,
+          "height": 98
+        },
+        "selected": false,
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "81a9c8f5-e8eb-4d8e-a965-bd90ae74faad",
+        "type": "custom",
+        "position": {
+          "x": 744,
+          "y": 198
+        },
+        "data": {
+          "name": "File System",
+          "expanded": true,
+          "description": "### HFS+ and APFS in iOS Devices\n\niOS devices, unlike traditional computers, store all user data internally using NAND Flash Memory. This storage is managed by file systems like HFS+ (previously) and APFS (currently).\n\n#### HFS+ (Hierarchical File System Plus)\n\n- **Overview**: HFS+ was the file system used by Apple devices before APFS. It was designed to optimize storage capacity on hard disk drives but was also used on early iOS devices.\n- **Features**:\n  - **Allocation Blocks**: Optimized for larger hard drives by reducing wasted space.\n  - **File Naming**: Supports UTF-16 encoding and file names up to 255 characters.\n  - **Journaling**: Introduced in Mac OS X 10.2.2 to improve data stability by logging changes before they are written to disk.\n- **Limitations**: Not optimized for flash storage, lacks advanced features like snapshots and encryption.\n\n#### APFS (Apple File System)\n\n- **Overview**: APFS is the current file system used by iOS devices, introduced with iOS 10.3. It is optimized for flash storage and offers several improvements over HFS+.\n- **Features**:\n  - **Optimized for Flash/SSD**: Designed to work efficiently with NAND Flash Memory.\n  - **Encryption**: Supports full-disk encryption with options for single-key and multi-key encryption.\n  - **Snapshots**: Allows for point-in-time snapshots of the file system.\n  - **Space Sharing**: Multiple volumes can share space within a container, improving storage efficiency.\n- **Advantages**: Offers better performance, security, and data integrity compared to HFS+.\n\n#### No External Storage\n\niOS devices do not use external storage for user data; instead, all data is stored internally in NAND Flash Memory. This approach enhances security and performance by keeping data within the device's secure environment.\n\n#### Comparison Table\n\n| **Feature**                  | **HFS+**                                                                 | **APFS**                                      |\n|---------------------------|---------------------------------------------------------------------------------|-------------------------------------------------|\n| **Optimization**           | Designed for hard disk drives, not optimized for flash storage.               | Optimized for flash storage (NAND Flash Memory). |\n| **Encryption**             | Limited encryption capabilities.                                             | Full-disk encryption with single-key and multi-key options. |\n| **Snapshots**              | Does not support snapshots.                                                 | Supports snapshots for point-in-time file system images. |\n| **Space Management**       | Uses allocation blocks to manage space.                                     | Uses space sharing among volumes within a container. |\n| **Data Integrity**         | Uses journaling for data stability.                                          | Uses checksums for metadata integrity and redirect-on-write for crash protection. |\n\n---\n\n### Forensic Implications\nUnderstanding the file system used by iOS devices is crucial for forensic analysis. APFS's features like encryption and snapshots can complicate data extraction but also provide valuable insights into device activity. Forensic tools must be compatible with APFS to effectively analyze data stored in NAND Flash Memory.",
+          "findings": [],
+          "commands": [],
+          "status": "NOT_STARTED",
+          "tags": [],
+          "properties": {
+            "showPosition": false,
+            "showId": false
+          },
+          "expandable": true
+        },
+        "measured": {
+          "width": 181,
+          "height": 98
+        },
+        "selected": false,
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "66e869fe-d33c-4356-836e-afeb2ce86759",
+        "type": "custom",
+        "position": {
+          "x": 739,
+          "y": 396
+        },
+        "data": {
+          "name": "Data Storage",
+          "expanded": true,
+          "description": "",
+          "findings": [],
+          "commands": [],
+          "status": "NOT_STARTED",
+          "tags": [],
+          "properties": {
+            "showPosition": false,
+            "showId": false
+          },
+          "expandable": true
+        },
+        "measured": {
+          "width": 191,
+          "height": 64
+        },
+        "selected": false,
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "7be0acc9-b6f6-4222-82d1-2b207cc0781a",
+        "type": "custom",
+        "position": {
+          "x": 1070,
+          "y": 375
+        },
+        "data": {
+          "name": "Primarily in SQLite databases and plists.",
+          "expanded": true,
+          "description": "### SQLite and Plist in iOS Forensics\n\nIn iOS forensics, both SQLite and Plist files are crucial for extracting valuable data from devices.\n\n#### SQLite\n\n**SQLite** is a lightweight relational database engine used extensively in iOS apps for storing structured data. It is particularly useful for forensic analysis because it can store critical information such as call logs, text messages, and app data.\n\n**Key Features of SQLite in Forensics:**\n\n- **Structured Data**: Supports complex data relationships, making it ideal for preserving data integrity.\n- **Deleted Data Recovery**: Forensic tools can recover deleted records from SQLite databases, which is essential for investigations.\n- **Common Use Cases**: Calendar, messages, notes, and phone information are often stored in SQLite databases.\n\n#### Plist\n\n**Property List (Plist)** files are used to store data in key-value pairs, typically for app settings and configurations. They are found in XML or binary formats and can contain sensitive information like usernames or passwords.\n\n**Key Features of Plist in Forensics:**\n\n- **Configurations and Settings**: Stores user and system-related information.\n- **Easy to Parse**: Human-readable format makes it straightforward to analyze.\n- **Use Cases**: Often used for storing app preferences, device settings, and sometimes sensitive data.\n\n#### Comparison Table\n\n| **Feature**                  | **SQLite**                                                                 | **Plist**                                      |\n|---------------------------|---------------------------------------------------------------------------------|-------------------------------------------------|\n| **Data Structure**         | Relational database with SQL support                                         | Key-value pairs in XML or binary format        |\n| **Data Size**              | Can handle large datasets                                                    | Suitable for small data storage                |\n| **Offline Access**         | Supports offline data access                                                 | No specific offline access features            |\n| **Complexity**             | Requires SQL knowledge and database management                               | Simple, easy to implement                     |\n| **Use Cases**              | Complex data structures, large datasets, offline apps                       | App settings, small configurations             |\n\n---\n\n### Forensic Tools for SQLite and Plist Analysis\n\n- **SQLite Analysis Tools**: Belkasoft Evidence Center, Magnet AXIOM, and Systools SQLite Forensics can analyze SQLite databases, including recovering deleted data.\n- **Plist Analysis Tools**: OpenText EnCase with EnScript plugins provides comprehensive parsing and analysis of Plist files.\n\n### Example Use Cases\n\n- **SQLite**: Analyzing the `Photos.sqlite` database to correlate photos with albums and timestamps.\n- **Plist**: Examining `device_values.plist` for backup timestamps and device settings (plist will contain the start date and time for an iTunes backup).\n\n### Forensic Implications\nBoth SQLite and Plist files are essential in iOS forensics for extracting and analyzing user data. Understanding their structures and using appropriate tools can significantly enhance the effectiveness of forensic investigations.",
+          "findings": [],
+          "commands": [],
+          "status": "NOT_STARTED",
+          "tags": [],
+          "properties": {
+            "showPosition": false,
+            "showId": false
+          },
+          "expandable": true
+        },
+        "measured": {
+          "width": 304,
+          "height": 106
+        },
+        "selected": false,
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "927ec1e8-61d5-44eb-b011-218d1c541aff",
+        "type": "custom",
+        "position": {
+          "x": 295,
+          "y": 853
+        },
+        "data": {
+          "name": "iOS Forensic Acquisition Methods",
+          "expanded": true,
+          "description": "### iOS Forensic Acquisition Considerations\n\niOS devices have several features that impact forensic acquisition, particularly USB Restricted Mode and iOS updates.\n\n#### USB Restricted Mode\n\n**USB Restricted Mode**, also known as **Accessories Mode** or **Lock**, is a security feature introduced in iOS 11.4.1. It locks the Lightning port after an hour of inactivity, requiring a password to unlock and allow USB connectivity. This feature complicates forensic acquisition by limiting the time window for connecting devices without user interaction.\n\n#### Impact of iOS Updates\n\nPost iOS 11.4.1 updates, USB Restricted Mode is enabled by default, disabling USB connectivity if the device is locked. This means that forensic tools relying on USB connections must be used within a short time frame after the device was last unlocked.\n\n#### Acquisition Challenges\n\n| **Feature**                  | **Description**                                                                 | **Impact on Forensics**                                       |\n|---------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------------|\n| **USB Restricted Mode**   | Locks Lightning port after 1 hour of inactivity, requiring password to unlock. | Limits time for USB-based forensic tools; requires device to be unlocked. |\n| **iOS Updates (Post 11.4.1)** | Enables USB Restricted Mode by default when device is locked.            | Complicates acquisition by disabling USB if device is locked. |\n\n---\n\n### Mitigation Strategies\n\nTo overcome these challenges, forensic investigators can use techniques such as:\n\n- **Immediate Acquisition**: Connect the device to forensic tools as soon as possible after it is unlocked.\n- **Jailbreaking**: Use exploits to bypass security restrictions and maintain USB connectivity.\n- **Hardware-Based Tools**: Utilize tools like GrayKey that can bypass passcodes and maintain connectivity.\n\n### Forensic Tools Adaptation\n\nTools like Cellebrite UFED and Elcomsoft iOS Forensic Toolkit are adapting to these challenges by incorporating methods to bypass or work around USB Restricted Mode, ensuring that forensic acquisition remains effective despite these security enhancements.",
+          "findings": [],
+          "commands": [],
+          "status": "NOT_STARTED",
+          "tags": [],
+          "properties": {
+            "showPosition": false,
+            "showId": false
+          },
+          "expandable": true
+        },
+        "measured": {
+          "width": 304,
+          "height": 106
+        },
+        "selected": false,
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "e8daa247-9751-413d-b85a-6a78d0a944ab",
+        "type": "custom",
+        "position": {
+          "x": 758.5,
+          "y": 560
+        },
+        "data": {
+          "name": "Logical",
+          "expanded": true,
+          "description": "### iOS Forensic Acquisition Methods: Logical\n\nLogical acquisition is a method used in iOS forensics to extract data from devices by leveraging user-accessible information, typically through iTunes backups or direct device access when unlocked. This approach is widely used due to its ease of implementation and compatibility with most iOS versions.\n\n#### Key Features of Logical Acquisition\n\n- **Data Scope**: Includes user data such as messages, contacts, photos, and app data that is accessible via iTunes backup or direct device access.\n- **Device Requirements**: The device must be unlocked or paired with a computer using a lockdown record.\n- **Tools Used**: Commercial tools like Elcomsoft iOS Forensic Toolkit, Cellebrite UFED, and Oxygen Forensic Suite support logical acquisition.\n\n#### Logical Acquisition Process\n\n1. **Device Preparation**: Ensure the device is unlocked or use a lockdown record for pairing.\n2. **Backup Creation**: Use iTunes to create a backup of the device.\n3. **Data Extraction**: Utilize forensic tools to parse the backup and extract relevant data.\n\n#### Advantages\n\n- **Ease of Use**: Logical acquisition is generally straightforward and less invasive.\n- **Wide Compatibility**: Works with most iOS versions and devices.\n- **Cost-Effective**: Often less expensive than physical acquisition methods.\n\n#### Limitations\n\n- **Data Accessibility**: Limited to user-accessible data; encrypted data may not be accessible without additional exploits.\n- **Deleted Data Recovery**: Less effective for recovering deleted data compared to physical acquisition.\n\n#### Tools for Logical Acquisition\n\n| **Tool**                  | **Description**                                                                 | **Key Features**                                         |\n|---------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------|\n| **Elcomsoft iOS Forensic Toolkit** | Supports logical acquisition for all iOS devices.                        | Extracts media, crash logs, and shared files.            |\n| **Cellebrite UFED**       | Offers advanced logical file system extraction.                                  | Comprehensive data extraction from iOS devices.         |\n| **Oxygen Forensic Suite** | Provides logical acquisition capabilities with extensive data parsing.           | Analyzes app data, messages, and other user-accessible files. |\n",
+          "findings": [],
+          "commands": [],
+          "status": "NOT_STARTED",
+          "tags": [],
+          "properties": {
+            "showPosition": false,
+            "showId": false
+          },
+          "expandable": true
+        },
+        "measured": {
+          "width": 152,
+          "height": 98
+        },
+        "selected": false,
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "dragging": false
+      },
+      {
+        "id": "ff9df7e9-c6cb-41c8-9a4c-45820afad7cf",
+        "type": "custom",
+        "position": {
+          "x": 723.5,
+          "y": 758
+        },
+        "data": {
+          "name": "Advanced Logical",
+          "expanded": true,
+          "description": "### Advanced Logical Acquisition in iOS Forensics\n\nAdvanced logical acquisition is an enhanced method of extracting data from iOS devices, combining both logical and file system extraction techniques. This approach provides a more comprehensive dataset compared to standard logical acquisition, while maintaining the ease of use and non-invasive nature.\n\n#### Key Features of Advanced Logical Acquisition\n\n- **Data Scope**: Includes user-accessible data (e.g., messages, contacts, photos) plus additional system files and crash logs.\n- **Device Requirements**: Typically requires the device to be unlocked or paired with a computer using a lockdown record.\n- **Tools Used**: Commercial tools like Elcomsoft iOS Forensic Toolkit, Cellebrite UFED, and Mobile Device Investigator support advanced logical acquisition.\n\n#### Advanced Logical Acquisition Process\n\n1. **Device Preparation**: Ensure the device is unlocked or use a lockdown record for pairing.\n2. **Extraction Method**: Utilize forensic tools to extract both user data and system files.\n3. **Data Analysis**: Analyze extracted data using specialized software for insights.\n\n#### Advantages\n\n- **Comprehensive Data**: Offers more detailed data extraction compared to standard logical methods.\n- **Ease of Use**: Less complex than physical acquisition methods.\n- **Wide Compatibility**: Works with most iOS versions and devices.\n\n#### Limitations\n\n- **Data Accessibility**: Limited to user-accessible data; encrypted data may not be accessible without additional exploits.\n- **Deleted Data Recovery**: Less effective for recovering deleted data compared to physical acquisition.\n\n#### Tools for Advanced Logical Acquisition\n\n| **Tool**                  | **Description**                                                                 | **Key Features**                                         |\n|---------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------|\n| **Elcomsoft iOS Forensic Toolkit** | Supports advanced logical acquisition for all iOS devices.                        | Extracts media, crash logs, and shared files.            |\n| **Cellebrite UFED**       | Offers advanced logical file system extraction.                                  | Comprehensive data extraction from iOS devices.         |\n| **Mobile Device Investigator (MDI)** | Performs advanced logical acquisitions using AI and ML for data extraction.           | Analyzes app data, messages, and other user-accessible files. |\n",
+          "findings": [],
+          "commands": [],
+          "status": "NOT_STARTED",
+          "tags": [],
+          "properties": {
+            "showPosition": false,
+            "showId": false
+          },
+          "expandable": true
+        },
+        "measured": {
+          "width": 222,
+          "height": 98
+        },
+        "selected": false,
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "bf96b6d8-c811-4634-a2c5-74692c8c663d",
+        "type": "custom",
+        "position": {
+          "x": 730,
+          "y": 956
+        },
+        "data": {
+          "name": "Full File System",
+          "expanded": true,
+          "description": "### Full File System Acquisition in iOS Forensics\n\nFull file system acquisition is a comprehensive method used in iOS forensics to extract all data from a device, including both user-accessible and system files. This approach provides the most detailed dataset possible, making it invaluable for thorough investigations.\n\n#### Key Features of Full File System Acquisition\n\n- **Data Scope**: Includes all files on the device, such as user data, system logs, app data, and even deleted files if not overwritten.\n- **Device Requirements**: Typically requires jailbreaking or using specific exploits to gain root access.\n- **Tools Used**: Commercial tools like Cellebrite UFED, Elcomsoft iOS Forensic Toolkit, GrayKey and Oxygen Forensic Suite support full file system extraction.\n\n#### Full File System Acquisition Process\n\n1. **Device Preparation**: Jailbreak the device or use an exploit to gain root access.\n2. **Extraction Method**: Utilize forensic tools to extract the entire file system.\n3. **Data Analysis**: Analyze extracted data using specialized software for insights.\n\n#### Advantages\n\n- **Comprehensive Data**: Offers the most detailed dataset possible, including system files and potentially deleted data.\n- **Deep Analysis**: Enables thorough examination of device activity and user behavior.\n- **Recovery of Deleted Data**: More effective for recovering deleted files compared to logical acquisition methods.\n\n#### Limitations\n\n- **Complexity**: Requires technical expertise to jailbreak or exploit the device.\n- **Device Integrity**: Jailbreaking can alter device state, potentially impacting evidence integrity.\n- **Legal Considerations**: Ensure legal authorization before jailbreaking a device for forensic purposes.\n\n#### Tools for Full File System Acquisition\n\n| **Tool**                  | **Description**                                                                 | **Key Features**                                         |\n|---------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------|\n| **Cellebrite UFED**       | Offers full file system extraction capabilities.                                  | Comprehensive data extraction from iOS devices.         |\n| **Elcomsoft iOS Forensic Toolkit** | Supports full file system extraction for jailbroken devices.                        | Extracts all files, including system logs and app data.  |\n| **Oxygen Forensic Suite** | Provides full file system extraction capabilities with extensive data parsing.           | Analyzes app data, messages, and other system files.     |",
+          "findings": [],
+          "commands": [],
+          "status": "NOT_STARTED",
+          "tags": [],
+          "properties": {
+            "showPosition": false,
+            "showId": false
+          },
+          "expandable": true
+        },
+        "measured": {
+          "width": 209,
+          "height": 98
+        },
+        "selected": false,
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "27d60add-5a85-4a8f-a175-ee07269f0946",
+        "type": "custom",
+        "position": {
+          "x": 298.5,
+          "y": 1615
+        },
+        "data": {
+          "name": "Handling Locked iOS Devices",
+          "expanded": true,
+          "description": "# Locking states\n\n**Key Differences**:\n| **Aspect**       | DFU Mode                          | Before First Unlock (BFU)       | After First Unlock (AFU)        |\n|-------------------|-----------------------------------|----------------------------------|----------------------------------|\n| **Definition**    | Hardware recovery mode (OS not loaded) | Post-reboot state (device locked) | Post-unlock state (keys loaded)  |\n| **Purpose**       | Firmware updates/device restore   | Security layer (encrypted data)  | Full data accessibility          |\n| **Temporal Scope**| Initiated manually at any time    | Between reboot and first unlock  | After successful passcode entry  |\n| **Data Access**   | No user data accessible           | Limited via exploits (e.g., checkm8) | Full decryption capabilities     |\n\n---\n\n## Temporal Flow\n1. **Device Reboot** → Enters **BFU** state (all data encrypted via Secure Enclave)  \n2. **User Unlocks** → Transitions to **AFU** (decryption keys loaded to RAM)  \n3. **DFU** can be activated **at any time** (bypasses OS boot process entirely)\n\n---\n\n## Forensic Implications\n- **BFU**:  \n  - Requires physical extraction tools (e.g., GrayKey, Cellebrite Premium)  \n  - Only file system metadata accessible without exploit  \n- **AFU**:  \n  - Full logical extraction possible (keychain, health data, messages)  \n- **DFU**:  \n  - Used for jailbreaking/exploit-based extraction (e.g., checkm8 on A5-A11 chips)  \n  - Doesn't affect BFU/AFU state but enables low-level access  \n\n**Tools**:  \n- **BFU**: Elcomsoft iOS Forensic Toolkit (requires pre-installed agent)  \n- **DFU**: checkra1n (bootrom exploit) + r2frida for RAM analysis  \n",
+          "findings": [],
+          "commands": [],
+          "status": "NOT_STARTED",
+          "tags": [],
+          "properties": {
+            "showPosition": false,
+            "showId": false
+          },
+          "expandable": true
+        },
+        "measured": {
+          "width": 297,
+          "height": 98
+        },
+        "selected": false,
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "dragging": false
+      },
+      {
+        "id": "513dafaa-face-4ea8-836c-fa70c07c8713",
+        "type": "custom",
+        "position": {
+          "x": 699,
+          "y": 1318
+        },
+        "data": {
+          "name": "BFU (Before First Unlock)",
+          "expanded": false,
+          "description": "#### **What is BFU?**\n- BFU (Before First Unlock) refers to the state of an iOS device after it is powered on but before the user has entered their passcode to unlock it for the first time.\n- In this state, most user data remains encrypted due to the iOS encryption hierarchy, with only limited access to certain files and metadata.\n\n---\n\n#### **Key Characteristics of BFU**\n1. **Encryption Status**:\n   - The majority of user data is protected by \"Complete Protection\" encryption, which requires the device to be unlocked for decryption.\n   - Only files with weaker protection attributes (e.g., `kSecAttrAccessibleAlways`) are accessible.\n\n2. **Accessible Data**:\n   - Limited types of data can be acquired in BFU mode, including:\n     - Call logs: Found in paths like `/Library/CallHistory/call_history.db`.\n     - OS configuration files.\n     - App usage metadata.\n\n3. **Security Features**:\n   - The Secure Enclave enforces strict brute-force protections, making passcode cracking extremely difficult in BFU mode.\n\n#### **Limitations of BFU**\n- Most critical user data remains inaccessible without unlocking the device.\n- Brute-forcing passcodes is impractical due to Secure Enclave protections and enforced delays after failed attempts.\n",
+          "findings": [],
+          "commands": [],
+          "status": "NOT_STARTED",
+          "tags": [],
+          "properties": {
+            "showPosition": false,
+            "showId": false
+          },
+          "expandable": true
+        },
+        "measured": {
+          "width": 271,
+          "height": 98
+        },
+        "selected": false,
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "dragging": false
+      },
+      {
+        "id": "ee5bfc2f-7fcf-4725-89b8-ac9821456898",
+        "position": {
+          "x": 1096.5,
+          "y": 1318
+        },
+        "type": "custom",
+        "data": {
+          "name": "Preserve Device State",
+          "expanded": true,
+          "description": "- Place the device in a **Faraday bag** to block remote wiping or tampering.\n- If powered on, avoid rebooting or powering off to prevent losing any potential unlocked state.\n- Record every step taken during the forensic process, including timestamps and tools used, to maintain evidence integrity.\n",
+          "findings": [],
+          "commands": [],
+          "status": "NOT_STARTED",
+          "tags": [],
+          "properties": {
+            "showPosition": false,
+            "showId": false
+          }
+        },
+        "measured": {
+          "width": 251,
+          "height": 98
+        },
+        "style": {
+          "opacity": 1,
+          "visibility": "hidden",
+          "pointerEvents": "none",
+          "zIndex": -1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "2e9c8897-ffda-426f-a5c1-712805ced67c",
+        "position": {
+          "x": 1474,
+          "y": 1318
+        },
+        "type": "custom",
+        "data": {
+          "name": "Accessible Data Extraction",
+          "expanded": false,
+          "description": "**Extract Accessible Data**:\n   - Use forensic tools like **Cellebrite UFED**, **Magnet AXIOM**, or **Elcomsoft iOS Forensic Toolkit** to retrieve accessible files.\n   - Focus on logs, metadata, and system files that may provide investigative leads.",
+          "findings": [],
+          "commands": [],
+          "status": "NOT_STARTED",
+          "tags": [],
+          "properties": {
+            "showPosition": false,
+            "showId": false
+          }
+        },
+        "measured": {
+          "width": 283,
+          "height": 98
+        },
+        "style": {
+          "opacity": 1,
+          "visibility": "hidden",
+          "pointerEvents": "none",
+          "zIndex": -1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "37cd260a-e1ac-42ef-89fc-2a0ca88cc1f5",
+        "position": {
+          "x": 1138.5,
+          "y": 1912
+        },
+        "type": "custom",
+        "data": {
+          "name": "Jailbreak",
+          "expanded": true,
+          "description": "### Jailbreaks for iOS Forensic Analysis\n\n#### Purpose in iOS Forensics\nJailbreaking is a critical step in iOS forensic analysis as it allows investigators to bypass certain security restrictions and gain deeper access to device data. This is particularly useful for extracting semi-encrypted data, accessing the file system directly, and utilizing low-level forensic tools that require root privileges.\n\n#### Jailbreak Comparison Table\n\n| **Jailbreak**      | **iOS Compatibility**          | **Device Support**                  | **Exploit Type**          | **Notes**                                      |\n|--------------------|--------------------------------|-------------------------------------|---------------------------|------------------------------------------------|\n| **checkra1n**      | iOS 12.0 to iOS 14.8.1         | A5-A11 chips (e.g., iPhone 5s to X) | checkm8 bootrom exploit   | Semi-tethered, older devices                    |\n| **unc0ver**        | iOS 11.0 to iOS 14.3           | All devices                         | Kernel exploit            | Semi-tethered, wide device support              |\n| **Taurine**        | iOS 14.0 to iOS 14.3           | All devices                         | Kernel exploit            | Semi-tethered, similar to unc0ver               |\n| **Fugu**           | iOS 15.0 to iOS 15.4.1         | All devices                         | Kernel exploit            | Semi-tethered, newer devices                     |\n| **Cheyote**        | iOS 15.0 to iOS 15.4.1         | All devices                         | Kernel exploit            | Semi-tethered, similar to Fugu                  |\n| **Palera1n**       | iOS 15.0 to iOS 16.3.1         | A11 and later chips                 | checkm8 + kernel exploit  | Semi-tethered, newer devices with A11+ chips    |\n| **xinaA15**        | iOS 15.0 to iOS 15.4.1         | A12-A15 chips                       | Kernel exploit            | Semi-tethered, newer devices                     |\n| **Linus Henze's**  | iOS 15.0 to iOS 15.4.1         | A12-A15 chips                       | Kernel exploit            | Semi-tethered, similar to xinaA15               |\n\n---\n\n### Forensic Implications\n1. **Data Extraction**: Jailbreaking allows for more comprehensive data extraction, including semi-encrypted files and app data.\n2. **Device Integrity**: It's crucial to ensure that jailbreaking does not compromise evidence integrity, which can impact legal proceedings.\n3. **Legal Authorization**: Always obtain legal authorization before jailbreaking a device for forensic purposes.\n\n### Tools for Forensic Analysis\n- **checkra1n**: Useful for older devices with checkm8 exploit.\n- **unc0ver/Taurine**: Supports a wide range of devices but requires kernel exploits.\n- **Fugu/Cheyote**: Targets newer devices with kernel exploits.",
+          "findings": [],
+          "commands": [],
+          "status": "NOT_STARTED",
+          "tags": [],
+          "properties": {
+            "showPosition": false,
+            "showId": false
+          },
+          "children": []
+        },
+        "measured": {
+          "width": 167,
+          "height": 98
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "957c8dca-37c3-41bb-a339-579bb7c3098a",
+        "position": {
+          "x": 704.5,
+          "y": 1632
+        },
+        "type": "custom",
+        "data": {
+          "name": "AFU (After First Unlock)",
+          "expanded": true,
+          "description": "",
+          "findings": [],
+          "commands": [],
+          "status": "NOT_STARTED",
+          "tags": [],
+          "properties": {
+            "showPosition": false,
+            "showId": false
+          }
+        },
+        "measured": {
+          "width": 260,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1,
+          "zIndex": 1000
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "327489ea-cec9-4bba-b0a5-48f62153938d",
+        "position": {
+          "x": 1122.5,
+          "y": 1516
+        },
+        "type": "custom",
+        "data": {
+          "name": "iCloud backup",
+          "expanded": false,
+          "description": "## Key Forensic Artifacts in iCloud Backups\n\n### Communication Data  \n- **Messages**  \n  Includes iMessage/SMS/MMS content, attachments, timestamps, and read receipts. Parsed by Cellebrite UFED and Magnet AXIOM.  \n- **Call History**  \n  Stores dialed/received/missed calls with timestamps and duration.  \n- **Visual Voicemail**  \n  Contains password (if stored) and audio recordings.  \n\n### Media Content  \n- **Photos/Videos**  \n  Original files with EXIF metadata including geolocation and creation dates. iCloud Photos synchronization status provides usage patterns.  \n- **Voice Memos**  \n  Audio recordings with creation timestamps and duration data.  \n\n### Device Configuration  \n- **Installed Apps**  \n  Complete list including installation/update timestamps. Purchase history from App Store receipts.  \n- **Home Screen Layout**  \n  Folder organization and app positioning patterns.  \n- **System Settings**  \n  Wi-Fi networks, VPN configurations, and restrictions passcodes.  \n\n### Productivity Data  \n- **Calendar Events**  \n  Meetings, reminders, and appointments with participant details. Reconstructs timelines using Cellebrite or Oxygen Forensic Detective.  \n- **Email Accounts**  \n  Configured mail services (even if not content) showing communication channels.  \n- **Safari Browsing**  \n  Bookmarks, frequently visited sites, and search history.  \n\n### Health & Activity  \n- **Apple Watch Data**  \n  Exercise records, heart rate metrics, and sleep patterns. Extracted via iPhone Backup Extractor.  \n- **Health App Data**  \n  Medical records, medication schedules, and reproductive health info.  \n\n### Authentication Data  \n- **Keychain** (if enabled)  \n  Contains WiFi passwords, website credentials, and credit card info.  \n- **Biometric Templates**  \n  Face ID/Touch ID mathematical representations (encrypted).  \n\n### Location Data  \n- **Significant Locations**  \n  Frequently visited places with timestamps.  \n- **Siri Locations**  \n  Location-based reminders and geofenced alerts.  \n",
+          "findings": [],
+          "commands": [],
+          "status": "NOT_STARTED",
+          "tags": [],
+          "properties": {
+            "showPosition": false,
+            "showId": false
+          }
+        },
+        "measured": {
+          "width": 199,
+          "height": 98
+        },
+        "style": {
+          "opacity": 1,
+          "visibility": "visible",
+          "pointerEvents": "all"
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "0b1b391d-f5c9-4491-b0ec-d1fa24286207",
+        "position": {
+          "x": 1118.5,
+          "y": 1714
+        },
+        "type": "custom",
+        "data": {
+          "name": "System Backup",
+          "expanded": false,
+          "description": "# iOS System Backup Forensics\n\n**Definition**:  \nFull copy of device data (apps, settings, user content) preserved for investigation.\n\n**Relevance**:  \n- Critical for accessing deleted/archived data  \n- Only encrypted backups contain health data, keychain, and app credentials  \n- Preserves app sandboxes with behavioral artifacts  \n\n**Key Tools**:  \n- **iLEAPP**: CLI parser for backup artifacts (messages, logs, plists)  \n- **Autopsy**: GUI analysis with iOS plugin integration  \n- **Cellebrite UFED**: Commercial physical/backup extraction  \n- **Elcomsoft EIFT**: Encrypted backup decryption  \n\n**Backup Types**:  \n| | Encrypted | Unencrypted |  \n|-|-----------|-------------|  \n**Health Data** | ✅ | ❌ |  \n**Keychain** | ✅ | ❌ |  \n**App Passwords** | ✅ | ❌ |  \n\n**Process**:  \n1. Acquire encrypted iTunes/iCloud backup\n2. Parse with iLEAPP/Autopsy\n3. Cross-reference with cloud extractions\n4. Validate via commercial tools (AXIOM/UFED)  ",
+          "findings": [],
+          "commands": [
+            {
+              "id": "ff377727-7412-4a07-8396-3af4b4cde047",
+              "title": "ileapp.py CLI",
+              "description": "",
+              "command": "python ileapp.py -t <archive_type> -i <input_path> -output <output_path>",
+              "variables": []
+            },
+            {
+              "id": "0aa8b633-6425-422d-9bbe-53c8a6e4fdfd",
+              "title": "ileapp GUI",
+              "description": "",
+              "command": "python ileappGUI.py",
+              "variables": []
+            }
+          ],
+          "status": "NOT_STARTED",
+          "tags": [],
+          "properties": {
+            "showPosition": false,
+            "showId": false
+          }
+        },
+        "measured": {
+          "width": 207,
+          "height": 98
+        },
+        "style": {
+          "opacity": 1,
+          "visibility": "visible",
+          "pointerEvents": "all"
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "64cc0d03-5ff6-4755-b807-00d0cae17ec6",
+        "position": {
+          "x": 720.5,
+          "y": 1912
+        },
+        "type": "custom",
+        "data": {
+          "name": "Jailbreak methods",
+          "expanded": false,
+          "description": "### Types of Jailbreaks\n\nJailbreaking is a process that allows users to gain root access to their iOS devices, bypassing Apple's security restrictions. There are several types of jailbreaks, each with its own characteristics and implications for forensic analysis.\n\n#### Types of Jailbreaks\n\n1. **Tethered Jailbreak**:  \n   Requires the device to be connected to a computer every time it is booted to maintain jailbroken status.\n\n2. **Semi-Tethered Jailbreak**:  \n   Allows the device to boot normally but requires a computer connection to re-enable jailbreak features after reboot.\n\n3. **Untethered Jailbreak**:  \n   Permits the device to boot and maintain jailbroken status without needing a computer connection.\n\n4. **Semi-Untethered Jailbreak**:  \n   Similar to semi-tethered but can be re-enabled using an app on the device itself after reboot.\n\n5. **Rootless Jailbreak**:  \n   Does not provide full root access but allows for some modifications and tweaks.\n\n#### Jailbreak Comparison Table\n\n| **Jailbreak Type**        | **Description**                                                                 | **Reboot Requirement** | **Forensic Impact**                                       |\n|---------------------------|---------------------------------------------------------------------------------|------------------------|----------------------------------------------------------|\n| **Tethered**              | Requires computer connection at every boot                                    | Yes                    | Limited forensic use due to reboot dependency           |\n| **Semi-Tethered**         | Boots normally but needs computer to re-enable jailbreak after reboot          | Yes                    | Commonly used in forensics; allows for some device use    |\n| **Untethered**            | Maintains jailbreak without computer connection                               | No                     | Ideal for forensic analysis; full device access          |\n| **Semi-Untethered**       | Re-enables jailbreak using an app on the device after reboot                  | No (via app)           | Offers flexibility in forensic scenarios                 |\n| **Rootless**              | Limited modifications without full root access                                | No                     | Less useful for deep forensic analysis                   |\n\n---\n\n### Forensic Implications\n- **Data Extraction**: Jailbreaking can facilitate deeper data extraction by bypassing security restrictions.\n- **Device Integrity**: It's crucial to ensure that jailbreaking does not compromise evidence integrity.\n- **Legal Authorization**: Always obtain legal authorization before jailbreaking a device for forensic purposes.\n\n### Tools for Forensic Analysis\n- **checkra1n**: Semi-tethered jailbreak for older devices.\n- **unc0ver/Taurine**: Semi-tethered jailbreaks supporting a wide range of devices.\n- **Fugu/Cheyote**: Semi-tethered jailbreaks for newer devices.",
+          "findings": [],
+          "commands": [],
+          "status": "NOT_STARTED",
+          "tags": [],
+          "properties": {
+            "showPosition": false,
+            "showId": false
+          }
+        },
+        "measured": {
+          "width": 228,
+          "height": 98
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left",
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "808cbbe2-6c51-45ab-9393-094e69f2377d",
+        "position": {
+          "x": 748.5,
+          "y": 1154
+        },
+        "type": "custom",
+        "data": {
+          "name": "New Node",
+          "expanded": false,
+          "description": "",
+          "findings": [],
+          "commands": [],
+          "status": "NOT_STARTED",
+          "tags": [],
+          "properties": {
+            "showPosition": false,
+            "showId": false
+          }
+        },
+        "measured": {
+          "width": 172,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      }
+    ],
+    "edges": [
+      {
+        "id": "455d08dd-00b9-4e74-b4d7-d647b53d2810->37d14310-4ed7-4871-a751-9bfae848ab50",
+        "source": "455d08dd-00b9-4e74-b4d7-d647b53d2810",
+        "target": "37d14310-4ed7-4871-a751-9bfae848ab50",
+        "style": {
+          "opacity": 1
+        },
+        "type": "bezier"
+      },
+      {
+        "id": "37d14310-4ed7-4871-a751-9bfae848ab50->ebd9b92b-10fb-4242-ad8f-c4b3538bdd13",
+        "source": "37d14310-4ed7-4871-a751-9bfae848ab50",
+        "target": "ebd9b92b-10fb-4242-ad8f-c4b3538bdd13",
+        "style": {
+          "opacity": 1
+        },
+        "type": "bezier"
+      },
+      {
+        "id": "37d14310-4ed7-4871-a751-9bfae848ab50->81a9c8f5-e8eb-4d8e-a965-bd90ae74faad",
+        "source": "37d14310-4ed7-4871-a751-9bfae848ab50",
+        "target": "81a9c8f5-e8eb-4d8e-a965-bd90ae74faad",
+        "style": {
+          "opacity": 1
+        },
+        "type": "bezier"
+      },
+      {
+        "id": "37d14310-4ed7-4871-a751-9bfae848ab50->66e869fe-d33c-4356-836e-afeb2ce86759",
+        "source": "37d14310-4ed7-4871-a751-9bfae848ab50",
+        "target": "66e869fe-d33c-4356-836e-afeb2ce86759",
+        "style": {
+          "opacity": 1
+        },
+        "type": "bezier"
+      },
+      {
+        "id": "66e869fe-d33c-4356-836e-afeb2ce86759->7be0acc9-b6f6-4222-82d1-2b207cc0781a",
+        "source": "66e869fe-d33c-4356-836e-afeb2ce86759",
+        "target": "7be0acc9-b6f6-4222-82d1-2b207cc0781a",
+        "style": {
+          "opacity": 1
+        },
+        "type": "bezier"
+      },
+      {
+        "id": "455d08dd-00b9-4e74-b4d7-d647b53d2810->927ec1e8-61d5-44eb-b011-218d1c541aff",
+        "source": "455d08dd-00b9-4e74-b4d7-d647b53d2810",
+        "target": "927ec1e8-61d5-44eb-b011-218d1c541aff",
+        "style": {
+          "opacity": 1
+        },
+        "type": "bezier"
+      },
+      {
+        "id": "927ec1e8-61d5-44eb-b011-218d1c541aff->e8daa247-9751-413d-b85a-6a78d0a944ab",
+        "source": "927ec1e8-61d5-44eb-b011-218d1c541aff",
+        "target": "e8daa247-9751-413d-b85a-6a78d0a944ab",
+        "style": {
+          "opacity": 1
+        },
+        "type": "bezier"
+      },
+      {
+        "id": "927ec1e8-61d5-44eb-b011-218d1c541aff->ff9df7e9-c6cb-41c8-9a4c-45820afad7cf",
+        "source": "927ec1e8-61d5-44eb-b011-218d1c541aff",
+        "target": "ff9df7e9-c6cb-41c8-9a4c-45820afad7cf",
+        "style": {
+          "opacity": 1
+        },
+        "type": "bezier"
+      },
+      {
+        "id": "927ec1e8-61d5-44eb-b011-218d1c541aff->bf96b6d8-c811-4634-a2c5-74692c8c663d",
+        "source": "927ec1e8-61d5-44eb-b011-218d1c541aff",
+        "target": "bf96b6d8-c811-4634-a2c5-74692c8c663d",
+        "style": {
+          "opacity": 1
+        },
+        "type": "bezier"
+      },
+      {
+        "id": "455d08dd-00b9-4e74-b4d7-d647b53d2810->27d60add-5a85-4a8f-a175-ee07269f0946",
+        "source": "455d08dd-00b9-4e74-b4d7-d647b53d2810",
+        "target": "27d60add-5a85-4a8f-a175-ee07269f0946",
+        "style": {
+          "opacity": 1
+        },
+        "type": "bezier"
+      },
+      {
+        "id": "27d60add-5a85-4a8f-a175-ee07269f0946->513dafaa-face-4ea8-836c-fa70c07c8713",
+        "source": "27d60add-5a85-4a8f-a175-ee07269f0946",
+        "target": "513dafaa-face-4ea8-836c-fa70c07c8713",
+        "style": {
+          "opacity": 1
+        },
+        "type": "bezier",
+        "selected": false
+      },
+      {
+        "id": "513dafaa-face-4ea8-836c-fa70c07c8713->ee5bfc2f-7fcf-4725-89b8-ac9821456898",
+        "source": "513dafaa-face-4ea8-836c-fa70c07c8713",
+        "target": "ee5bfc2f-7fcf-4725-89b8-ac9821456898",
+        "type": "bezier",
+        "style": {
+          "opacity": 1,
+          "visibility": "hidden",
+          "zIndex": -1
+        }
+      },
+      {
+        "id": "ee5bfc2f-7fcf-4725-89b8-ac9821456898->2e9c8897-ffda-426f-a5c1-712805ced67c",
+        "source": "ee5bfc2f-7fcf-4725-89b8-ac9821456898",
+        "target": "2e9c8897-ffda-426f-a5c1-712805ced67c",
+        "type": "bezier",
+        "style": {
+          "opacity": 1,
+          "visibility": "hidden",
+          "zIndex": -1
+        }
+      },
+      {
+        "id": "27d60add-5a85-4a8f-a175-ee07269f0946->957c8dca-37c3-41bb-a339-579bb7c3098a",
+        "source": "27d60add-5a85-4a8f-a175-ee07269f0946",
+        "target": "957c8dca-37c3-41bb-a339-579bb7c3098a",
+        "type": "bezier",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "957c8dca-37c3-41bb-a339-579bb7c3098a->327489ea-cec9-4bba-b0a5-48f62153938d",
+        "source": "957c8dca-37c3-41bb-a339-579bb7c3098a",
+        "target": "327489ea-cec9-4bba-b0a5-48f62153938d",
+        "type": "bezier",
+        "style": {
+          "opacity": 1,
+          "visibility": "visible"
+        }
+      },
+      {
+        "id": "957c8dca-37c3-41bb-a339-579bb7c3098a->0b1b391d-f5c9-4491-b0ec-d1fa24286207",
+        "source": "957c8dca-37c3-41bb-a339-579bb7c3098a",
+        "target": "0b1b391d-f5c9-4491-b0ec-d1fa24286207",
+        "type": "bezier",
+        "style": {
+          "opacity": 1,
+          "visibility": "visible"
+        }
+      },
+      {
+        "id": "27d60add-5a85-4a8f-a175-ee07269f0946->64cc0d03-5ff6-4755-b807-00d0cae17ec6",
+        "source": "27d60add-5a85-4a8f-a175-ee07269f0946",
+        "target": "64cc0d03-5ff6-4755-b807-00d0cae17ec6",
+        "type": "bezier",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "64cc0d03-5ff6-4755-b807-00d0cae17ec6->37cd260a-e1ac-42ef-89fc-2a0ca88cc1f5",
+        "source": "64cc0d03-5ff6-4755-b807-00d0cae17ec6",
+        "target": "37cd260a-e1ac-42ef-89fc-2a0ca88cc1f5",
+        "type": "bezier",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "927ec1e8-61d5-44eb-b011-218d1c541aff->808cbbe2-6c51-45ab-9393-094e69f2377d",
+        "source": "927ec1e8-61d5-44eb-b011-218d1c541aff",
+        "target": "808cbbe2-6c51-45ab-9393-094e69f2377d",
+        "type": "bezier",
+        "style": {
+          "opacity": 1
+        }
+      }
+    ]
+  }

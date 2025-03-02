@@ -1,0 +1,9 @@
+{
+    "type": "template",
+    "path": "methodology-ios-forensic",
+    "name": "iOS Forensic methodology",
+    "description": "iOS Forensic methodology",
+    "tags": ["ios", "forensic", "penflow"],
+    "version": "1.0.0",
+    "author": "PenFlow"
+}
