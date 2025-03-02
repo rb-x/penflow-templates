@@ -1,0 +1,4353 @@
+{
+    "nodes": [
+      {
+        "id": "897e4b7c-ba05-4b63-b013-efc60b61527e",
+        "type": "custom",
+        "position": {
+          "x": 0,
+          "y": 6824
+        },
+        "data": {
+          "expanded": true,
+          "name": "OWASP Testing Guide",
+          "description": "## OWASP Web Security Testing Guide\nFull testing methodology hierarchy",
+          "status": "NOT_STARTED",
+          "tags": [
+            "root"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 247,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "6c30f401-5326-49f0-bc8f-88420d4ab90d",
+        "type": "custom",
+        "position": {
+          "x": 325,
+          "y": 545
+        },
+        "data": {
+          "expanded": false,
+          "name": "Information Gathering",
+          "description": "## WSTG-INFO\n**Information Gathering**",
+          "status": "NOT_STARTED",
+          "tags": [
+            "category"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 248,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "c6aada6a-9582-49c1-9c78-955e64da7e66",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 0
+        },
+        "data": {
+          "expanded": false,
+          "name": "Conduct Search Engine Discovery Reconnaissance for Information Leakage",
+          "description": "### WSTG-INFO-01\n**Conduct Search Engine Discovery Reconnaissance for Information Leakage**\n\n#### Objectives\n- Identify what sensitive design and configuration information of the application, system, or organization is exposed directly (on the organization's site) or indirectly (via third-party services).\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/01-Information_Gathering/01-Conduct_Search_Engine_Discovery_Reconnaissance_for_Information_Leakage)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "972c3486-e554-4764-83a4-9c1128f3f296",
+        "type": "custom",
+        "position": {
+          "x": 675,
+          "y": 122
+        },
+        "data": {
+          "expanded": false,
+          "name": "Fingerprint Web Server",
+          "description": "### WSTG-INFO-02\n**Fingerprint Web Server**\n\n#### Objectives\n- Determine the version and type of a running web server to enable further discovery of any known vulnerabilities.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/01-Information_Gathering/02-Fingerprint_Web_Server)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 256,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "5efbfc9a-c576-43c7-97f0-bf5f28bb3646",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 236
+        },
+        "data": {
+          "expanded": false,
+          "name": "Review Webserver Metafiles for Information Leakage",
+          "description": "### WSTG-INFO-03\n**Review Webserver Metafiles for Information Leakage**\n\n#### Objectives\n- Identify hidden or obfuscated paths and functionality through the analysis of metadata files.\n- Extract and map other information that could lead to a better understanding of the systems at hand.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/01-Information_Gathering/03-Review_Webserver_Metafiles_for_Information_Leakage)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "1c0a85d0-c9e9-407d-aada-4797ca9fb986",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 358
+        },
+        "data": {
+          "expanded": false,
+          "name": "Enumerate Applications on Webserver",
+          "description": "### WSTG-INFO-04\n**Enumerate Applications on Webserver**\n\n#### Objectives\n- Enumerate the applications within the scope that exist on a web server.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/01-Information_Gathering/04-Enumerate_Applications_on_Webserver)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "79728c6b-bb1a-434e-82b2-313c65801b73",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 480
+        },
+        "data": {
+          "expanded": false,
+          "name": "Review Web Page Content for Information Leakage",
+          "description": "### WSTG-INFO-05\n**Review Web Page Content for Information Leakage**\n\n#### Objectives\n- Review web page comments, metadata, and redirect bodies to find any information leakage.\n- Gather JavaScript files and review the JS code to better understand the application and to find any information leakage.\n- Identify if source map files or other frontend debug files exist.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/01-Information_Gathering/05-Review_Web_Page_Content_for_Information_Leakage)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "e5c0c74d-0419-407a-bbdc-b21d4d9f4a13",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 602
+        },
+        "data": {
+          "expanded": false,
+          "name": "Identify Application Entry Points",
+          "description": "### WSTG-INFO-06\n**Identify Application Entry Points**\n\n#### Objectives\n- Identify possible entry and injection points through request and response analysis.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/01-Information_Gathering/06-Identify_Application_Entry_Points)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "2ffc9af2-8144-473a-ad46-c196578e2f36",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 724
+        },
+        "data": {
+          "expanded": false,
+          "name": "Map Execution Paths Through Application",
+          "description": "### WSTG-INFO-07\n**Map Execution Paths Through Application**\n\n#### Objectives\n- Map the target application and understand the principal workflows.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/01-Information_Gathering/07-Map_Execution_Paths_Through_Application)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "6e083fdc-311f-4523-992c-4d23bf6da3db",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 846
+        },
+        "data": {
+          "expanded": false,
+          "name": "Fingerprint Web Application Framework",
+          "description": "### WSTG-INFO-08\n**Fingerprint Web Application Framework**\n\n#### Objectives\n- Fingerprint the components used by the web applications.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "8fa91931-0f39-4e84-b45c-46714e10e9f7",
+        "type": "custom",
+        "position": {
+          "x": 659.5,
+          "y": 968
+        },
+        "data": {
+          "expanded": false,
+          "name": "Fingerprint Web Application",
+          "description": "### WSTG-INFO-09\n**Fingerprint Web Application**\n\n#### Objectives\n- \n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/01-Information_Gathering/09-Fingerprint_Web_Application)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 287,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "328f6961-cdf5-4b37-92ae-6d5aea081aaf",
+        "type": "custom",
+        "position": {
+          "x": 654.5,
+          "y": 1082
+        },
+        "data": {
+          "expanded": false,
+          "name": "Map Application Architecture",
+          "description": "### WSTG-INFO-10\n**Map Application Architecture**\n\n#### Objectives\n- Understand the architecture of the application and the technologies in use.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/01-Information_Gathering/10-Map_Application_Architecture)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 297,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "4db23b88-7877-446f-8332-1795ba5f6fd7",
+        "type": "custom",
+        "position": {
+          "x": 297,
+          "y": 1920
+        },
+        "data": {
+          "expanded": false,
+          "name": "Configuration and Deployment Management Testing",
+          "description": "## WSTG-CONF\n**Configuration and Deployment Management Testing**",
+          "status": "NOT_STARTED",
+          "tags": [
+            "category"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "a2f29bc4-a30b-490e-96a1-b5774ce809f3",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 1196
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test Network Infrastructure Configuration",
+          "description": "### WSTG-CONF-01\n**Test Network Infrastructure Configuration**\n\n#### Objectives\n- Review the applications' configurations set across the network and validate that they are not vulnerable.\n- Validate that used frameworks and systems are secure and not susceptible to known vulnerabilities due to unmaintained software or default settings and credentials.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/01-Test_Network_Infrastructure_Configuration)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "77cadc5e-ca8a-454b-9d88-7752eb8b1e54",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 1318
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test Application Platform Configuration",
+          "description": "### WSTG-CONF-02\n**Test Application Platform Configuration**\n\n#### Objectives\n- Ensure that default and known files have been removed.\n- Validate that no debugging code or extensions are left in the production environments.\n- Review the logging mechanisms set in place for the application.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/02-Test_Application_Platform_Configuration)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "0fc77043-8932-4149-b894-f010016aa743",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 1440
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test File Extensions Handling for Sensitive Information",
+          "description": "### WSTG-CONF-03\n**Test File Extensions Handling for Sensitive Information**\n\n#### Objectives\n- Brute force sensitive file extensions that might contain raw data such as scripts, credentials, etc.\n- Validate that no system framework bypasses exist for the rules that have been set\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/03-Test_File_Extensions_Handling_for_Sensitive_Information)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "abd12abe-1e28-4f17-875d-986a7dd063d5",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 1562
+        },
+        "data": {
+          "expanded": false,
+          "name": "Review Old Backup and Unreferenced Files for Sensitive Information",
+          "description": "### WSTG-CONF-04\n**Review Old Backup and Unreferenced Files for Sensitive Information**\n\n#### Objectives\n- Find and analyse unreferenced files that might contain sensitive information.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/04-Review_Old_Backup_and_Unreferenced_Files_for_Sensitive_Information)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "3b786edf-0232-4b49-b3c3-817a783e06ca",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 1684
+        },
+        "data": {
+          "expanded": false,
+          "name": "Enumerate Infrastructure and Application Admin Interfaces",
+          "description": "### WSTG-CONF-05\n**Enumerate Infrastructure and Application Admin Interfaces**\n\n#### Objectives\n- Identify hidden administrator interfaces and functionality.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/05-Enumerate_Infrastructure_and_Application_Admin_Interfaces)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "5656f36a-b073-4da8-8603-4c269c2e8e76",
+        "type": "custom",
+        "position": {
+          "x": 686.5,
+          "y": 1806
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test HTTP Methods",
+          "description": "### WSTG-CONF-06\n**Test HTTP Methods**\n\n#### Objectives\n- Enumerate supported HTTP methods.\n- Test for access control bypass.\n- Test HTTP method overriding techniques.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/06-Test_HTTP_Methods)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 233,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "ee9b480a-6b11-4c1b-9fcb-fa75b002c059",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 1920
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test HTTP Strict Transport Security",
+          "description": "### WSTG-CONF-07\n**Test HTTP Strict Transport Security**\n\n#### Objectives\n- Review the HSTS header and its validity.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/07-Test_HTTP_Strict_Transport_Security)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "8ecab029-2dbd-4085-bdde-6c479da21366",
+        "type": "custom",
+        "position": {
+          "x": 654,
+          "y": 2042
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test RIA Cross Domain Policy",
+          "description": "### WSTG-CONF-08\n**Test RIA Cross Domain Policy**\n\n#### Objectives\n- \n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/08-Test_RIA_Cross_Domain_Policy)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 298,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "361864ab-7148-4e7c-82e6-b1a35ba16dfb",
+        "type": "custom",
+        "position": {
+          "x": 685,
+          "y": 2156
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test File Permission",
+          "description": "### WSTG-CONF-09\n**Test File Permission**\n\n#### Objectives\n- Review and identify any rogue file permissions.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/09-Test_File_Permission)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 236,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "9e5e6644-40e3-4beb-8ae7-86a7bce5319b",
+        "type": "custom",
+        "position": {
+          "x": 655,
+          "y": 2270
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test for Subdomain Takeover",
+          "description": "### WSTG-CONF-10\n**Test for Subdomain Takeover**\n\n#### Objectives\n- Enumerate all possible domains (previous and current).\n- Identify any forgotten or misconfigured domains.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/10-Test_for_Subdomain_Takeover)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 296,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "4f82e74e-b89d-463d-8160-8384b874d312",
+        "type": "custom",
+        "position": {
+          "x": 688,
+          "y": 2384
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test Cloud Storage",
+          "description": "### WSTG-CONF-11\n**Test Cloud Storage**\n\n#### Objectives\n- Assess that the access control configuration for the storage services is properly in place.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/11-Test_Cloud_Storage)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 230,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "3561bdbf-81ce-4e2d-925f-99337432e49b",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 2498
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Content Security Policy",
+          "description": "### WSTG-CONF-12\n**Testing for Content Security Policy**\n\n#### Objectives\n- Review the Content-Security-Policy header or meta element to identify misconfigurations.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/12-Test_for_Content_Security_Policy)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "a46578ee-230b-4e6a-af27-54a8520f6a01",
+        "type": "custom",
+        "position": {
+          "x": 684.5,
+          "y": 2620
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test Path Confusion",
+          "description": "### WSTG-CONF-13\n**Test Path Confusion**\n\n#### Objectives\n- Make sure application paths are configured correctly.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/13-Test_for_Path_Confusion)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 237,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "a95b11cd-7645-4d41-b52f-9eac9dde1e8b",
+        "type": "custom",
+        "position": {
+          "x": 300.5,
+          "y": 2974
+        },
+        "data": {
+          "expanded": false,
+          "name": "Identity Management Testing",
+          "description": "## WSTG-IDNT\n**Identity Management Testing**",
+          "status": "NOT_STARTED",
+          "tags": [
+            "category"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 297,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "2c01a156-776a-4f93-b70a-86d16513308f",
+        "type": "custom",
+        "position": {
+          "x": 682.5,
+          "y": 2734
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test Role Definitions",
+          "description": "### WSTG-IDNT-01\n**Test Role Definitions**\n\n#### Objectives\n- Identify and document roles used by the application.\n- Attempt to switch, change, or access another role.\n- Review the granularity of the roles and the needs behind the permissions given.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/03-Identity_Management_Testing/01-Test_Role_Definitions)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 241,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "06f6a785-d238-4257-acee-a1698db8cf3d",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 2848
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test User Registration Process",
+          "description": "### WSTG-IDNT-02\n**Test User Registration Process**\n\n#### Objectives\n- Verify that the identity requirements for user registration are aligned with business and security requirements.\n- Validate the registration process.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/03-Identity_Management_Testing/02-Test_User_Registration_Process)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "9dad779d-aea0-436b-a290-9c06a5edaab9",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 2970
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test Account Provisioning Process",
+          "description": "### WSTG-IDNT-03\n**Test Account Provisioning Process**\n\n#### Objectives\n- Verify which accounts may provision other accounts and of what type.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/03-Identity_Management_Testing/03-Test_Account_Provisioning_Process)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "5a3a4362-daf0-4dd7-b579-e462ceb6480a",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 3092
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Account Enumeration and Guessable User Account",
+          "description": "### WSTG-IDNT-04\n**Testing for Account Enumeration and Guessable User Account**\n\n#### Objectives\n- Review processes that pertain to user identification (*e.g.* registration, login, etc.).\n- Enumerate users where possible through response analysis.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/03-Identity_Management_Testing/04-Testing_for_Account_Enumeration_and_Guessable_User_Account)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "1a286e34-467a-4c8f-b87a-e5de5208b342",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 3214
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Weak or Unenforced Username Policy",
+          "description": "### WSTG-IDNT-05\n**Testing for Weak or Unenforced Username Policy**\n\n#### Objectives\n- Determine whether a consistent account name structure renders the application vulnerable to account enumeration.\n- Determine whether the application's error messages permit account enumeration.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/03-Identity_Management_Testing/05-Testing_for_Weak_or_Unenforced_Username_Policy)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5",
+        "type": "custom",
+        "position": {
+          "x": 322.5,
+          "y": 3950
+        },
+        "data": {
+          "expanded": false,
+          "name": "Authentication Testing",
+          "description": "## WSTG-ATHN\n**Authentication Testing**",
+          "status": "NOT_STARTED",
+          "tags": [
+            "category"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 253,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "39a4e325-65bf-4353-95fb-790fc2ead221",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 3336
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Credentials Transported over an Encrypted Channel",
+          "description": "### WSTG-ATHN-01\n**Testing for Credentials Transported over an Encrypted Channel**\n\n#### Objectives\n- \n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/01-Testing_for_Credentials_Transported_over_an_Encrypted_Channel)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "cb9e9c18-bb40-4f57-90b9-a8145241754b",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 3458
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Default Credentials",
+          "description": "### WSTG-ATHN-02\n**Testing for Default Credentials**\n\n#### Objectives\n- Determine whether the application has any user accounts with default passwords.\n- Review whether new user accounts are created with weak or predictable passwords.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/02-Testing_for_Default_Credentials)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "00cc6041-1139-4da0-a593-698ba5afeff7",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 3580
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Weak Lock Out Mechanism",
+          "description": "### WSTG-ATHN-03\n**Testing for Weak Lock Out Mechanism**\n\n#### Objectives\n- Evaluate the account lockout mechanism's ability to mitigate brute force password guessing.\n- Evaluate the unlock mechanism's resistance to unauthorized account unlocking.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/03-Testing_for_Weak_Lock_Out_Mechanism)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "4c5eb198-f27d-4476-84d4-92fe2a98c02d",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 3702
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Bypassing Authentication Schema",
+          "description": "### WSTG-ATHN-04\n**Testing for Bypassing Authentication Schema**\n\n#### Objectives\n- Ensure that authentication is applied across all services that require it.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/04-Testing_for_Bypassing_Authentication_Schema)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "c9add13f-9293-47d1-a7a6-96834986f2c2",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 3824
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Vulnerable Remember Password",
+          "description": "### WSTG-ATHN-05\n**Testing for Vulnerable Remember Password**\n\n#### Objectives\n- Validate that the generated session is managed securely and do not put the user's credentials in danger.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/05-Testing_for_Vulnerable_Remember_Password)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "4f2eccf9-b396-471c-8a51-2fe57f8319cc",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 3946
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Browser Cache Weaknesses",
+          "description": "### WSTG-ATHN-06\n**Testing for Browser Cache Weaknesses**\n\n#### Objectives\n- Review if the application stores sensitive information on the client-side.\n- Review if access can occur without authorization.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/06-Testing_for_Browser_Cache_Weaknesses)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "437e380b-78de-445c-aaa7-c6ba129255c3",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 4068
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Weak Authentication Methods",
+          "description": "### WSTG-ATHN-07\n**Testing for Weak Authentication Methods**\n\n#### Objectives\n- Determine the resistance of the application against brute force password guessing using available password dictionaries by evaluating the length, complexity, reuse, and aging requirements of passwords.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/07-Testing_for_Weak_Authentication_Methods)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "85dd28ad-fb9d-41b2-a837-4be437b6f48f",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 4190
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Weak Security Question Answer",
+          "description": "### WSTG-ATHN-08\n**Testing for Weak Security Question Answer**\n\n#### Objectives\n- Determine the complexity and how straight-forward the questions are.\n- Assess possible user answers and brute force capabilities.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/08-Testing_for_Weak_Security_Question_Answer)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "4b956e44-7762-48e2-8e1d-155abf32ac86",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 4312
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Weak Password Change or Reset Functionalities",
+          "description": "### WSTG-ATHN-09\n**Testing for Weak Password Change or Reset Functionalities**\n\n#### Objectives\n- Determine whether the password change and reset functionality allows accounts to be compromised.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/09-Testing_for_Weak_Password_Change_or_Reset_Functionalities)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "0aeaea0e-4625-4ac6-b9d9-ca8f70725662",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 4434
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Weaker Authentication in Alternative Channel",
+          "description": "### WSTG-ATHN-10\n**Testing for Weaker Authentication in Alternative Channel**\n\n#### Objectives\n- Identify alternative authentication channels.\n- Assess the security measures used and if any bypasses exists on the alternative channels.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/10-Testing_for_Weaker_Authentication_in_Alternative_Channel)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "e035088f-77f2-4e05-bad6-f506e7be7ef7",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 4556
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing Multi-Factor Authentication (MFA)",
+          "description": "### WSTG-ATHN-11\n**Testing Multi-Factor Authentication (MFA)**\n\n#### Objectives\n- Identify the type of MFA used by the application.\n- Determine whether the MFA implementation is robust and secure.\n- Attempt to bypass the MFA.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/11-Testing_Multi-Factor_Authentication)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "63f02e07-6810-4919-9036-144a07ebb028",
+        "type": "custom",
+        "position": {
+          "x": 326.5,
+          "y": 4926
+        },
+        "data": {
+          "expanded": false,
+          "name": "Authorization Testing",
+          "description": "## WSTG-ATHZ\n**Authorization Testing**",
+          "status": "NOT_STARTED",
+          "tags": [
+            "category"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 245,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "7c5136e6-084d-4df4-8722-63f9d54c153d",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 4678
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing Directory Traversal File Include",
+          "description": "### WSTG-ATHZ-01\n**Testing Directory Traversal File Include**\n\n#### Objectives\n- Identify injection points that pertain to path traversal.\n- Assess bypassing techniques and identify the extent of path traversal.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/05-Authorization_Testing/01-Testing_Directory_Traversal_File_Include)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "2bc4f853-45fc-4a4d-88ba-34025730bd32",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 4800
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Bypassing Authorization Schema",
+          "description": "### WSTG-ATHZ-02\n**Testing for Bypassing Authorization Schema**\n\n#### Objectives\n- Assess if horizontal or vertical access is possible.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/05-Authorization_Testing/02-Testing_for_Bypassing_Authorization_Schema)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "8718096c-5426-4679-93bd-69570260deb1",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 4922
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Privilege Escalation",
+          "description": "### WSTG-ATHZ-03\n**Testing for Privilege Escalation**\n\n#### Objectives\n- Identify injection points related to privilege manipulation.\n- Fuzz or otherwise attempt to bypass security measures.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/05-Authorization_Testing/03-Testing_for_Privilege_Escalation)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "852a6453-9ca3-43f6-87e4-d21b7024cd98",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 5044
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Insecure Direct Object References",
+          "description": "### WSTG-ATHZ-04\n**Testing for Insecure Direct Object References**\n\n#### Objectives\n- Identify points where object references may occur.\n- Assess the access control measures and if they're vulnerable to IDOR.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/05-Authorization_Testing/04-Testing_for_Insecure_Direct_Object_References)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "37e6c4d9-c889-4e59-9ff3-4d160891a258",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 5166
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for OAuth Weaknesses",
+          "description": "### WSTG-ATHZ-05\n**Testing for OAuth Weaknesses**\n\n#### Objectives\n- Determine if OAuth2 implementation is vulnerable or using a deprecated or custom implementation.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/05-Authorization_Testing/05-Testing_for_OAuth_Weaknesses)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "2f9ea108-4b56-45de-a136-d7935e4e5da0",
+        "type": "custom",
+        "position": {
+          "x": 300,
+          "y": 5886
+        },
+        "data": {
+          "expanded": false,
+          "name": "Session Management Testing",
+          "description": "## WSTG-SESS\n**Session Management Testing**",
+          "status": "NOT_STARTED",
+          "tags": [
+            "category"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 298,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "273bd69a-8f53-4c19-bd89-b8cf1628214b",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 5288
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Session Management Schema",
+          "description": "### WSTG-SESS-01\n**Testing for Session Management Schema**\n\n#### Objectives\n- Gather session tokens, for the same user and for different users where possible.\n- Analyze and ensure that enough randomness exists to stop session forging attacks.\n- Modify cookies that are not signed and contain information that can be manipulated.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/06-Session_Management_Testing/01-Testing_for_Session_Management_Schema)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "52980476-88ad-461e-95c5-5dc672b32f18",
+        "type": "custom",
+        "position": {
+          "x": 652.5,
+          "y": 5410
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Cookies Attributes",
+          "description": "### WSTG-SESS-02\n**Testing for Cookies Attributes**\n\n#### Objectives\n- Ensure that the proper security configuration is set for cookies.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 301,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "a21a8ad3-4222-45e7-b207-f033181c9146",
+        "type": "custom",
+        "position": {
+          "x": 659.5,
+          "y": 5524
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Session Fixation",
+          "description": "### WSTG-SESS-03\n**Testing for Session Fixation**\n\n#### Objectives\n- Analyze the authentication mechanism and its flow.\n- Force cookies and assess the impact.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/06-Session_Management_Testing/03-Testing_for_Session_Fixation)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 287,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "f2b5a8f1-d0f3-4340-9381-9b5a035624b7",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 5638
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Exposed Session Variables",
+          "description": "### WSTG-SESS-04\n**Testing for Exposed Session Variables**\n\n#### Objectives\n- Ensure that proper encryption is implemented.\n- Review the caching configuration.\n- Assess the channel and methods' security.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/06-Session_Management_Testing/04-Testing_for_Exposed_Session_Variables)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "48408c3f-c0fb-4408-990f-ef9811f581ce",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 5760
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Cross Site Request Forgery",
+          "description": "### WSTG-SESS-05\n**Testing for Cross Site Request Forgery**\n\n#### Objectives\n- Determine whether it is possible to initiate requests on a user's behalf that are not initiated by the user.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/06-Session_Management_Testing/05-Testing_for_Cross_Site_Request_Forgery)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "6cf3759f-01f4-41da-ad00-523f4ec776f5",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 5882
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Logout Functionality",
+          "description": "### WSTG-SESS-06\n**Testing for Logout Functionality**\n\n#### Objectives\n- Assess the logout UI.\n- Analyze the session timeout and if the session is properly killed after logout.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/06-Session_Management_Testing/06-Testing_for_Logout_Functionality)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "91d99b44-6063-4e63-8d2c-6d916af4e657",
+        "type": "custom",
+        "position": {
+          "x": 670.5,
+          "y": 6004
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing Session Timeout",
+          "description": "### WSTG-SESS-07\n**Testing Session Timeout**\n\n#### Objectives\n- Validate that a hard session timeout exists.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/06-Session_Management_Testing/07-Testing_Session_Timeout)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 265,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "ef148ce0-485b-46d6-95d6-03ba270fea6a",
+        "type": "custom",
+        "position": {
+          "x": 657.5,
+          "y": 6118
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Session Puzzling",
+          "description": "### WSTG-SESS-08\n**Testing for Session Puzzling**\n\n#### Objectives\n- Identify all session variables.\n- Break the logical flow of session generation.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/06-Session_Management_Testing/08-Testing_for_Session_Puzzling)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 291,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "62bee498-0409-4a9f-b768-48843cc914c8",
+        "type": "custom",
+        "position": {
+          "x": 655.5,
+          "y": 6232
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Session Hijacking",
+          "description": "### WSTG-SESS-09\n**Testing for Session Hijacking**\n\n#### Objectives\n- Identify vulnerable session cookies.\n- Hijack vulnerable cookies and assess the risk level.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/06-Session_Management_Testing/09-Testing_for_Session_Hijacking)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 295,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "961c2cfe-fc46-4677-a110-4b440a2b91f8",
+        "type": "custom",
+        "position": {
+          "x": 665,
+          "y": 6346
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing JSON Web Tokens",
+          "description": "### WSTG-SESS-10\n**Testing JSON Web Tokens**\n\n#### Objectives\n- Determine whether the JWTs expose sensitive information.\n- Determine whether the JWTs can be tampered with or modified.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/06-Session_Management_Testing/10-Testing_JSON_Web_Tokens)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 276,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "94cda120-a291-4092-8269-cc76215e126d",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 6460
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Concurrent Sessions",
+          "description": "### WSTG-SESS-11\n**Testing for Concurrent Sessions**\n\n#### Objectives\n- Evaluate the application's session management by assessing the handling of multiple active sessions for a single user account.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/06-Session_Management_Testing/11-Testing_for_Concurrent_Sessions)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "type": "custom",
+        "position": {
+          "x": 319,
+          "y": 7762
+        },
+        "data": {
+          "expanded": false,
+          "name": "Input Validation Testing",
+          "description": "## WSTG-INPV\n**Input Validation Testing**",
+          "status": "NOT_STARTED",
+          "tags": [
+            "category"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 260,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "cd18bc22-2c01-4fef-95a3-96ce9ae9845d",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 6582
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Reflected Cross Site Scripting",
+          "description": "### WSTG-INPV-01\n**Testing for Reflected Cross Site Scripting**\n\n#### Objectives\n- Identify variables that are reflected in responses.\n- Assess the input they accept and the encoding that gets applied on return (if any).\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/01-Testing_for_Reflected_Cross_Site_Scripting)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "462ed17e-f495-42a5-9dd8-1a64ae3bc2f8",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 6704
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Stored Cross Site Scripting",
+          "description": "### WSTG-INPV-02\n**Testing for Stored Cross Site Scripting**\n\n#### Objectives\n- Identify stored input that is reflected on the client-side.\n- Assess the input they accept and the encoding that gets applied on return (if any).\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/02-Testing_for_Stored_Cross_Site_Scripting)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "c62e320e-e560-4488-b68d-f7713be7dbe4",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 6826
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for HTTP Verb Tampering",
+          "description": "### WSTG-INPV-03\n**Testing for HTTP Verb Tampering**\n\n#### Objectives\n- \n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/03-Testing_for_HTTP_Verb_Tampering)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "e984aaa3-8b46-4215-8bbe-bed917ce7145",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 6948
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for HTTP Parameter Pollution",
+          "description": "### WSTG-INPV-04\n**Testing for HTTP Parameter Pollution**\n\n#### Objectives\n- Identify the backend and the parsing method used.\n- Assess injection points and try bypassing input filters using HPP.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/04-Testing_for_HTTP_Parameter_Pollution)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "e8a1faae-69aa-4722-968d-835a18cb964d",
+        "type": "custom",
+        "position": {
+          "x": 669.5,
+          "y": 7070
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for SQL Injection",
+          "description": "### WSTG-INPV-05\n**Testing for SQL Injection**\n\n#### Objectives\n- Identify SQL injection points.\n- Assess the severity of the injection and the level of access that can be achieved through it.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05-Testing_for_SQL_Injection)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 267,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "4aacf4ae-783e-45b3-a3a5-9793dc06fc1f",
+        "type": "custom",
+        "position": {
+          "x": 665.5,
+          "y": 7184
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for LDAP Injection",
+          "description": "### WSTG-INPV-06\n**Testing for LDAP Injection**\n\n#### Objectives\n- Identify LDAP injection points.\n- Assess the severity of the injection.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/06-Testing_for_LDAP_Injection)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 275,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "7840274d-92e9-4cee-b869-0542cd27f997",
+        "type": "custom",
+        "position": {
+          "x": 668.5,
+          "y": 7298
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for XML Injection",
+          "description": "### WSTG-INPV-07\n**Testing for XML Injection**\n\n#### Objectives\n- Identify XML injection points.\n- Assess the types of exploits that can be attained and their severities.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/07-Testing_for_XML_Injection)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 269,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "b92b02b7-7e5e-4ae3-9138-58d06fcbef36",
+        "type": "custom",
+        "position": {
+          "x": 672.5,
+          "y": 7412
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for SSI Injection",
+          "description": "### WSTG-INPV-08\n**Testing for SSI Injection**\n\n#### Objectives\n- Identify SSI injection points.\n- Assess the severity of the injection.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/08-Testing_for_SSI_Injection)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 261,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "c40ed1bb-dfdb-4f06-b5bf-7f74e6db2795",
+        "type": "custom",
+        "position": {
+          "x": 663.5,
+          "y": 7526
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for XPath Injection",
+          "description": "### WSTG-INPV-09\n**Testing for XPath Injection**\n\n#### Objectives\n- Identify XPATH injection points.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/09-Testing_for_XPath_Injection)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 279,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "d350cde8-8e56-45d6-b05a-6c06aaffcd24",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 7640
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for IMAP SMTP Injection",
+          "description": "### WSTG-INPV-10\n**Testing for IMAP SMTP Injection**\n\n#### Objectives\n- Identify IMAP/SMTP injection points.\n- Understand the data flow and deployment structure of the system.\n- Assess the injection impacts.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/10-Testing_for_IMAP_SMTP_Injection)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "4e5cb4cb-0540-4510-a2a3-debd6e34b871",
+        "type": "custom",
+        "position": {
+          "x": 666,
+          "y": 7762
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Code Injection",
+          "description": "### WSTG-INPV-11\n**Testing for Code Injection**\n\n#### Objectives\n- Identify injection points where you can inject code into the application.\n- Assess the injection severity.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/11-Testing_for_Code_Injection)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 274,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "263399e7-06de-4ace-a56b-3e9794d0091a",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 7876
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Command Injection",
+          "description": "### WSTG-INPV-12\n**Testing for Command Injection**\n\n#### Objectives\n- Identify and assess the command injection points.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/12-Testing_for_Command_Injection)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "fefda258-1b71-4aec-9680-0e77df71ae7f",
+        "type": "custom",
+        "position": {
+          "x": 661.5,
+          "y": 7998
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Buffer Overflow",
+          "description": "### WSTG-INPV-13\n**Testing for Buffer Overflow**\n\n#### Objectives\n- \n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/13-Testing_for_Buffer_Overflow)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 283,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "68a27ff8-6231-49e4-988c-c66f5db52ea3",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 8112
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Format String Injection",
+          "description": "### WSTG-INPV-13\n**Testing for Format String Injection**\n\n#### Objectives\n- Assess whether injecting format string conversion specifiers into user-controlled fields causes undesired behavior from the application.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/13-Testing_for_Format_String_Injection)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "c1415600-c04a-4ba1-9acf-36cdd0f40d3e",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 8234
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Incubated Vulnerability",
+          "description": "### WSTG-INPV-14\n**Testing for Incubated Vulnerability**\n\n#### Objectives\n- Identify injections that are stored and require a recall step to the stored injection.\n- Understand how a recall step could occur.\n- Set listeners or activate the recall step if possible.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/14-Testing_for_Incubated_Vulnerability)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "6b444a23-16a7-4855-8bbd-fc59d2b769f1",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 8356
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for HTTP Splitting Smuggling",
+          "description": "### WSTG-INPV-15\n**Testing for HTTP Splitting Smuggling**\n\n#### Objectives\n- Assess if the application is vulnerable to splitting, identifying what possible attacks are achievable.\n- Assess if the chain of communication is vulnerable to smuggling, identifying what possible attacks are achievable.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/15-Testing_for_HTTP_Splitting_Smuggling)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "418751f3-af3c-456a-b3f9-381cf0500403",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 8478
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for HTTP Incoming Requests",
+          "description": "### WSTG-INPV-16\n**Testing for HTTP Incoming Requests**\n\n#### Objectives\n- Monitor all incoming and outgoing HTTP requests to the Web Server to inspect any suspicious requests.\n- Monitor HTTP traffic without changes of end user Browser proxy or client-side application.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/16-Testing_for_HTTP_Incoming_Requests)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "12ec5a1b-3f7b-42f7-96a2-17f84a1afaa2",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 8600
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Host Header Injection",
+          "description": "### WSTG-INPV-17\n**Testing for Host Header Injection**\n\n#### Objectives\n- Assess if the Host header is being parsed dynamically in the application.\n- Bypass security controls that rely on the header.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/17-Testing_for_Host_Header_Injection)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "bdf757d2-7382-412f-ba31-78db332454aa",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 8722
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Server-side Template Injection",
+          "description": "### WSTG-INPV-18\n**Testing for Server-side Template Injection**\n\n#### Objectives\n- Detect template injection vulnerability points.\n- Identify the templating engine.\n- Build the exploit.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/18-Testing_for_Server-side_Template_Injection)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "91ab2d80-ac87-4c99-b806-bfa053dd7cc9",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 8844
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Server-Side Request Forgery",
+          "description": "### WSTG-INPV-19\n**Testing for Server-Side Request Forgery**\n\n#### Objectives\n- Identify SSRF injection points.\n- Test if the injection points are exploitable.\n- Asses the severity of the vulnerability.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/19-Testing_for_Server-Side_Request_Forgery)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "785378fe-fcf9-463a-b73a-2e21ab68578a",
+        "type": "custom",
+        "position": {
+          "x": 655,
+          "y": 8966
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Mass Assignment",
+          "description": "### WSTG-INPV-20\n**Testing for Mass Assignment**\n\n#### Objectives\n- Identify requests that modify objects\n- Assess if it is possible to modify fields never intended to be modified from outside\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/20-Testing_for_Mass_Assignment)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 296,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "50da5897-db3b-44b1-8b61-94285cfe186c",
+        "type": "custom",
+        "position": {
+          "x": 312.5,
+          "y": 9143
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Error Handling",
+          "description": "## WSTG-ERRH\n**Testing for Error Handling**",
+          "status": "NOT_STARTED",
+          "tags": [
+            "category"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 273,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "06ecc21d-d0f3-4a27-8b95-239e1d8999ce",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 9080
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Improper Error Handling",
+          "description": "### WSTG-ERRH-01\n**Testing for Improper Error Handling**\n\n#### Objectives\n- Identify existing error output.\n- Analyze the different output returned.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/01-Testing_For_Improper_Error_Handling)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "e2f1c548-62bf-41bf-9881-ae6e17dfa69b",
+        "type": "custom",
+        "position": {
+          "x": 670.5,
+          "y": 9202
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Stack Traces",
+          "description": "### WSTG-ERRH-02\n**Testing for Stack Traces**\n\n#### Objectives\n- \n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/02-Testing_for_Stack_Traces)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 265,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "f7835a8f-3c06-4a39-b5a9-0c402e5439cb",
+        "type": "custom",
+        "position": {
+          "x": 297,
+          "y": 9493
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Weak Cryptography",
+          "description": "## WSTG-CRYP\n**Testing for Weak Cryptography**",
+          "status": "NOT_STARTED",
+          "tags": [
+            "category"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "a794c98e-b90f-4bae-87ec-306eb6ee12a5",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 9316
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Weak Transport Layer Security",
+          "description": "### WSTG-CRYP-01\n**Testing for Weak Transport Layer Security**\n\n#### Objectives\n- Validate the service configuration.\n- Review the digital certificate's cryptographic strength and validity.\n- Ensure that the TLS security is not bypassable and is properly implemented across the application.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/09-Testing_for_Weak_Cryptography/01-Testing_for_Weak_Transport_Layer_Security)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "f1cbb879-f710-4498-a87c-d891a7236489",
+        "type": "custom",
+        "position": {
+          "x": 663.5,
+          "y": 9438
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Padding Oracle",
+          "description": "### WSTG-CRYP-02\n**Testing for Padding Oracle**\n\n#### Objectives\n- Identify encrypted messages that rely on padding.\n- Attempt to break the padding of the encrypted messages and analyze the returned error messages for further analysis.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/09-Testing_for_Weak_Cryptography/02-Testing_for_Padding_Oracle)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 279,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "aae02d7c-7af4-4467-a42f-db171ec57ade",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 9552
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Sensitive Information Sent via Unencrypted Channels",
+          "description": "### WSTG-CRYP-03\n**Testing for Sensitive Information Sent via Unencrypted Channels**\n\n#### Objectives\n- Identify sensitive information transmitted through the various channels.\n- Assess the privacy and security of the channels used.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/09-Testing_for_Weak_Cryptography/03-Testing_for_Sensitive_Information_Sent_via_Unencrypted_Channels)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "8cff8f63-5dc2-4e48-9fd5-1914545a8b14",
+        "type": "custom",
+        "position": {
+          "x": 658,
+          "y": 9674
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Weak Encryption",
+          "description": "### WSTG-CRYP-04\n**Testing for Weak Encryption**\n\n#### Objectives\n- Provide a guideline for the identification weak encryption or hashing uses and implementations.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/09-Testing_for_Weak_Cryptography/04-Testing_for_Weak_Encryption)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 290,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe",
+        "type": "custom",
+        "position": {
+          "x": 322,
+          "y": 10317
+        },
+        "data": {
+          "expanded": false,
+          "name": "Business Logic Testing",
+          "description": "## WSTG-BUSL\n**Business Logic Testing**",
+          "status": "NOT_STARTED",
+          "tags": [
+            "category"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 254,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "03578368-e43b-4e38-9b85-4baa63adb5b7",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 9788
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test Business Logic Data Validation",
+          "description": "### WSTG-BUSL-01\n**Test Business Logic Data Validation**\n\n#### Objectives\n- Identify data injection points.\n- Validate that all checks are occurring on the backend and can't be bypassed.\n- Attempt to break the format of the expected data and analyze how the application is handling it.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/10-Business_Logic_Testing/01-Test_Business_Logic_Data_Validation)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "c082a9eb-7a7e-42f1-9771-f9cacd738c7d",
+        "type": "custom",
+        "position": {
+          "x": 651.5,
+          "y": 9910
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test Ability to Forge Requests",
+          "description": "### WSTG-BUSL-02\n**Test Ability to Forge Requests**\n\n#### Objectives\n- Review the project documentation looking for guessable, predictable, or hidden functionality of fields.\n- Insert logically valid data in order to bypass normal business logic workflow.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/10-Business_Logic_Testing/02-Test_Ability_to_Forge_Requests)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 303,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "a276d0bf-d01a-400d-ae7f-da4293f3cb04",
+        "type": "custom",
+        "position": {
+          "x": 681,
+          "y": 10024
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test Integrity Checks",
+          "description": "### WSTG-BUSL-03\n**Test Integrity Checks**\n\n#### Objectives\n- Review the project documentation for components of the system that move, store, or handle data.\n- Determine what type of data is logically acceptable by the component and what types the system should guard against.\n- Determine who should be allowed to modify or read that data in each component.\n- Attempt to insert, update, or delete data values used by each component that should not be allowed per the business logic workflow.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/10-Business_Logic_Testing/03-Test_Integrity_Checks)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 244,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "70f47486-2b8a-4956-9b3c-40690ffe7035",
+        "type": "custom",
+        "position": {
+          "x": 673.5,
+          "y": 10138
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test for Process Timing",
+          "description": "### WSTG-BUSL-04\n**Test for Process Timing**\n\n#### Objectives\n- Review the project documentation for system functionality that may be impacted by time.\n- Develop and execute misuse cases.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/10-Business_Logic_Testing/04-Test_for_Process_Timing)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 259,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "5875f34a-ba69-44f4-9714-19512ee42f63",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 10252
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test Number of Times a Function Can Be Used Limits",
+          "description": "### WSTG-BUSL-05\n**Test Number of Times a Function Can Be Used Limits**\n\n#### Objectives\n- Identify functions that must set limits to the times they can be called.\n- Assess if there is a logical limit set on the functions and if it is properly validated.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/10-Business_Logic_Testing/05-Test_Number_of_Times_a_Function_Can_Be_Used_Limits)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "8f7a7a3a-e0d5-40c1-8b45-8233244716c2",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 10374
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for the Circumvention of Work Flows",
+          "description": "### WSTG-BUSL-06\n**Testing for the Circumvention of Work Flows**\n\n#### Objectives\n- Review the project documentation for methods to skip or go through steps in the application process in a different order from the intended business logic flow.\n- Develop a misuse case and try to circumvent every logic flow identified.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/10-Business_Logic_Testing/06-Testing_for_the_Circumvention_of_Work_Flows)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "32cda95f-bac5-42b5-986c-dbb5eeb0888d",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 10496
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test Defenses Against Application Misuse",
+          "description": "### WSTG-BUSL-07\n**Test Defenses Against Application Misuse**\n\n#### Objectives\n- Generate notes from all tests conducted against the system.\n- Review which tests had a different functionality based on aggressive input.\n- Understand the defenses in place and verify if they are enough to protect the system against bypassing techniques.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/10-Business_Logic_Testing/07-Test_Defenses_Against_Application_Misuse)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "4d4f3e76-64b7-4cd3-8022-910f9d40195f",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 10618
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test Upload of Unexpected File Types",
+          "description": "### WSTG-BUSL-08\n**Test Upload of Unexpected File Types**\n\n#### Objectives\n- Review the project documentation for file types that are rejected by the system.\n- Verify that the unwelcomed file types are rejected and handled safely.\n- Verify that file batch uploads are secure and do not allow any bypass against the set security measures.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/10-Business_Logic_Testing/08-Test_Upload_of_Unexpected_File_Types)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "efddbdfd-70fa-4f4c-833f-d0d83544ed49",
+        "type": "custom",
+        "position": {
+          "x": 652,
+          "y": 10740
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test Upload of Malicious Files",
+          "description": "### WSTG-BUSL-09\n**Test Upload of Malicious Files**\n\n#### Objectives\n- Identify the file upload functionality.\n- Review the project documentation to identify what file types are considered acceptable, and what types would be considered dangerous or malicious.\n- If documentation is not available then consider what would be appropriate based on the purpose of the application.\n- Determine how the uploaded files are processed.\n- Obtain or create a set of malicious files for testing.\n- Try to upload the malicious files to the application and determine whether it is accepted and processed.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/10-Business_Logic_Testing/09-Test_Upload_of_Malicious_Files)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 302,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "95b35702-67ab-4566-a532-902fcd177437",
+        "type": "custom",
+        "position": {
+          "x": 661,
+          "y": 10854
+        },
+        "data": {
+          "expanded": false,
+          "name": "Test Payment Functionality",
+          "description": "### WSTG-BUSL-10\n**Test Payment Functionality**\n\n#### Objectives\n- Determine whether the business logic for the e-commerce functionality is robust.\n- Understand how the payment functionality works.\n- Determine whether the payment functionality is secure.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/10-Business_Logic_Testing/10-Test-Payment-Functionality)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 284,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "a0d73502-156a-441b-a1d8-b869e2552347",
+        "type": "custom",
+        "position": {
+          "x": 335,
+          "y": 11749
+        },
+        "data": {
+          "expanded": false,
+          "name": "Client-side Testing",
+          "description": "## WSTG-CLNT\n**Client-side Testing**",
+          "status": "NOT_STARTED",
+          "tags": [
+            "category"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 228,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "ae315ee6-a191-42e7-ac21-54dee8ecca4e",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 10968
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for DOM-Based Cross Site Scripting",
+          "description": "### WSTG-CLNT-01\n**Testing for DOM-Based Cross Site Scripting**\n\n#### Objectives\n- Identify DOM sinks.\n- Build payloads that pertain to every sink type.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/01-Testing_for_DOM-based_Cross_Site_Scripting)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "b6f50c8e-c90d-49c3-b62c-d03465de6929",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 11090
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for JavaScript Execution",
+          "description": "### WSTG-CLNT-02\n**Testing for JavaScript Execution**\n\n#### Objectives\n- Identify sinks and possible JavaScript injection points.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/02-Testing_for_JavaScript_Execution)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "3813851d-e5ca-42b4-890a-052ed3d44dfb",
+        "type": "custom",
+        "position": {
+          "x": 664,
+          "y": 11212
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for HTML Injection",
+          "description": "### WSTG-CLNT-03\n**Testing for HTML Injection**\n\n#### Objectives\n- Identify HTML injection points and assess the severity of the injected content.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/03-Testing_for_HTML_Injection)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 278,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "5ed60864-4e7d-4bef-aa52-ed0e9a03760c",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 11326
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Client-side URL Redirect",
+          "description": "### WSTG-CLNT-04\n**Testing for Client-side URL Redirect**\n\n#### Objectives\n- Identify injection points that handle URLs or paths.\n- Assess the locations that the system could redirect to.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/04-Testing_for_Client-side_URL_Redirect)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "742c739f-9227-47fd-9f91-e7673d1b2634",
+        "type": "custom",
+        "position": {
+          "x": 669.5,
+          "y": 11448
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for CSS Injection",
+          "description": "### WSTG-CLNT-05\n**Testing for CSS Injection**\n\n#### Objectives\n- Identify CSS injection points.\n- Assess the impact of the injection.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/05-Testing_for_CSS_Injection)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 267,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "122cd1bf-8c09-4e3e-8f75-e1260d3276ea",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 11562
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Client-side Resource Manipulation",
+          "description": "### WSTG-CLNT-06\n**Testing for Client-side Resource Manipulation**\n\n#### Objectives\n- Identify sinks with weak input validation.\n- Assess the impact of the resource manipulation.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/06-Testing_for_Client-side_Resource_Manipulation)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "cf2247a6-9d72-486d-9e18-a2ddf134880a",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 11684
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing Cross Origin Resource Sharing",
+          "description": "### WSTG-CLNT-07\n**Testing Cross Origin Resource Sharing**\n\n#### Objectives\n- Identify endpoints that implement CORS.\n- Ensure that the CORS configuration is secure or harmless.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/07-Testing_Cross_Origin_Resource_Sharing)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "b6f6f153-be33-4fd1-a821-26e60f10798e",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 11806
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Cross Site Flashing",
+          "description": "### WSTG-CLNT-08\n**Testing for Cross Site Flashing**\n\n#### Objectives\n- Decompile and analyze the application's code.\n- Assess sinks inputs and unsafe method usages.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/08-Testing_for_Cross_Site_Flashing)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "c2d17789-84c7-4fbc-8172-3b1513342b74",
+        "type": "custom",
+        "position": {
+          "x": 673,
+          "y": 11928
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Clickjacking",
+          "description": "### WSTG-CLNT-09\n**Testing for Clickjacking**\n\n#### Objectives\n- Assess application vulnerability to clickjacking attacks.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/09-Testing_for_Clickjacking)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 260,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "ee3300cc-12ba-4954-88fc-13a38227e792",
+        "type": "custom",
+        "position": {
+          "x": 684,
+          "y": 12042
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing WebSockets",
+          "description": "### WSTG-CLNT-10\n**Testing WebSockets**\n\n#### Objectives\n- Identify the usage of WebSockets.\n- Assess its implementation by using the same tests on normal HTTP channels.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/10-Testing_WebSockets)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 238,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "a5906fd1-8cf7-4310-b867-b83759abf6fc",
+        "type": "custom",
+        "position": {
+          "x": 673,
+          "y": 12156
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing Web Messaging",
+          "description": "### WSTG-CLNT-11\n**Testing Web Messaging**\n\n#### Objectives\n- Assess the security of the message's origin.\n- Validate that it's using safe methods and validating its input.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/11-Testing_Web_Messaging)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 260,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "53109c5e-904d-46d7-9acc-704139815350",
+        "type": "custom",
+        "position": {
+          "x": 670,
+          "y": 12270
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing Browser Storage",
+          "description": "### WSTG-CLNT-12\n**Testing Browser Storage**\n\n#### Objectives\n- Determine whether the website is storing sensitive data in client-side storage.\n- The code handling of the storage objects should be examined for possibilities of injection attacks, such as utilizing unvalidated input or vulnerable libraries.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/12-Testing_Browser_Storage)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 266,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "213af148-87c0-47c2-bd1b-3f25cf728a0d",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 12384
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Cross Site Script Inclusion",
+          "description": "### WSTG-CLNT-13\n**Testing for Cross Site Script Inclusion**\n\n#### Objectives\n- Locate sensitive data across the system.\n- Assess the leakage of sensitive data through various techniques.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/13-Testing_for_Cross_Site_Script_Inclusion)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "cb7ea4b7-edd1-48f6-bc4f-41e1437577ce",
+        "type": "custom",
+        "position": {
+          "x": 651,
+          "y": 12506
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing for Reverse Tabnabbing",
+          "description": "### WSTG-CLNT-14\n**Testing for Reverse Tabnabbing**\n\n#### Objectives\n- \n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/11-Client-side_Testing/14-Testing_for_Reverse_Tabnabbing)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 304,
+          "height": 72
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "7445e019-a4de-423d-a08b-d2a9da1b5800",
+        "type": "custom",
+        "position": {
+          "x": 359.5,
+          "y": 12685
+        },
+        "data": {
+          "expanded": false,
+          "name": "API Testing",
+          "description": "## WSTG-APIT\n**API Testing**",
+          "status": "NOT_STARTED",
+          "tags": [
+            "category"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 179,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "ea24e776-1b5a-4a9c-9c7e-ff914b354444",
+        "type": "custom",
+        "position": {
+          "x": 683.5,
+          "y": 12628
+        },
+        "data": {
+          "expanded": false,
+          "name": "API Reconnaissance",
+          "description": "### WSTG-APIT-01\n**API Reconnaissance**\n\n#### Objectives\n- Find all API endpoints supported by the backend server code, documented or undocumented.\n- Find all parameters for each endpoint supported by the backend server, documented or undocumented.\n- Discover interesting data related to APIs in HTML and JavaScript sent to clients.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/12-API_Testing/01-API_Reconnaissance)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 239,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      },
+      {
+        "id": "6f4b813d-6994-484d-a0ff-c4c593fd8f61",
+        "type": "custom",
+        "position": {
+          "x": 696,
+          "y": 12742
+        },
+        "data": {
+          "expanded": false,
+          "name": "Testing GraphQL",
+          "description": "### WSTG-APIT-99\n**Testing GraphQL**\n\n#### Objectives\n- Assess that a secure and production-ready configuration is deployed.\n- Validate all input fields against generic attacks.\n- Ensure that proper access controls are applied.\n\n[Reference](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/12-API_Testing/99-Testing_GraphQL)",
+          "status": "NOT_STARTED",
+          "tags": [
+            "test"
+          ],
+          "findings": []
+        },
+        "measured": {
+          "width": 214,
+          "height": 64
+        },
+        "style": {
+          "opacity": 1
+        },
+        "sourcePosition": "right",
+        "targetPosition": "left"
+      }
+    ],
+    "edges": [
+      {
+        "id": "897e4b7c-ba05-4b63-b013-efc60b61527e-6c30f401-5326-49f0-bc8f-88420d4ab90d",
+        "source": "897e4b7c-ba05-4b63-b013-efc60b61527e",
+        "target": "6c30f401-5326-49f0-bc8f-88420d4ab90d",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "6c30f401-5326-49f0-bc8f-88420d4ab90d-c6aada6a-9582-49c1-9c78-955e64da7e66",
+        "source": "6c30f401-5326-49f0-bc8f-88420d4ab90d",
+        "target": "c6aada6a-9582-49c1-9c78-955e64da7e66",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "6c30f401-5326-49f0-bc8f-88420d4ab90d-972c3486-e554-4764-83a4-9c1128f3f296",
+        "source": "6c30f401-5326-49f0-bc8f-88420d4ab90d",
+        "target": "972c3486-e554-4764-83a4-9c1128f3f296",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "6c30f401-5326-49f0-bc8f-88420d4ab90d-5efbfc9a-c576-43c7-97f0-bf5f28bb3646",
+        "source": "6c30f401-5326-49f0-bc8f-88420d4ab90d",
+        "target": "5efbfc9a-c576-43c7-97f0-bf5f28bb3646",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "6c30f401-5326-49f0-bc8f-88420d4ab90d-1c0a85d0-c9e9-407d-aada-4797ca9fb986",
+        "source": "6c30f401-5326-49f0-bc8f-88420d4ab90d",
+        "target": "1c0a85d0-c9e9-407d-aada-4797ca9fb986",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "6c30f401-5326-49f0-bc8f-88420d4ab90d-79728c6b-bb1a-434e-82b2-313c65801b73",
+        "source": "6c30f401-5326-49f0-bc8f-88420d4ab90d",
+        "target": "79728c6b-bb1a-434e-82b2-313c65801b73",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "6c30f401-5326-49f0-bc8f-88420d4ab90d-e5c0c74d-0419-407a-bbdc-b21d4d9f4a13",
+        "source": "6c30f401-5326-49f0-bc8f-88420d4ab90d",
+        "target": "e5c0c74d-0419-407a-bbdc-b21d4d9f4a13",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "6c30f401-5326-49f0-bc8f-88420d4ab90d-2ffc9af2-8144-473a-ad46-c196578e2f36",
+        "source": "6c30f401-5326-49f0-bc8f-88420d4ab90d",
+        "target": "2ffc9af2-8144-473a-ad46-c196578e2f36",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "6c30f401-5326-49f0-bc8f-88420d4ab90d-6e083fdc-311f-4523-992c-4d23bf6da3db",
+        "source": "6c30f401-5326-49f0-bc8f-88420d4ab90d",
+        "target": "6e083fdc-311f-4523-992c-4d23bf6da3db",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "6c30f401-5326-49f0-bc8f-88420d4ab90d-8fa91931-0f39-4e84-b45c-46714e10e9f7",
+        "source": "6c30f401-5326-49f0-bc8f-88420d4ab90d",
+        "target": "8fa91931-0f39-4e84-b45c-46714e10e9f7",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "6c30f401-5326-49f0-bc8f-88420d4ab90d-328f6961-cdf5-4b37-92ae-6d5aea081aaf",
+        "source": "6c30f401-5326-49f0-bc8f-88420d4ab90d",
+        "target": "328f6961-cdf5-4b37-92ae-6d5aea081aaf",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "897e4b7c-ba05-4b63-b013-efc60b61527e-4db23b88-7877-446f-8332-1795ba5f6fd7",
+        "source": "897e4b7c-ba05-4b63-b013-efc60b61527e",
+        "target": "4db23b88-7877-446f-8332-1795ba5f6fd7",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "4db23b88-7877-446f-8332-1795ba5f6fd7-a2f29bc4-a30b-490e-96a1-b5774ce809f3",
+        "source": "4db23b88-7877-446f-8332-1795ba5f6fd7",
+        "target": "a2f29bc4-a30b-490e-96a1-b5774ce809f3",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "4db23b88-7877-446f-8332-1795ba5f6fd7-77cadc5e-ca8a-454b-9d88-7752eb8b1e54",
+        "source": "4db23b88-7877-446f-8332-1795ba5f6fd7",
+        "target": "77cadc5e-ca8a-454b-9d88-7752eb8b1e54",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "4db23b88-7877-446f-8332-1795ba5f6fd7-0fc77043-8932-4149-b894-f010016aa743",
+        "source": "4db23b88-7877-446f-8332-1795ba5f6fd7",
+        "target": "0fc77043-8932-4149-b894-f010016aa743",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "4db23b88-7877-446f-8332-1795ba5f6fd7-abd12abe-1e28-4f17-875d-986a7dd063d5",
+        "source": "4db23b88-7877-446f-8332-1795ba5f6fd7",
+        "target": "abd12abe-1e28-4f17-875d-986a7dd063d5",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "4db23b88-7877-446f-8332-1795ba5f6fd7-3b786edf-0232-4b49-b3c3-817a783e06ca",
+        "source": "4db23b88-7877-446f-8332-1795ba5f6fd7",
+        "target": "3b786edf-0232-4b49-b3c3-817a783e06ca",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "4db23b88-7877-446f-8332-1795ba5f6fd7-5656f36a-b073-4da8-8603-4c269c2e8e76",
+        "source": "4db23b88-7877-446f-8332-1795ba5f6fd7",
+        "target": "5656f36a-b073-4da8-8603-4c269c2e8e76",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "4db23b88-7877-446f-8332-1795ba5f6fd7-ee9b480a-6b11-4c1b-9fcb-fa75b002c059",
+        "source": "4db23b88-7877-446f-8332-1795ba5f6fd7",
+        "target": "ee9b480a-6b11-4c1b-9fcb-fa75b002c059",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "4db23b88-7877-446f-8332-1795ba5f6fd7-8ecab029-2dbd-4085-bdde-6c479da21366",
+        "source": "4db23b88-7877-446f-8332-1795ba5f6fd7",
+        "target": "8ecab029-2dbd-4085-bdde-6c479da21366",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "4db23b88-7877-446f-8332-1795ba5f6fd7-361864ab-7148-4e7c-82e6-b1a35ba16dfb",
+        "source": "4db23b88-7877-446f-8332-1795ba5f6fd7",
+        "target": "361864ab-7148-4e7c-82e6-b1a35ba16dfb",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "4db23b88-7877-446f-8332-1795ba5f6fd7-9e5e6644-40e3-4beb-8ae7-86a7bce5319b",
+        "source": "4db23b88-7877-446f-8332-1795ba5f6fd7",
+        "target": "9e5e6644-40e3-4beb-8ae7-86a7bce5319b",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "4db23b88-7877-446f-8332-1795ba5f6fd7-4f82e74e-b89d-463d-8160-8384b874d312",
+        "source": "4db23b88-7877-446f-8332-1795ba5f6fd7",
+        "target": "4f82e74e-b89d-463d-8160-8384b874d312",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "4db23b88-7877-446f-8332-1795ba5f6fd7-3561bdbf-81ce-4e2d-925f-99337432e49b",
+        "source": "4db23b88-7877-446f-8332-1795ba5f6fd7",
+        "target": "3561bdbf-81ce-4e2d-925f-99337432e49b",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "4db23b88-7877-446f-8332-1795ba5f6fd7-a46578ee-230b-4e6a-af27-54a8520f6a01",
+        "source": "4db23b88-7877-446f-8332-1795ba5f6fd7",
+        "target": "a46578ee-230b-4e6a-af27-54a8520f6a01",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "897e4b7c-ba05-4b63-b013-efc60b61527e-a95b11cd-7645-4d41-b52f-9eac9dde1e8b",
+        "source": "897e4b7c-ba05-4b63-b013-efc60b61527e",
+        "target": "a95b11cd-7645-4d41-b52f-9eac9dde1e8b",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "a95b11cd-7645-4d41-b52f-9eac9dde1e8b-2c01a156-776a-4f93-b70a-86d16513308f",
+        "source": "a95b11cd-7645-4d41-b52f-9eac9dde1e8b",
+        "target": "2c01a156-776a-4f93-b70a-86d16513308f",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "a95b11cd-7645-4d41-b52f-9eac9dde1e8b-06f6a785-d238-4257-acee-a1698db8cf3d",
+        "source": "a95b11cd-7645-4d41-b52f-9eac9dde1e8b",
+        "target": "06f6a785-d238-4257-acee-a1698db8cf3d",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "a95b11cd-7645-4d41-b52f-9eac9dde1e8b-9dad779d-aea0-436b-a290-9c06a5edaab9",
+        "source": "a95b11cd-7645-4d41-b52f-9eac9dde1e8b",
+        "target": "9dad779d-aea0-436b-a290-9c06a5edaab9",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "a95b11cd-7645-4d41-b52f-9eac9dde1e8b-5a3a4362-daf0-4dd7-b579-e462ceb6480a",
+        "source": "a95b11cd-7645-4d41-b52f-9eac9dde1e8b",
+        "target": "5a3a4362-daf0-4dd7-b579-e462ceb6480a",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "a95b11cd-7645-4d41-b52f-9eac9dde1e8b-1a286e34-467a-4c8f-b87a-e5de5208b342",
+        "source": "a95b11cd-7645-4d41-b52f-9eac9dde1e8b",
+        "target": "1a286e34-467a-4c8f-b87a-e5de5208b342",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "897e4b7c-ba05-4b63-b013-efc60b61527e-c66e5d43-5841-45f3-9d4d-9ae74f530ab5",
+        "source": "897e4b7c-ba05-4b63-b013-efc60b61527e",
+        "target": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5-39a4e325-65bf-4353-95fb-790fc2ead221",
+        "source": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5",
+        "target": "39a4e325-65bf-4353-95fb-790fc2ead221",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5-cb9e9c18-bb40-4f57-90b9-a8145241754b",
+        "source": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5",
+        "target": "cb9e9c18-bb40-4f57-90b9-a8145241754b",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5-00cc6041-1139-4da0-a593-698ba5afeff7",
+        "source": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5",
+        "target": "00cc6041-1139-4da0-a593-698ba5afeff7",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5-4c5eb198-f27d-4476-84d4-92fe2a98c02d",
+        "source": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5",
+        "target": "4c5eb198-f27d-4476-84d4-92fe2a98c02d",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5-c9add13f-9293-47d1-a7a6-96834986f2c2",
+        "source": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5",
+        "target": "c9add13f-9293-47d1-a7a6-96834986f2c2",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5-4f2eccf9-b396-471c-8a51-2fe57f8319cc",
+        "source": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5",
+        "target": "4f2eccf9-b396-471c-8a51-2fe57f8319cc",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5-437e380b-78de-445c-aaa7-c6ba129255c3",
+        "source": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5",
+        "target": "437e380b-78de-445c-aaa7-c6ba129255c3",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5-85dd28ad-fb9d-41b2-a837-4be437b6f48f",
+        "source": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5",
+        "target": "85dd28ad-fb9d-41b2-a837-4be437b6f48f",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5-4b956e44-7762-48e2-8e1d-155abf32ac86",
+        "source": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5",
+        "target": "4b956e44-7762-48e2-8e1d-155abf32ac86",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5-0aeaea0e-4625-4ac6-b9d9-ca8f70725662",
+        "source": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5",
+        "target": "0aeaea0e-4625-4ac6-b9d9-ca8f70725662",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5-e035088f-77f2-4e05-bad6-f506e7be7ef7",
+        "source": "c66e5d43-5841-45f3-9d4d-9ae74f530ab5",
+        "target": "e035088f-77f2-4e05-bad6-f506e7be7ef7",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "897e4b7c-ba05-4b63-b013-efc60b61527e-63f02e07-6810-4919-9036-144a07ebb028",
+        "source": "897e4b7c-ba05-4b63-b013-efc60b61527e",
+        "target": "63f02e07-6810-4919-9036-144a07ebb028",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "63f02e07-6810-4919-9036-144a07ebb028-7c5136e6-084d-4df4-8722-63f9d54c153d",
+        "source": "63f02e07-6810-4919-9036-144a07ebb028",
+        "target": "7c5136e6-084d-4df4-8722-63f9d54c153d",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "63f02e07-6810-4919-9036-144a07ebb028-2bc4f853-45fc-4a4d-88ba-34025730bd32",
+        "source": "63f02e07-6810-4919-9036-144a07ebb028",
+        "target": "2bc4f853-45fc-4a4d-88ba-34025730bd32",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "63f02e07-6810-4919-9036-144a07ebb028-8718096c-5426-4679-93bd-69570260deb1",
+        "source": "63f02e07-6810-4919-9036-144a07ebb028",
+        "target": "8718096c-5426-4679-93bd-69570260deb1",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "63f02e07-6810-4919-9036-144a07ebb028-852a6453-9ca3-43f6-87e4-d21b7024cd98",
+        "source": "63f02e07-6810-4919-9036-144a07ebb028",
+        "target": "852a6453-9ca3-43f6-87e4-d21b7024cd98",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "63f02e07-6810-4919-9036-144a07ebb028-37e6c4d9-c889-4e59-9ff3-4d160891a258",
+        "source": "63f02e07-6810-4919-9036-144a07ebb028",
+        "target": "37e6c4d9-c889-4e59-9ff3-4d160891a258",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "897e4b7c-ba05-4b63-b013-efc60b61527e-2f9ea108-4b56-45de-a136-d7935e4e5da0",
+        "source": "897e4b7c-ba05-4b63-b013-efc60b61527e",
+        "target": "2f9ea108-4b56-45de-a136-d7935e4e5da0",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "2f9ea108-4b56-45de-a136-d7935e4e5da0-273bd69a-8f53-4c19-bd89-b8cf1628214b",
+        "source": "2f9ea108-4b56-45de-a136-d7935e4e5da0",
+        "target": "273bd69a-8f53-4c19-bd89-b8cf1628214b",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "2f9ea108-4b56-45de-a136-d7935e4e5da0-52980476-88ad-461e-95c5-5dc672b32f18",
+        "source": "2f9ea108-4b56-45de-a136-d7935e4e5da0",
+        "target": "52980476-88ad-461e-95c5-5dc672b32f18",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "2f9ea108-4b56-45de-a136-d7935e4e5da0-a21a8ad3-4222-45e7-b207-f033181c9146",
+        "source": "2f9ea108-4b56-45de-a136-d7935e4e5da0",
+        "target": "a21a8ad3-4222-45e7-b207-f033181c9146",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "2f9ea108-4b56-45de-a136-d7935e4e5da0-f2b5a8f1-d0f3-4340-9381-9b5a035624b7",
+        "source": "2f9ea108-4b56-45de-a136-d7935e4e5da0",
+        "target": "f2b5a8f1-d0f3-4340-9381-9b5a035624b7",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "2f9ea108-4b56-45de-a136-d7935e4e5da0-48408c3f-c0fb-4408-990f-ef9811f581ce",
+        "source": "2f9ea108-4b56-45de-a136-d7935e4e5da0",
+        "target": "48408c3f-c0fb-4408-990f-ef9811f581ce",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "2f9ea108-4b56-45de-a136-d7935e4e5da0-6cf3759f-01f4-41da-ad00-523f4ec776f5",
+        "source": "2f9ea108-4b56-45de-a136-d7935e4e5da0",
+        "target": "6cf3759f-01f4-41da-ad00-523f4ec776f5",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "2f9ea108-4b56-45de-a136-d7935e4e5da0-91d99b44-6063-4e63-8d2c-6d916af4e657",
+        "source": "2f9ea108-4b56-45de-a136-d7935e4e5da0",
+        "target": "91d99b44-6063-4e63-8d2c-6d916af4e657",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "2f9ea108-4b56-45de-a136-d7935e4e5da0-ef148ce0-485b-46d6-95d6-03ba270fea6a",
+        "source": "2f9ea108-4b56-45de-a136-d7935e4e5da0",
+        "target": "ef148ce0-485b-46d6-95d6-03ba270fea6a",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "2f9ea108-4b56-45de-a136-d7935e4e5da0-62bee498-0409-4a9f-b768-48843cc914c8",
+        "source": "2f9ea108-4b56-45de-a136-d7935e4e5da0",
+        "target": "62bee498-0409-4a9f-b768-48843cc914c8",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "2f9ea108-4b56-45de-a136-d7935e4e5da0-961c2cfe-fc46-4677-a110-4b440a2b91f8",
+        "source": "2f9ea108-4b56-45de-a136-d7935e4e5da0",
+        "target": "961c2cfe-fc46-4677-a110-4b440a2b91f8",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "2f9ea108-4b56-45de-a136-d7935e4e5da0-94cda120-a291-4092-8269-cc76215e126d",
+        "source": "2f9ea108-4b56-45de-a136-d7935e4e5da0",
+        "target": "94cda120-a291-4092-8269-cc76215e126d",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "897e4b7c-ba05-4b63-b013-efc60b61527e-17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "source": "897e4b7c-ba05-4b63-b013-efc60b61527e",
+        "target": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-cd18bc22-2c01-4fef-95a3-96ce9ae9845d",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "cd18bc22-2c01-4fef-95a3-96ce9ae9845d",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-462ed17e-f495-42a5-9dd8-1a64ae3bc2f8",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "462ed17e-f495-42a5-9dd8-1a64ae3bc2f8",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-c62e320e-e560-4488-b68d-f7713be7dbe4",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "c62e320e-e560-4488-b68d-f7713be7dbe4",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-e984aaa3-8b46-4215-8bbe-bed917ce7145",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "e984aaa3-8b46-4215-8bbe-bed917ce7145",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-e8a1faae-69aa-4722-968d-835a18cb964d",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "e8a1faae-69aa-4722-968d-835a18cb964d",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-4aacf4ae-783e-45b3-a3a5-9793dc06fc1f",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "4aacf4ae-783e-45b3-a3a5-9793dc06fc1f",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-7840274d-92e9-4cee-b869-0542cd27f997",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "7840274d-92e9-4cee-b869-0542cd27f997",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-b92b02b7-7e5e-4ae3-9138-58d06fcbef36",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "b92b02b7-7e5e-4ae3-9138-58d06fcbef36",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-c40ed1bb-dfdb-4f06-b5bf-7f74e6db2795",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "c40ed1bb-dfdb-4f06-b5bf-7f74e6db2795",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-d350cde8-8e56-45d6-b05a-6c06aaffcd24",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "d350cde8-8e56-45d6-b05a-6c06aaffcd24",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-4e5cb4cb-0540-4510-a2a3-debd6e34b871",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "4e5cb4cb-0540-4510-a2a3-debd6e34b871",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-263399e7-06de-4ace-a56b-3e9794d0091a",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "263399e7-06de-4ace-a56b-3e9794d0091a",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-fefda258-1b71-4aec-9680-0e77df71ae7f",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "fefda258-1b71-4aec-9680-0e77df71ae7f",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-68a27ff8-6231-49e4-988c-c66f5db52ea3",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "68a27ff8-6231-49e4-988c-c66f5db52ea3",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-c1415600-c04a-4ba1-9acf-36cdd0f40d3e",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "c1415600-c04a-4ba1-9acf-36cdd0f40d3e",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-6b444a23-16a7-4855-8bbd-fc59d2b769f1",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "6b444a23-16a7-4855-8bbd-fc59d2b769f1",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-418751f3-af3c-456a-b3f9-381cf0500403",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "418751f3-af3c-456a-b3f9-381cf0500403",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-12ec5a1b-3f7b-42f7-96a2-17f84a1afaa2",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "12ec5a1b-3f7b-42f7-96a2-17f84a1afaa2",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-bdf757d2-7382-412f-ba31-78db332454aa",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "bdf757d2-7382-412f-ba31-78db332454aa",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-91ab2d80-ac87-4c99-b806-bfa053dd7cc9",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "91ab2d80-ac87-4c99-b806-bfa053dd7cc9",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "17d12860-b272-4d98-b6b7-ac86f26d05b0-785378fe-fcf9-463a-b73a-2e21ab68578a",
+        "source": "17d12860-b272-4d98-b6b7-ac86f26d05b0",
+        "target": "785378fe-fcf9-463a-b73a-2e21ab68578a",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "897e4b7c-ba05-4b63-b013-efc60b61527e-50da5897-db3b-44b1-8b61-94285cfe186c",
+        "source": "897e4b7c-ba05-4b63-b013-efc60b61527e",
+        "target": "50da5897-db3b-44b1-8b61-94285cfe186c",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "50da5897-db3b-44b1-8b61-94285cfe186c-06ecc21d-d0f3-4a27-8b95-239e1d8999ce",
+        "source": "50da5897-db3b-44b1-8b61-94285cfe186c",
+        "target": "06ecc21d-d0f3-4a27-8b95-239e1d8999ce",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "50da5897-db3b-44b1-8b61-94285cfe186c-e2f1c548-62bf-41bf-9881-ae6e17dfa69b",
+        "source": "50da5897-db3b-44b1-8b61-94285cfe186c",
+        "target": "e2f1c548-62bf-41bf-9881-ae6e17dfa69b",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "897e4b7c-ba05-4b63-b013-efc60b61527e-f7835a8f-3c06-4a39-b5a9-0c402e5439cb",
+        "source": "897e4b7c-ba05-4b63-b013-efc60b61527e",
+        "target": "f7835a8f-3c06-4a39-b5a9-0c402e5439cb",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "f7835a8f-3c06-4a39-b5a9-0c402e5439cb-a794c98e-b90f-4bae-87ec-306eb6ee12a5",
+        "source": "f7835a8f-3c06-4a39-b5a9-0c402e5439cb",
+        "target": "a794c98e-b90f-4bae-87ec-306eb6ee12a5",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "f7835a8f-3c06-4a39-b5a9-0c402e5439cb-f1cbb879-f710-4498-a87c-d891a7236489",
+        "source": "f7835a8f-3c06-4a39-b5a9-0c402e5439cb",
+        "target": "f1cbb879-f710-4498-a87c-d891a7236489",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "f7835a8f-3c06-4a39-b5a9-0c402e5439cb-aae02d7c-7af4-4467-a42f-db171ec57ade",
+        "source": "f7835a8f-3c06-4a39-b5a9-0c402e5439cb",
+        "target": "aae02d7c-7af4-4467-a42f-db171ec57ade",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "f7835a8f-3c06-4a39-b5a9-0c402e5439cb-8cff8f63-5dc2-4e48-9fd5-1914545a8b14",
+        "source": "f7835a8f-3c06-4a39-b5a9-0c402e5439cb",
+        "target": "8cff8f63-5dc2-4e48-9fd5-1914545a8b14",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "897e4b7c-ba05-4b63-b013-efc60b61527e-65e701d6-08c1-494a-a6fa-fc89d0dcf5fe",
+        "source": "897e4b7c-ba05-4b63-b013-efc60b61527e",
+        "target": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe-03578368-e43b-4e38-9b85-4baa63adb5b7",
+        "source": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe",
+        "target": "03578368-e43b-4e38-9b85-4baa63adb5b7",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe-c082a9eb-7a7e-42f1-9771-f9cacd738c7d",
+        "source": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe",
+        "target": "c082a9eb-7a7e-42f1-9771-f9cacd738c7d",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe-a276d0bf-d01a-400d-ae7f-da4293f3cb04",
+        "source": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe",
+        "target": "a276d0bf-d01a-400d-ae7f-da4293f3cb04",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe-70f47486-2b8a-4956-9b3c-40690ffe7035",
+        "source": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe",
+        "target": "70f47486-2b8a-4956-9b3c-40690ffe7035",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe-5875f34a-ba69-44f4-9714-19512ee42f63",
+        "source": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe",
+        "target": "5875f34a-ba69-44f4-9714-19512ee42f63",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe-8f7a7a3a-e0d5-40c1-8b45-8233244716c2",
+        "source": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe",
+        "target": "8f7a7a3a-e0d5-40c1-8b45-8233244716c2",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe-32cda95f-bac5-42b5-986c-dbb5eeb0888d",
+        "source": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe",
+        "target": "32cda95f-bac5-42b5-986c-dbb5eeb0888d",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe-4d4f3e76-64b7-4cd3-8022-910f9d40195f",
+        "source": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe",
+        "target": "4d4f3e76-64b7-4cd3-8022-910f9d40195f",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe-efddbdfd-70fa-4f4c-833f-d0d83544ed49",
+        "source": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe",
+        "target": "efddbdfd-70fa-4f4c-833f-d0d83544ed49",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe-95b35702-67ab-4566-a532-902fcd177437",
+        "source": "65e701d6-08c1-494a-a6fa-fc89d0dcf5fe",
+        "target": "95b35702-67ab-4566-a532-902fcd177437",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "897e4b7c-ba05-4b63-b013-efc60b61527e-a0d73502-156a-441b-a1d8-b869e2552347",
+        "source": "897e4b7c-ba05-4b63-b013-efc60b61527e",
+        "target": "a0d73502-156a-441b-a1d8-b869e2552347",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "a0d73502-156a-441b-a1d8-b869e2552347-ae315ee6-a191-42e7-ac21-54dee8ecca4e",
+        "source": "a0d73502-156a-441b-a1d8-b869e2552347",
+        "target": "ae315ee6-a191-42e7-ac21-54dee8ecca4e",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "a0d73502-156a-441b-a1d8-b869e2552347-b6f50c8e-c90d-49c3-b62c-d03465de6929",
+        "source": "a0d73502-156a-441b-a1d8-b869e2552347",
+        "target": "b6f50c8e-c90d-49c3-b62c-d03465de6929",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "a0d73502-156a-441b-a1d8-b869e2552347-3813851d-e5ca-42b4-890a-052ed3d44dfb",
+        "source": "a0d73502-156a-441b-a1d8-b869e2552347",
+        "target": "3813851d-e5ca-42b4-890a-052ed3d44dfb",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "a0d73502-156a-441b-a1d8-b869e2552347-5ed60864-4e7d-4bef-aa52-ed0e9a03760c",
+        "source": "a0d73502-156a-441b-a1d8-b869e2552347",
+        "target": "5ed60864-4e7d-4bef-aa52-ed0e9a03760c",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "a0d73502-156a-441b-a1d8-b869e2552347-742c739f-9227-47fd-9f91-e7673d1b2634",
+        "source": "a0d73502-156a-441b-a1d8-b869e2552347",
+        "target": "742c739f-9227-47fd-9f91-e7673d1b2634",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "a0d73502-156a-441b-a1d8-b869e2552347-122cd1bf-8c09-4e3e-8f75-e1260d3276ea",
+        "source": "a0d73502-156a-441b-a1d8-b869e2552347",
+        "target": "122cd1bf-8c09-4e3e-8f75-e1260d3276ea",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "a0d73502-156a-441b-a1d8-b869e2552347-cf2247a6-9d72-486d-9e18-a2ddf134880a",
+        "source": "a0d73502-156a-441b-a1d8-b869e2552347",
+        "target": "cf2247a6-9d72-486d-9e18-a2ddf134880a",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "a0d73502-156a-441b-a1d8-b869e2552347-b6f6f153-be33-4fd1-a821-26e60f10798e",
+        "source": "a0d73502-156a-441b-a1d8-b869e2552347",
+        "target": "b6f6f153-be33-4fd1-a821-26e60f10798e",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "a0d73502-156a-441b-a1d8-b869e2552347-c2d17789-84c7-4fbc-8172-3b1513342b74",
+        "source": "a0d73502-156a-441b-a1d8-b869e2552347",
+        "target": "c2d17789-84c7-4fbc-8172-3b1513342b74",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "a0d73502-156a-441b-a1d8-b869e2552347-ee3300cc-12ba-4954-88fc-13a38227e792",
+        "source": "a0d73502-156a-441b-a1d8-b869e2552347",
+        "target": "ee3300cc-12ba-4954-88fc-13a38227e792",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "a0d73502-156a-441b-a1d8-b869e2552347-a5906fd1-8cf7-4310-b867-b83759abf6fc",
+        "source": "a0d73502-156a-441b-a1d8-b869e2552347",
+        "target": "a5906fd1-8cf7-4310-b867-b83759abf6fc",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "a0d73502-156a-441b-a1d8-b869e2552347-53109c5e-904d-46d7-9acc-704139815350",
+        "source": "a0d73502-156a-441b-a1d8-b869e2552347",
+        "target": "53109c5e-904d-46d7-9acc-704139815350",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "a0d73502-156a-441b-a1d8-b869e2552347-213af148-87c0-47c2-bd1b-3f25cf728a0d",
+        "source": "a0d73502-156a-441b-a1d8-b869e2552347",
+        "target": "213af148-87c0-47c2-bd1b-3f25cf728a0d",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "a0d73502-156a-441b-a1d8-b869e2552347-cb7ea4b7-edd1-48f6-bc4f-41e1437577ce",
+        "source": "a0d73502-156a-441b-a1d8-b869e2552347",
+        "target": "cb7ea4b7-edd1-48f6-bc4f-41e1437577ce",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "897e4b7c-ba05-4b63-b013-efc60b61527e-7445e019-a4de-423d-a08b-d2a9da1b5800",
+        "source": "897e4b7c-ba05-4b63-b013-efc60b61527e",
+        "target": "7445e019-a4de-423d-a08b-d2a9da1b5800",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "7445e019-a4de-423d-a08b-d2a9da1b5800-ea24e776-1b5a-4a9c-9c7e-ff914b354444",
+        "source": "7445e019-a4de-423d-a08b-d2a9da1b5800",
+        "target": "ea24e776-1b5a-4a9c-9c7e-ff914b354444",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      },
+      {
+        "id": "7445e019-a4de-423d-a08b-d2a9da1b5800-6f4b813d-6994-484d-a0ff-c4c593fd8f61",
+        "source": "7445e019-a4de-423d-a08b-d2a9da1b5800",
+        "target": "6f4b813d-6994-484d-a0ff-c4c593fd8f61",
+        "type": "default",
+        "style": {
+          "opacity": 1
+        }
+      }
+    ]
+  }

@@ -1,0 +1,9 @@
+{
+    "type": "template",
+    "path": "standard-owasp-asvs",
+    "name": "Official OWASP ASVS Template",
+    "description": "OWASP Application Security Verification Standard (ASVS)",
+    "tags": ["web", "guide", "owasp"],
+    "version": "4.0.3",
+    "author": "PenFlow"
+}

@@ -1,0 +1,9 @@
+{
+    "type": "template",
+    "path": "standard-owstg",
+    "name": "Official OWASP STG Template",
+    "description": "OWASP Security testing guide (official)",
+    "tags": ["web", "guide", "owasp"],
+    "version": "5.0.0",
+    "author": "PenFlow"
+}
