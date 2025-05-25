@@ -1,0 +1,9 @@
+{
+    "type": "template",
+    "path": "standard-omastg-ios",
+    "name": "Official OWASP MASTG Template (iOS)",
+    "description": "OWASP Mobile Application Security Testing Guide beta (official) for iOS",
+    "tags": ["mobile", "guide", "owasp", "ios"],
+    "version": "1.0.0",
+    "author": "PenFlow"
+}

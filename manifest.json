@@ -29,6 +29,24 @@
             "tags": ["ios", "forensic", "penflow"],
             "version": "1.0.0",
             "author": "PenFlow"
-        }   
+        },
+        {
+            "id": "standard-omastg-android",
+            "path": "standard-omastg-android",
+            "name": "Official OWASP MASTG Template (Android)",
+            "description": "OWASP Mobile Application Security Testing Guide (official)",
+            "tags": ["mobile", "guide", "owasp"],
+            "version": "1.0.0",
+            "author": "PenFlow"
+        },
+        {
+            "id": "standard-omastg-ios",
+            "path": "standard-omastg-ios",
+            "name": "Official OWASP MASTG Template (iOS)",
+            "description": "OWASP Mobile Application Security Testing Guide (official)",
+            "tags": ["mobile", "guide", "owasp"],
+            "version": "1.0.0",
+            "author": "PenFlow"
+        }
     ]
 }

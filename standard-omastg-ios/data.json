@@ -1,0 +1,908 @@
+{
+  "nodes": [
+    {
+      "id": "category-masvs-auth",
+      "type": "custom",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "data": {
+        "name": "MASVS-AUTH",
+        "description": "## AUTH\\n**OWASP MASVS Category**",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false
+        },
+        "tags": [
+          "category"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0266",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 120
+      },
+      "data": {
+        "name": "References to APIs for Event-Bound Biometric Authentication",
+        "description": "",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "static",
+          "weakness": "MASWE-0044"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0267",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 240
+      },
+      "data": {
+        "name": "Runtime Use Of Event-Bound Biometric Authentication",
+        "description": "",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "dynamic",
+          "weakness": "MASWE-0044"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "dynamic"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0268",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 360
+      },
+      "data": {
+        "name": "References to APIs Allowing Fallback to Non-Biometric Authentication",
+        "description": "",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "static",
+          "weakness": "MASWE-0045"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0269",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 480
+      },
+      "data": {
+        "name": "Runtime Use Of APIs Allowing Fallback to Non-Biometric Authentication",
+        "description": "",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "dynamic",
+          "weakness": "MASWE-0045"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "dynamic"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0270",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 600
+      },
+      "data": {
+        "name": "References to APIs Detecting Biometric Enrollment Changes",
+        "description": "",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "static",
+          "weakness": "MASWE-0046"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0271",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 720
+      },
+      "data": {
+        "name": "Runtime Use Of APIs Detecting Biometric Enrollment Changes",
+        "description": "",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "static",
+          "weakness": "MASWE-0046"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "category-masvs-code",
+      "type": "custom",
+      "position": {
+        "x": 0,
+        "y": 840
+      },
+      "data": {
+        "name": "MASVS-CODE",
+        "description": "## CODE\\n**OWASP MASVS Category**",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false
+        },
+        "tags": [
+          "category"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0228",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 960
+      },
+      "data": {
+        "name": "Position Independent Code (PIC) not Enabled",
+        "description": "## Overview\n\n[PIE (Position Independent Executables)](../../../Document/0x04h-Testing-Code-Quality.md/#position-independent-code) are designed to enhance security by allowing executables to be loaded at random memory addresses, mitigating certain types of attacks.\n\nIn the context Mach-O file format of iOS applications:\n\n- PIE is applicable to executables with the `MH_EXECUTE` file type, which essentially means the main app binary (e.g. `YourApp.app/YourApp`).\n- Shared libraries with the `MH_DYLIB` file type (dylibs and frameworks) are inherently position-independent and do not utilize the `MH_PIE` flag.\n\nThis test case checks if the main executable is compiled with PIE.\n\n## Steps\n\n1. Extract the application and identify the main binary ([@MASTG-TECH-0054](https://mas.owasp.org/MASTG/techniques/ios/MASTG-TECH-0054/)).\n2. Run [@MASTG-TECH-0118](https://mas.owasp.org/MASTG/techniques/ios/MASTG-TECH-0118/) on the main binary and grep for \"pic\" or the corresponding keyword used by the selected tool.\n\n## Observation\n\nThe output should list if PIC is enabled or disabled.\n\n## Evaluation\n\nThe test case fails if PIC is disabled.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "static",
+          "weakness": "MASWE-0116"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0229",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 1080
+      },
+      "data": {
+        "name": "Stack Canaries Not enabled",
+        "description": "## Overview\n\nThis test case checks if the main binary or any libraries of the app are compiled without stack canaries and therefore lack [stack smashing protection](../../../Document/0x06i-Testing-Code-Quality-and-Build-Settings.md/#binary-protection-mechanisms), a common mitigation technique against buffer overflow attacks.\n\nThis test applies to all binaries and libraries:\n\n- It is especially important for non-memory safe languages like Objective-C or C/C++.\n- For pure Swift apps, checking for stack canaries can be usually skipped, as Swift is considered a memory safe by design and conventional parsing techniques cannot detect stack canaries in Swift binaries (see the \"canary – exceptions\" section of this [blog post](https://sensepost.com/blog/2021/on-ios-binary-protections/)).\n\nTo differentiate between Objective-C and Swift binaries, you can inspect the imports and linked libraries. Detecting Objective-C binaries is straightforward, but detecting pure Swift binaries is more challenging because depending on the Swift version and compiler settings, the binary may still contain Objective-C symbols or libraries. See the \"identifying objc vs swift\" section of this [blog post](https://sensepost.com/blog/2021/on-ios-binary-protections/) for more details.\n\n## Steps\n\n1. Extract the application and identify the main binary ([@MASTG-TECH-0054](https://mas.owasp.org/MASTG/techniques/ios/MASTG-TECH-0054/)).\n2. Identify all shared libraries ([@MASTG-TECH-0082](https://mas.owasp.org/MASTG/techniques/ios/MASTG-TECH-0082/)).\n3. Run [@MASTG-TECH-0118](https://mas.owasp.org/MASTG/techniques/ios/MASTG-TECH-0118/) on the main binary and each shared library.\n4. If the output contains the symbol `__stack_chk_fail` it indicates stack canaries are enabled.\n\n## Observation\n\nThe output should contain a list of symbols of the main binary and each shared library.\n\n## Evaluation\n\nThe test case fails any binary or library is not purely Swift but does not contain methods indicating stack canaries like `objc_autorelease` or `objc_retainAutorelease`.\n\n**Note:** Checking for the `__stack_chk_fail` symbol only indicates that stack smashing protection is enabled somewhere in the app. While stack canaries are typically enabled or disabled for the entire binary, there may be corner cases where only parts of the application are protected. For example, if the app developer statically links a library with stack smashing protection enabled, but disables it for the entire application.\n\nIf you want to be sure that specific security-critical methods are sufficiently protected, you need to reverse-engineer each of them and manually check for stack smashing protection.\n\nWhen evaluating this please note that there are potential **expected false positives** for which the test case should be considered as passed. To be certain for these cases, they require manual review of the original source code and the compilation flags used.\n\nThe following examples cover some of the false positive cases that might be encountered:\n\n### Use of Memory Safe Languages\n\nThe Flutter framework does not use stack canaries because of the way [Dart mitigates buffer overflows](https://docs.flutter.dev/reference/security-false-positives#shared-objects-should-use-stack-canary-values).\n\n### Compiler Optimizations\n\nSometimes, due to the size of the library and the optimizations applied by the compiler, it might be possible that the library was originally compiled with stack canaries but they were optimized out. For example, this is the case for some [react native apps](https://github.com/facebook/react-native/issues/36870#issuecomment-1714007068). They are built with `-fstack-protector-strong` but when attempting to search for `stack_chk_fail` inside the binary files, it is not found. The React Native developers in this case declare that they won't be adding `-fstack-protector-all` as, in their case, [they consider that doing so will add a performance hit for no effective security gain](https://github.com/facebook/react-native/issues/36870#issuecomment-1714007068).",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "static",
+          "weakness": "MASWE-0116"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0230",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 1200
+      },
+      "data": {
+        "name": "Automatic Reference Counting (ARC) not enabled",
+        "description": "## Overview\n\nThis test case checks if [ARC (Automatic Reference Counting)](../../../Document/0x04h-Testing-Code-Quality.md/#automatic-reference-counting) is enabled in iOS apps. ARC is a compiler feature in Objective-C and Swift that automates memory management, reducing the likelihood of memory leaks and other related issues. Enabling ARC is crucial for maintaining the security and stability of iOS applications.\n\n- **Objective-C Code:** ARC can be enabled by compiling with the `-fobjc-arc` flag in Clang.\n- **Swift Code:** ARC is enabled by default.\n- **C/C++ Code:** ARC is not applicable, as it pertains specifically to Objective-C and Swift.\n\nWhen ARC is enabled, binaries will include symbols such as `objc_autorelease` or `objc_retainAutorelease`.\n\n## Steps\n\n1. Extract the application and identify the main binary ([@MASTG-TECH-0054](https://mas.owasp.org/MASTG/techniques/ios/MASTG-TECH-0054/)).\n2. Identify all shared libraries ([@MASTG-TECH-0082](https://mas.owasp.org/MASTG/techniques/ios/MASTG-TECH-0082/)).\n3. Run [@MASTG-TECH-0118](https://mas.owasp.org/MASTG/techniques/ios/MASTG-TECH-0118/) on the main binary and each shared library looking for ARC symbols like `objc_autorelease` or `objc_retainAutorelease`.\n\n## Observation\n\nThe output should contain a list of symbols of the main binary and each shared library.\n\n## Evaluation\n\nThe test fails if any binary or library containing Objective-C or Swift code is missing ARC-related symbols. The presence of symbols such as `_objc_msgSend` (Objective-C) or `_swift_allocObject` (Swift) without corresponding ARC symbols indicates that ARC may not be enabled.\n\n**Note:** Checking for these symbols only indicates that ARC is enabled somewhere in the app. While ARC is typically enabled or disabled for the entire binary, there can be corner cases where only parts of the application or libraries are protected. For example, if the app developer statically links a library that has ARC enabled, but disables it for the entire application.\n\nIf you want to be sure that specific security-critical methods are adequately protected, you need to reverse-engineer each of them and manually check for ARC, or request the source code from the developer.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "static",
+          "weakness": "MASWE-0116"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0273",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 1320
+      },
+      "data": {
+        "name": "Identify Dependencies with Known Vulnerabilities by Scanning Dependency Managers Artifacts",
+        "description": "## Overview\n\nIn this test case we are identifying dependencies with known vulnerabilities in iOS. Dependencies are integrated through dependency managers, and there might be one or more of them being used. We therefore need all of the relevant artifacts created by them to analyse them with a SCA scanning tool.\n\n## Steps\n\n1. In order to do this in the most efficient way you would need to ask the developer(s) which dependency managers are being used and to share the relevant file(s) created by them. Follow [@MASTG-TECH-0133](https://mas.owasp.org/MASTG/techniques/ios/MASTG-TECH-0133/) for on overview of the package managers and request for the relevant files.\n\n2. Run a SCA analysis tool such as [@MASTG-TOOL-0131](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0131/) against the file(s) created by the dependency manager(s) and look for the use of vulnerable dependencies.\n\n## Observation\n\nThe output should include the dependency name and the CVE identifiers for any dependency with known vulnerabilities.\n\n## Evaluation\n\nThe test case fails if you can find dependencies with known vulnerabilities.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "static",
+          "weakness": "MASWE-0076"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0275",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 1440
+      },
+      "data": {
+        "name": "Dependencies with Known Vulnerabilities in the App's SBOM",
+        "description": "## Overview\n\nThis test case checks for dependencies with known vulnerabilities in iOS applications by using a Software Bill of Materials (SBOM). The SBOM should be in CycloneDX format, which is a standard for describing the components and dependencies of software.\n\n## Steps\n\n1. Either ask the development team to share a SBOM in CycloneDX format, or, if you have access to the original source code, create one following [@MASTG-TECH-0132](https://mas.owasp.org/MASTG/techniques/ios/MASTG-TECH-0132/).\n2. Upload the SBOM to [@MASTG-TOOL-0132](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0132/).\n3. Inspect the [@MASTG-TOOL-0132](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0132/) project for the use of vulnerable dependencies.\n\n## Observation\n\nThe output should include a list of dependencies with names and CVE identifiers, if any.\n\n## Evaluation\n\nThe test case fails if you can find dependencies with known vulnerabilities.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "static",
+          "weakness": "MASWE-0076"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "category-masvs-crypto",
+      "type": "custom",
+      "position": {
+        "x": 0,
+        "y": 1560
+      },
+      "data": {
+        "name": "MASVS-CRYPTO",
+        "description": "## CRYPTO\\n**OWASP MASVS Category**",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false
+        },
+        "tags": [
+          "category"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0209",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 1680
+      },
+      "data": {
+        "name": "Inappropriate Key Sizes",
+        "description": "## Overview\n\nIn this test case, we will look for the use inappropriate key sizes in iOS apps. To do this, we need to focus on the cryptographic frameworks and libraries that are available in iOS and the methods that are used to generate cryptographic keys.\n\n- **CommonCrypto**: The [`CCCrypt`](https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man3/CCCrypt.3cc.html) function is used for symmetric encryption and decryption and specifies the key size or key length in its fifth parameter `keyLength`.\n- **Security**: The [`SecKeyCreateRandomKey`](https://developer.apple.com/documentation/security/1823694-seckeycreaterandomkey) function is used to generate a random key using certain attributes including [`kSecAttrKeyType`](https://developer.apple.com/documentation/security/ksecattrkeytype) and [`kSecAttrKeySizeInBits`](https://developer.apple.com/documentation/security/ksecattrkeysizeinbits). The [`SecKeyGeneratePair`](https://developer.apple.com/documentation/security/1395339-seckeygeneratepair) function is deprecated in iOS 16.\n- **CryptoKit**: The [`AES.GCM`](https://developer.apple.com/documentation/cryptokit/aes/gcm) and [`ChaChaPoly`](https://developer.apple.com/documentation/cryptokit/chachapoly) classes are used for symmetric encryption and decryption.\n\nSince you don't usually generate keys directly in CryptoKit (the library does that for you automatically), we'll focus on the CommonCrypto and Security libraries in this test.\n\n## Steps\n\n1. Run a static analysis tool such as [@MASTG-TOOL-0073](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0073/) on the app binary, or use a dynamic analysis tool like [@MASTG-TOOL-0039](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0039/), and look for uses of the cryptographic functions that generate keys.\n\n## Observation\n\nThe output should contain the disassembled code of the functions using `CCCrypt` or other cryptographic functions.\n\n## Evaluation\n\nThe test case fails if you can find the use of inappropriate key sizes within the source code. For example, a 1024-bit key size is considered weak for RSA encryption and a 128-bit key size is considered weak for AES encryption considering quantum computing attacks.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "static",
+          "weakness": "MASWE-0009"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0210",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 1800
+      },
+      "data": {
+        "name": "Weak Encryption Algorithms",
+        "description": "## Overview\n\nTo test for the use of weak encryption algorithms in iOS apps, we need to focus on methods from cryptographic frameworks and libraries that are used to perform encryption and decryption operations.\n\n- **CommonCrypto**: The [`CCCrypt`](https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man3/CCCrypt.3cc.html) function is used for **symmetric algorithms** and specifies the algorithm in its second parameter `alg`. This includes:\n    - `kCCAlgorithmAES128`\n    - `kCCAlgorithmDES`\n    - `kCCAlgorithm3DES`\n    - `kCCAlgorithmCAST`\n    - `kCCAlgorithmRC4`\n    - `kCCAlgorithmRC2`\n\n- **CryptoKit**: This library does not support weak encryption algorithms. It supports the following **symmetric algorithms**:\n    - `AES.GCM`\n    - `ChaChaPoly`\n\nNote: the **Security** framework only supports asymmetric algorithms and is therefore out of scope for this test (see [note about symmetric keys](https://developer.apple.com/documentation/security/certificate_key_and_trust_services/keys/generating_new_cryptographic_keys#2863931)).\n\n## Steps\n\n1. Run a static analysis tool such as [@MASTG-TOOL-0073](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0073/) on the app binary, or use a dynamic analysis tool like [@MASTG-TOOL-0039](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0039/), and look for uses of the cryptographic functions that perform encryption and decryption operations.\n\n## Observation\n\nThe output should contain the disassembled code of the functions using the relevant cryptographic functions.\n\n## Evaluation\n\nThe test case fails if you can find the use of weak encryption algorithms within the source code. For example:\n\n- DES\n- 3DES\n- RC2\n- RC4\n\n**Stay up-to-date**: This is a non-exhaustive list of weak algorithms. Make sure to check the latest standards and recommendations from organizations such as the National Institute of Standards and Technology (NIST), the German Federal Office for Information Security (BSI) or any other relevant authority in your region.\n\nSome algorithms may not be considered weak as a whole, but may have **weak configurations** that should be avoided. Such as using a key with insufficient strength or not being considered quantum-safe. For example, an AES 128-bit key size is considered weak considering quantum computing attacks.\n\n**Context Considerations**:\n\nTo reduce false positives, make sure you understand the context in which the algorithm is being used before reporting the associated code as insecure. Ensure that it is being used in a security-relevant context to protect sensitive data.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "static",
+          "weakness": "MASWE-0020"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0211",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 1920
+      },
+      "data": {
+        "name": "Weak Hashing Algorithms",
+        "description": "## Overview\n\nTo test for the use of weak hashing algorithms in iOS apps, we need to focus on methods from cryptographic frameworks and libraries that are used to perform hashing operations.\n\n- **CommonCrypto**: [CommonDigest.h](https://opensource.apple.com/source/CommonCrypto/CommonCrypto-36064/CommonCrypto/CommonDigest.h) defines the following **hashing algorithms**:\n    - `CC_MD2`\n    - `CC_MD4`\n    - `CC_MD5`\n    - `CC_SHA1`\n    - `CC_SHA224`\n    - `CC_SHA256`\n    - `CC_SHA384`\n    - `CC_SHA512`\n\n- **CryptoKit**: Supports three cryptographically secure **hashing algorithms** and two insecure ones in a dedicated class called [`Insecure`](https://developer.apple.com/documentation/cryptokit/insecure):\n    - `SHA256`\n    - `SHA384`\n    - `SHA512`\n    - `Insecure.MD5`\n    - `Insecure.SHA1`\n\nNote: the **Security** framework only supports asymmetric algorithms and is therefore out of scope for this test.\n\n## Steps\n\n1. Run a static analysis tool such as [@MASTG-TOOL-0073](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0073/) on the app binary, or use a dynamic analysis tool like [@MASTG-TOOL-0039](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0039/), and look for uses of the cryptographic functions that perform hashing operations.\n\n## Observation\n\nThe output should contain the disassembled code of the functions using the relevant cryptographic functions.\n\n## Evaluation\n\nThe test case fails if you can find the use of weak hashing algorithms within the source code. For example:\n\n- MD5\n- SHA-1\n\n**Stay up-to-date**: This is a non-exhaustive list of weak algorithms. Make sure to check the latest standards and recommendations from organizations such as the National Institute of Standards and Technology (NIST), the German Federal Office for Information Security (BSI) or any other relevant authority in your region.\n\n**Context Considerations**:\n\nTo reduce false positives, make sure you understand the context in which the algorithm is being used before reporting the associated code as insecure. Ensure that it is being used in a security-relevant context to protect sensitive data.\n\nFor example, using MD5 for hashing passwords is considered weak, but using MD5 for checksums or non-cryptographic purposes is acceptable.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "static",
+          "weakness": "MASWE-0021"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0213",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 2040
+      },
+      "data": {
+        "name": "Use of Hardcoded Cryptographic Keys in Code",
+        "description": "## Overview\n\nIn this test case, we will examine iOS applications for the presence of hardcoded cryptographic keys. Hardcoded keys can be typically found in calls to cryptographic functions or stored as constants or variables within the code. In iOS, cryptographic keys are often used in the following frameworks:\n\n- **Security Framework**: The [`SecKeyCreateWithData`](https://developer.apple.com/documentation/security/seckeycreatewithdata(_:_:_:)) function allows developers to create a cryptographic key from raw data.\n- **CommonCrypto**: The [`CCCrypt`](https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man3/CCCrypt.3cc.html) can be initialized with raw key data in its `key` parameter.\n- **CryptoKit**: Although `CryptoKit` provides higher-level abstractions for cryptographic operations, developers might still hardcode cryptographic keys in different formats and feed it to methods like [`P256.Signing.PrivateKey.init(rawRepresentation:)`](https://developer.apple.com/documentation/cryptokit/p256/signing/privatekey/init(rawrepresentation:)) or similar.\n\n## Steps\n\n1. Run a static analysis tool such as [@MASTG-TOOL-0073](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0073/) on the app binary looking for cryptographic APIs as indicated above.\n\n## Observation\n\nThe output should include any instances where the app uses cryptographic functions that accept raw key data. Whenever possible, the output should also try to point to the raw key data from the binary.\n\n## Evaluation\n\nThe test fails if calls to cryptographic functions with hardcoded keys are found within binary.\n\nYou may find the keys being directly passed as arguments to cryptographic functions (byte arrays or string literals) or stored in variables or constants within the code. Typical representations of hardcoded keys include:\n\n- **Raw Byte Arrays**: Cryptographic keys may be directly embedded in the code as arrays of `UInt8` or `Data` objects. For example, a 256-bit AES key might be represented as a `[UInt8]` array.\n- **Base64-Encoded Strings**: Developers might encode cryptographic keys as Base64 strings within the code, which can be easily decoded by attackers if discovered.\n- **Hex-Encoded Strings**: Keys are sometimes stored as hexadecimal strings, which are then converted to `Data` objects at runtime for cryptographic operations.\n\nEnsure that any identified keys are indeed cryptographic keys used for security-relevant purposes. Avoid false positives by verifying the key's usage context (e.g., configuration settings or non-security-related constants might be misidentified as cryptographic keys).",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "static",
+          "weakness": "MASWE-0014"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0214",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 2160
+      },
+      "data": {
+        "name": "Hardcoded Cryptographic Keys in Files",
+        "description": "## Overview\n\nCryptographic keys may be embedded files such as configuration files or key files, certificate files, or other resource files bundled with the app, making them accessible to anyone who can extract the app's resources. Real-world cases include storing API keys, SSL/TLS private keys, or encryption keys within these files, which can lead to serious security vulnerabilities if the app is reverse-engineered.\n\n- **Identified by File Extension**: Files with extensions such as `.key`, `.pem`, `.crt`, `.p12`, `.cer`, or `.der` often contain cryptographic keys or certificates.\n- **Identified by PEM Markers**: Strings such as `-----BEGIN PRIVATE KEY-----`, `-----BEGIN CERTIFICATE-----`, or the byte sequence `0x2d 0x2d 0x2d 0x2d 0x2d` (representing `-----` in ASCII) within files indicate the presence of PEM-encoded keys or certificates.\n- **Identified by Common Byte Patterns**: Binary files containing specific byte sequences that match known DER or PKCS#12 formats, such as `0x30 0x82` (indicating the start of a DER-encoded structure), can indicate the presence of cryptographic material.\n- **Embedded in Property Lists or JSON Files**: Keys might be stored within `.plist` or `.json` configuration files, often encoded as Base64 strings.\n- **Identified by Specific Strings**: Keywords such as `privateKey`, `key`, or `secret` within files or variable names can indicate embedded keys or sensitive data.\n\n## Steps\n\n1. Run a static analysis tool such as [@MASTG-TOOL-0073](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0073/) on the app binary looking for strings or sequences of bytes as indicated above.\n\n## Observation\n\nThe output should include any instances where potential cryptographic keys are found hardcoded within the application's source code or binary.\n\n## Evaluation\n\nThe test fails if hardcoded cryptographic keys are found within the source code or binary.\n\nEnsure that any identified keys are indeed cryptographic keys used for security-relevant purposes. Avoid false positives by verifying the key's usage context (e.g., configuration settings or non-security-related constants might be misidentified as cryptographic keys).",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "static",
+          "weakness": "MASWE-0014"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "category-masvs-resilience",
+      "type": "custom",
+      "position": {
+        "x": 0,
+        "y": 2280
+      },
+      "data": {
+        "name": "MASVS-RESILIENCE",
+        "description": "## RESILIENCE\\n**OWASP MASVS Category**",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false
+        },
+        "tags": [
+          "category"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0219",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 2400
+      },
+      "data": {
+        "name": "Testing for Debugging Symbols",
+        "description": "## Overview\n\nThis test case checks for [debugging symbols](https://mas.owasp.org/MASWE/MASVS-RESILIENCE/MASWE-0093/) in all binaries contained in the app.\n\nDebugging symbols are added by the [compiler to ease development](https://developer.apple.com/documentation/xcode/building-your-app-to-include-debugging-information \"Building your app to include debugging information\") and allow symbolication of crashes. However, they can also be used to reverse engineer the app and should not be present in a released app. [Symbolication can also be performed](https://developer.apple.com/documentation/xcode/adding-identifiable-symbol-names-to-a-crash-report \"Adding identifiable symbol names to a crash report\") with a separate dSYM file.\n\nTo manage debugging symbols in Xcode, developers can adjust the following build settings:\n\n- **Generate Debug Symbols**: Xcode adds debugging symbols if the setting [`\"Build Settings\" > \"Apple Clang - Code Generation\" > \"Generate Debug Symbols\"`](https://developer.apple.com/documentation/xcode/build-settings-reference#Generate-Debug-Symbols) is set to `\"Yes\"`.\n- **Debug Information Format**: Found under [`\"Build Settings\" > \"Build Options > \"Debug Information Format\"`](https://developer.apple.com/documentation/xcode/build-settings-reference#Debug-Information-Format), this setting determines the format of the debug information. Options include:\n    - **DWARF**: Embeds debugging information directly into the binary.\n    - **DWARF with dSYM File**: Generates a separate dSYM file containing debugging information.\n\nNote that in compiled iOS applications, symbol names may undergo **name mangling** and additional **obfuscation techniques** to further obscure them, making reverse engineering more challenging. While demangling tools can decode standard mangled names (see [@MASTG-TECH-0114](https://mas.owasp.org/MASTG/techniques/ios/MASTG-TECH-0114/)), they may not effectively reverse custom obfuscation methods.\n\n## Steps\n\n1. Apply [@MASTG-TECH-0058](https://mas.owasp.org/MASTG/techniques/ios/MASTG-TECH-0058/) to extract the contents from the IPA file.\n2. For all executables and libraries of the app, use [@MASTG-TECH-0113](https://mas.owasp.org/MASTG/techniques/ios/MASTG-TECH-0113/) to verify there are no debugging symbols present.\n\n## Observation\n\nThe output should contain a list of symbols for each executable and library.\n\n## Evaluation\n\nThe test fails if there are symbols marked as debug symbols in the output.\n\nBefore releasing an iOS app, verify that the `\"Build Settings\" > \"Apple Clang - Code Generation\" > \"Generate Debug Symbols\"` setting is set to `\"No\"`. Additionally, utilize tools like the ones used in [@MASTG-TECH-0113](https://mas.owasp.org/MASTG/techniques/ios/MASTG-TECH-0113/) to inspect the final binaries for any residual debugging symbols.\n\nFor release builds, it's advisable to set `\"Build Settings\" > \"Build Options > \"Debug Information Format\"` to `\"DWARF with dSYM File\"` and ensure that the dSYM files are securely stored and not distributed with the app. This approach facilitates post-release crash analysis without exposing debugging symbols in the distributed binary.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "static",
+          "weakness": "MASWE-0093"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0220",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 2520
+      },
+      "data": {
+        "name": "Usage of Outdated Code Signature Format",
+        "description": "## Overview\n\nOn iOS, code signatures verify the integrity and authenticity of an app's binary, preventing unauthorized modifications and ensuring that the app is trusted by the operating system. Apple regularly updates its [code signature formats](https://developer.apple.com/documentation/xcode/using-the-latest-code-signature-format) to enhance cryptographic strength and improve protection against tampering.\n\nUsing an outdated code signature format may expose the app to security risks, as older formats may lack support for current cryptographic standards and may be more vulnerable to manipulation. Adopting the latest code signature format helps maintain app integrity and ensures compatibility with the latest security features in iOS.\n\n## Steps\n\n1. Extract the package as described in [@MASTG-TECH-0058](https://mas.owasp.org/MASTG/techniques/ios/MASTG-TECH-0058/).\n2. Obtain the version of the code signature format as described in [@MASTG-TECH-0112](https://mas.owasp.org/MASTG/techniques/ios/MASTG-TECH-0112/).\n\n## Observation\n\nThe output should contain the version of the code signature format.\n\n## Evaluation\n\nThe test fails if the version is below the [recommended one](https://developer.apple.com/documentation/xcode/using-the-latest-code-signature-format \"Apple Developer\").\n\nEnsure that the app is using the [latest code signing format](https://developer.apple.com/documentation/xcode/using-the-latest-code-signature-format \"Apple Developer\"). You can retrieve the signing certificate format with [@MASTG-TECH-0112](https://mas.owasp.org/MASTG/techniques/ios/MASTG-TECH-0112/). This will ensure that the integrity of the app is protected according to the latest cryptographic standards, preventing tampering with the app binary and ensuring that the unmodified copy is distributed to users.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "static",
+          "weakness": "MASWE-0104"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0240",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 2640
+      },
+      "data": {
+        "name": "Jailbreak Detection in Code",
+        "description": "## Overview\n\nThe test verifies that a mobile app can detect if the iOS device it is running on is jailbroken. It does so by statically analyzing the app binary for [common jailbreak detection checks](../../../Document/0x06j-Testing-Resiliency-Against-Reverse-Engineering.md#common-jailbreak-detection-checks). For example, the app may check for the presence of a third-party app store (e.g. Sileo, Zebra, ...), or for the presence of certain files or directories that are indicative of a jailbroken device.\n\nThe limitations of static analysis should be considered. It is possible that the app uses more sophisticated jailbreak detection techniques that are not detected by the used tool. In such cases, careful manual reverse engineering and deobfuscation are required to identify the jailbreak detection checks.\n\n## Steps\n\n1. Run a static analysis tool such as [@MASTG-TOOL-0073](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0073/) on the app binary looking for common jailbreak detection checks.\n\n## Observation\n\nThe output should include any instances of common jailbreak detection checks in the app binary.\n\n## Evaluation\n\nThe test passes if jailbreak detection is implemented.\n\nThe test fails if jailbreak detection is not implemented. However, note that this test is not exhaustive and may not detect all jailbreak detection checks. Manual reverse engineering and deobfuscation may be required to identify more sophisticated jailbreak detection checks.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "dynamic",
+          "weakness": "MASWE-0097"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "dynamic"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0241",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 2760
+      },
+      "data": {
+        "name": "Runtime Use of Jailbreak Detection Techniques",
+        "description": "## Overview\n\nThe test verifies that a mobile application can identify if the iOS device it is running on is jailbroken. It does so by dynamically analyzing the app binary for [common jailbreak detection checks](../../../Document/0x06j-Testing-Resiliency-Against-Reverse-Engineering.md#common-jailbreak-detection-checks) and trying to bypass them. For example, it may detect a check for the presence of certain files or directories that are indicative of a jailbroken device.\n\nThe limitations of using jailbreak detection bypass tools should be considered. It is possible that the app uses more sophisticated jailbreak detection techniques that are not detected by the tool used. In such cases, careful manual reverse engineering and deobfuscation are required to identify the jailbreak detection checks. Also, additional dynamic analysis work may be required to bypass the jailbreak detection checks.\n\n## Steps\n\n1. Run a dynamic analysis tool such as [@MASTG-TOOL-0038](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0038/) on the app and execute its [automated jailbreak detection bypass commands](../../../Document/0x06j-Testing-Resiliency-Against-Reverse-Engineering.md#automated-jailbreak-detection-bypass)\n\n## Observation\n\nThe output should include any instances of common jailbreak detection checks in the app binary and the results of the automated jailbreak detection bypass commands.\n\n## Evaluation\n\nThe test passes if the automated jailbreak detection bypass command indicates that the application is testing for known jailbreak artefacts.\n\nThe test fails if jailbreak detection is not implemented. However, note that this test is not exhaustive and may not detect all jailbreak detection checks as it relies on predefined bypass code that may not cover all possible jailbreak detection checks or may not be up-to-date. The checks may also be more sophisticated than what the tool can detect so manual reverse engineering and deobfuscation may be required to identify them.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "dynamic",
+          "weakness": "MASWE-0097"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "dynamic"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0246",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 2880
+      },
+      "data": {
+        "name": "Runtime Use of Secure Screen Lock Detection APIs",
+        "description": "## Overview\n\nThis test is the dynamic counterpart to [@MASTG-TEST-0248](https://mas.owasp.org/MASTG/techniques/ios/MASTG-TEST-0248/).\n\n## Steps\n\n1. Run a dynamic analysis tool like [@MASTG-TOOL-0039](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0039/) and look for uses of [LAContext.canEvaluatePolicy(.deviceOwnerAuthentication)](https://developer.apple.com/documentation/localauthentication/lacontext/canevaluatepolicy(_:error:)) API or data stored with [kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly](https://developer.apple.com/documentation/security/ksecattraccessiblewhenpasscodesetthisdeviceonly) attribute.\n\n## Observation\n\nThe output should contain a list of locations where relevant APIs are used.\n\n## Evaluation\n\nThe test fails if an app doesn't use any API to verify the secure screen lock presence.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "dynamic",
+          "weakness": "MASWE-0008"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "dynamic"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0248",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 3000
+      },
+      "data": {
+        "name": "References to APIs for Detecting Secure Screen Lock",
+        "description": "## Overview\n\nThis test verifies that an app is running on a device with a secure [screen lock (e.g. a passcode)](https://support.apple.com/en-us/guide/iphone/iph14a867ae/ios).\n\nOn iOS, apps can determine whether a secure screen lock is set using the **LocalAuthentication** framework. Specifically, the [LAContext.canEvaluatePolicy(_:error:)](https://developer.apple.com/documentation/localauthentication/lacontext/canevaluatepolicy(_:error:)) method with the [.deviceOwnerAuthentication](https://developer.apple.com/documentation/localauthentication/lapolicy/deviceownerauthentication) or [.deviceOwnerAuthenticationWithBiometrics](https://developer.apple.com/documentation/localauthentication/lapolicy/deviceownerauthenticationwithbiometrics) policy can be used to check if authentication mechanisms, including a passcode, are available.\n\nApps leveraging the **Keychain Services API** can require passcode authentication before accessing sensitive data using the [kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly](https://developer.apple.com/documentation/security/ksecattraccessiblewhenpasscodesetthisdeviceonly) attribute.\n\n## Steps\n\n1. Run a static analysis tool such as [@MASTG-TOOL-0073](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0073/) on the app binary and look for uses of [LAContext.canEvaluatePolicy(.deviceOwnerAuthentication)](https://developer.apple.com/documentation/localauthentication/lacontext/canevaluatepolicy(_:error:)) API, or data stored with [kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly](https://developer.apple.com/documentation/security/ksecattraccessiblewhenpasscodesetthisdeviceonly) attribute.\n\n## Observation\n\nThe output should contain a list of locations where relevant APIs are used.\n\n## Evaluation\n\nThe test fails if an app doesn't use any API to verify the secure screen lock presence.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "static",
+          "weakness": "MASWE-0008"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0261",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 3120
+      },
+      "data": {
+        "name": "Debuggable Entitlement Enabled in the entitlements.plist",
+        "description": "## Overview\n\nThe test evaluates whether an iOS application is configured to allow debugging. If an app is debuggable, attackers can leverage debugging tools (see [@MASTG-TECH-0084](https://mas.owasp.org/MASTG/techniques/ios/MASTG-TECH-0084/)) to analyse the runtime behaviour of the app, and potentially compromise sensitive data or functionality.\n\n## Steps\n\n1. Use [@MASTG-TECH-0111](https://mas.owasp.org/MASTG/techniques/ios/MASTG-TECH-0111/) to extract entitlements from the binary.\n2. Search for the `get-task-allow` key.\n\n## Observation\n\nThe output contains the value of the `get-task-allow` entitlement.\n\n## Evaluation\n\nThe test fails if the `get-task-allow` entitlement is `true`.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "static",
+          "weakness": "MASWE-0067"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "category-masvs-storage",
+      "type": "custom",
+      "position": {
+        "x": 0,
+        "y": 3240
+      },
+      "data": {
+        "name": "MASVS-STORAGE",
+        "description": "## STORAGE\\n**OWASP MASVS Category**",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false
+        },
+        "tags": [
+          "category"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0215",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 3360
+      },
+      "data": {
+        "name": "Sensitive Data Not Excluded From Backup",
+        "description": "## Overview\n\nThis test verifies whether your app correctly instructs the system to exclude sensitive files from backups.\n\nFiles in the `/tmp` and `/Library/Caches` subdirectories of the app container are excluded from iCloud Backups. For files and directories in any other locations within the app container, iOS provides the [`isExcludedFromBackup`](https://developer.apple.com/documentation/foundation/urlresourcevalues/1780002-isexcludedfrombackup) API to guide the system not to back up a given file or directory. However, this API [does not guarantee guarantee the actual exclusion](https://developer.apple.com/documentation/foundation/optimizing_your_app_s_data_for_icloud_backup/#3928527):\n\n> \"The `isExcludedFromBackup` resource value exists only to provide guidance to the system about which files and directories it can exclude; it's not a mechanism to guarantee those items never appear in a backup or on a restored device.\"\n\nTherefore, the only way to properly protect your files from a backup is to encrypt them.\n\n## Steps\n\n1. Run a static analysis tool such as [@MASTG-TOOL-0073](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0073/) on the app binary, or use a dynamic analysis tool like [@MASTG-TOOL-0039](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0039/), and look for uses of `isExcludedFromBackup` API.\n\n## Observation\n\nThe output should contain the disassembled code of the functions using `isExcludedFromBackup` and if possible the list of affected files.\n\n## Evaluation\n\nThe test case fails if you can find the use of `isExcludedFromBackup` within the source code and if any of the affected files can be considered sensitive.\n\nFor the sensitive files found, and in addition to using `isExcludedFromBackup`, make sure to encrypt them, as `isExcludedFromBackup` does not guarantee the exclusion.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "ios",
+          "test_type": "static",
+          "weakness": "MASWE-0004"
+        },
+        "tags": [
+          "test",
+          "ios",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    }
+  ],
+  "edges": [
+    {
+      "id": "category-masvs-auth->MASTG-TEST-0266",
+      "source": "category-masvs-auth",
+      "target": "MASTG-TEST-0266",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-auth->MASTG-TEST-0267",
+      "source": "category-masvs-auth",
+      "target": "MASTG-TEST-0267",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-auth->MASTG-TEST-0268",
+      "source": "category-masvs-auth",
+      "target": "MASTG-TEST-0268",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-auth->MASTG-TEST-0269",
+      "source": "category-masvs-auth",
+      "target": "MASTG-TEST-0269",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-auth->MASTG-TEST-0270",
+      "source": "category-masvs-auth",
+      "target": "MASTG-TEST-0270",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-auth->MASTG-TEST-0271",
+      "source": "category-masvs-auth",
+      "target": "MASTG-TEST-0271",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-code->MASTG-TEST-0228",
+      "source": "category-masvs-code",
+      "target": "MASTG-TEST-0228",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-code->MASTG-TEST-0229",
+      "source": "category-masvs-code",
+      "target": "MASTG-TEST-0229",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-code->MASTG-TEST-0230",
+      "source": "category-masvs-code",
+      "target": "MASTG-TEST-0230",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-code->MASTG-TEST-0273",
+      "source": "category-masvs-code",
+      "target": "MASTG-TEST-0273",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-code->MASTG-TEST-0275",
+      "source": "category-masvs-code",
+      "target": "MASTG-TEST-0275",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-crypto->MASTG-TEST-0209",
+      "source": "category-masvs-crypto",
+      "target": "MASTG-TEST-0209",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-crypto->MASTG-TEST-0210",
+      "source": "category-masvs-crypto",
+      "target": "MASTG-TEST-0210",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-crypto->MASTG-TEST-0211",
+      "source": "category-masvs-crypto",
+      "target": "MASTG-TEST-0211",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-crypto->MASTG-TEST-0213",
+      "source": "category-masvs-crypto",
+      "target": "MASTG-TEST-0213",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-crypto->MASTG-TEST-0214",
+      "source": "category-masvs-crypto",
+      "target": "MASTG-TEST-0214",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-resilience->MASTG-TEST-0219",
+      "source": "category-masvs-resilience",
+      "target": "MASTG-TEST-0219",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-resilience->MASTG-TEST-0220",
+      "source": "category-masvs-resilience",
+      "target": "MASTG-TEST-0220",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-resilience->MASTG-TEST-0240",
+      "source": "category-masvs-resilience",
+      "target": "MASTG-TEST-0240",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-resilience->MASTG-TEST-0241",
+      "source": "category-masvs-resilience",
+      "target": "MASTG-TEST-0241",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-resilience->MASTG-TEST-0246",
+      "source": "category-masvs-resilience",
+      "target": "MASTG-TEST-0246",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-resilience->MASTG-TEST-0248",
+      "source": "category-masvs-resilience",
+      "target": "MASTG-TEST-0248",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-resilience->MASTG-TEST-0261",
+      "source": "category-masvs-resilience",
+      "target": "MASTG-TEST-0261",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-storage->MASTG-TEST-0215",
+      "source": "category-masvs-storage",
+      "target": "MASTG-TEST-0215",
+      "type": "default"
+    }
+  ]
+}

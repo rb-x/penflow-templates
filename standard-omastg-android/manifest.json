@@ -1,0 +1,9 @@
+{
+    "type": "template",
+    "path": "standard-omastg-android",
+    "name": "Official OWASP MASTG Template (Android)",
+    "description": "OWASP Mobile Application Security Testing Guide beta (official) for Android",
+    "tags": ["mobile", "guide", "owasp", "android"],
+    "version": "1.0.0",
+    "author": "PenFlow"
+}

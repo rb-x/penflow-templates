@@ -1,0 +1,1807 @@
+{
+  "nodes": [
+    {
+      "id": "category-masvs-code",
+      "type": "custom",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "data": {
+        "name": "MASVS-CODE",
+        "description": "## CODE\\n**OWASP MASVS Category**",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false
+        },
+        "tags": [
+          "category"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0222",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 120
+      },
+      "data": {
+        "name": "Position Independent Code (PIC) Not Enabled",
+        "description": "## Overview\n\nThis test case checks if the [native libraries](../../../Document/0x05i-Testing-Code-Quality-and-Build-Settings.md/#binary-protection-mechanisms) of the app are compiled without enabling [Position Independent Code (PIC)](../../../Document/0x04h-Testing-Code-Quality.md/#position-independent-code), a common mitigation technique against memory corruption attacks.\n\nSince Android 5.0 (API level 21), Android requires [all dynamically linked executables to support PIE](https://source.android.com/docs/security/enhancements/#android-5).\n\n> [Build System Maintainers Guide - Additional Required Arguments](https://android.googlesource.com/platform/ndk/%2B/master/docs/BuildSystemMaintainers.md#additional-required-arguments): Android requires Position-independent executables beginning with API 21. Clang builds PIE executables by default. If invoking the linker directly or not using Clang, use `-pie` when linking.\n\n## Steps\n\n1. Extract the app contents ([@MASTG-TECH-0007](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0007/)).\n2. Run [@MASTG-TECH-0115](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0115/) on each shared library and grep for \"pic\" or the corresponding keyword used by the selected tool.\n\n## Observation\n\nThe output should list if PIC is enabled or disabled.\n\n## Evaluation\n\nThe test case fails if PIC is disabled.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0116"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0223",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 240
+      },
+      "data": {
+        "name": "Stack Canaries Not Enabled",
+        "description": "## Overview\n\nThis test case checks if the [native libraries](../../../Document/0x05i-Testing-Code-Quality-and-Build-Settings.md/#binary-protection-mechanisms) of the app are compiled without stack canaries and therefore lacking [stack smashing protection](../../../Document/0x04h-Testing-Code-Quality.md/#stack-smashing-protection), a common mitigation technique against buffer overflow attacks.\n\n- NDK libraries should have stack canaries enabled since [the compiler does it by default](https://android.googlesource.com/platform/ndk/%2B/master/docs/BuildSystemMaintainers.md#additional-required-arguments).\n- Other custom C/C++ libraries might not have stack canaries enabled because they lack the necessary compiler flags (`-fstack-protector-strong`, or `-fstack-protector-all`) or the canaries were optimized out by the compiler. See the [Evaluation](#evaluation) section for more details.\n\n## Steps\n\n1. Extract the app contents ([@MASTG-TECH-0058](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0058/)).\n2. Run [@MASTG-TECH-0115](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0115/) on each shared library and grep for \"canary\" or the corresponding keyword used by the selected tool.\n\n## Observation\n\nThe output should show if stack canaries are enabled or disabled.\n\n## Evaluation\n\nThe test case fails if stack canaries are disabled.\n\nDevelopers need to ensure that the flags `-fstack-protector-strong`, or `-fstack-protector-all` are set in the compiler flags for all native libraries. This is especially important for custom C/C++ libraries that are not part of the NDK.\n\nWhen evaluating this please note that there are potential **expected false positives** for which the test case should be considered as passed. To be certain for these cases, they require manual review of the original source code and the compilation flags used.\n\nThe following examples cover some of the false positive cases that might be encountered:\n\n### Use of Memory Safe Languages\n\nThe Flutter framework does not use stack canaries because of the way [Dart mitigates buffer overflows](https://docs.flutter.dev/reference/security-false-positives#shared-objects-should-use-stack-canary-values).\n\n### Compiler Optimizations\n\nSometimes, due to the size of the library and the optimizations applied by the compiler, it might be possible that the library was originally compiled with stack canaries but they were optimized out. For example, this is the case for some [react native apps](https://github.com/facebook/react-native/issues/36870#issuecomment-1714007068). They are built with `-fstack-protector-strong` but when attempting to search for `stack_chk_fail` inside the `.so` files, it is not found.\n\n- **Empty .so files**: Some .so files such as `libruntimeexecutor.so` or `libreact_render_debug.so` are effectively empty in release and therefore contain no symbols. Even if you were to attempt to build with `-fstack-protector-all`, you still won't be able to see the `stack_chk_fail` string as there are no method calls there.\n- **Lack of stack buffer calls**: Other files such as `libreact_utils.so`, `libreact_config.so`, and `libreact_debug.so` are not empty and contain method calls, but those methods don't contain stack buffer calls, so there are no `stack_chk_fail` strings inside them.\n\nThe React Native developers in this case declare that they won't be adding `-fstack-protector-all` as, in their case, [they consider that doing so will add a performance hit for no effective security gain](https://github.com/OWASP/owasp-mastg/pull/3049#pullrequestreview-2420837259).",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0116"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0245",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 360
+      },
+      "data": {
+        "name": "References to Platform Version APIs",
+        "description": "## Overview\n\nThis test verifies whether an app is running on a recent version of the Android operating system.\n\nIn Kotlin, Android apps can determine the OS version using the `Build.VERSION.SDK_INT` property, which returns the API level of the current system. By comparing it to a specific version constant, such as `Build.VERSION_CODES.UPSIDE_DOWN_CAKE` for Android 14 (API level 34), apps can conditionally execute code based on the OS version. In this example, \"Upside Down Cake\" is the internal codename for Android 14.\n\nAndroid apps specify a `minSdkVersion`, which defines the oldest OS version they support. While a high `minSdkVersion` reduces the need for runtime version checks, dynamically verifying the OS version using `Build.VERSION.SDK_INT` remains beneficial. It allows apps to take advantage of newer, more secure features when available while maintaining backward compatibility.\n\n## Steps\n\n1. Use either [@MASTG-TECH-0014](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0014/) with a tool such as [@MASTG-TOOL-0110](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0110/) to identify APIs that check the version of the operating system.\n\n## Observation\n\nThe output should contain a list of locations where relevant APIs are used.\n\n## Evaluation\n\nThe test fails if the app does not include any API calls to verify the operating system version.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0077"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0272",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 480
+      },
+      "data": {
+        "name": "Identify Dependencies with Known Vulnerabilities in the Android Project",
+        "description": "## Overview\n\nIn this test case we will identify dependencies in Android Studio and scan them with [@MASTG-TOOL-0131](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0131/).\n\n## Steps\n\n1. Follow [@MASTG-TECH-0131](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0131/) and execute a scan through the build environment of Android Studio by using Gradle.\n\n## Observation\n\nThe output should include the dependency and the CVE identifiers for any dependency with known vulnerabilities.\n\n## Evaluation\n\nThe test case fails if you can find dependencies with known vulnerabilities.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0076"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0274",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 600
+      },
+      "data": {
+        "name": "Dependencies with Known Vulnerabilities in the App's SBOM",
+        "description": "## Overview\n\nIn this test case we are identifying dependencies with known vulnerabilities by relying on a Software Bill of Material (SBOM).\n\n## Steps\n\n1. Either ask the development team to share a SBOM in CycloneDX format, or, if you have access to the original source code, create one following [@MASTG-TECH-0130](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0130/).\n2. Upload the SBOM to [@MASTG-TOOL-0132](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0132/).\n3. Inspect the [@MASTG-TOOL-0132](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0132/) project for the use of vulnerable dependencies.\n\n## Observation\n\nThe output should include a list of dependencies with names and CVE identifiers, if any.\n\n## Evaluation\n\nThe test case fails if you can find dependencies with known vulnerabilities.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0076"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "category-masvs-crypto",
+      "type": "custom",
+      "position": {
+        "x": 0,
+        "y": 720
+      },
+      "data": {
+        "name": "MASVS-CRYPTO",
+        "description": "## CRYPTO\\n**OWASP MASVS Category**",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false
+        },
+        "tags": [
+          "category"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0204",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 840
+      },
+      "data": {
+        "name": "Insecure Random API Usage",
+        "description": "## Overview\n\nAndroid apps sometimes use an insecure [pseudorandom number generator (PRNG)](../../../Document/0x05e-Testing-Cryptography.md#random-number-generation), such as [`java.util.Random`](https://developer.android.com/reference/java/util/Random), which is a linear congruential generator and produces a predictable sequence for any given seed value. As a result, `java.util.Random` and `Math.random()` ([the latter](https://franklinta.com/2014/08/31/predicting-the-next-math-random-in-java/) simply calls `nextDouble()` on a static `java.util.Random` instance) generate reproducible sequences across all Java implementations whenever the same seed is used. This predictability makes them unsuitable for cryptographic or other security-sensitive contexts.\n\nIn general, if a PRNG is not explicitly documented as being cryptographically secure, it should not be used where randomness must be unpredictable. Refer to the [Android Documentation](https://developer.android.com/privacy-and-security/risks/weak-prng) and the [\"random number generation\" guide](../../../Document/0x05e-Testing-Cryptography.md#random-number-generation) for further details.\n\n## Steps\n\n1. Run a static analysis ([@MASTG-TECH-0014](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0014/)) tool on the app and look for insecure random APIs, or you can use [@MASTG-TECH-0033](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0033/) to detect the use of such APIs.\n2. For each of the identified API uses, check if they are used in a security relevant context. You can reverse engineer the app ([@MASTG-TECH-0017](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0017/)) and inspect the code ([@MASTG-TECH-0023](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0023/)) to confirm.\n\n## Observation\n\nThe output should contain a list of locations where insecure random APIs are used.\n\n## Evaluation\n\nThe test case fails if you can find random numbers generated using those APIs that are used in security-relevant contexts, such as generating passwords or authentication tokens.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0027"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0205",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 960
+      },
+      "data": {
+        "name": "Non-random Sources Usage",
+        "description": "## Overview\n\nAndroid applications sometimes use non-random sources to generate \"random\" values, leading to potential security vulnerabilities. Common practices include relying on the current time, such as `Date().getTime()`, or accessing `Calendar.MILLISECOND` to produce values that are easily guessable and reproducible.\n\n## Steps\n\n1. Run a static analysis ([@MASTG-TECH-0014](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0014/)) tool on the app and look for uses of non-random sources.\n\n## Observation\n\nThe output should contain a list of locations where non-random sources are used.\n\n## Evaluation\n\nThe test case fails if you can find security-relevant values, such as passwords or tokens, generated using non-random sources.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0027"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0208",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 1080
+      },
+      "data": {
+        "name": "Inappropriate Key Sizes",
+        "description": "## Overview\n\nIn this test case, we will look for the use inappropriate key sizes in Android apps. To do this, we need to focus on the cryptographic frameworks and libraries that are available in Android and the methods that are used to generate, inspect and manage cryptographic keys.\n\nThe Java Cryptography Architecture (JCA) provides foundational classes for key generation which are often used directly when portability or compatibility with older systems is a concern.\n\n- **`KeyGenerator`**: The [`KeyGenerator`](https://developer.android.com/reference/javax/crypto/KeyGenerator) class is used to generate symmetric keys including AES, DES, ChaCha20 or Blowfish, as well as various HMAC keys. The key size can be specified using the [`init(int keysize)`](https://developer.android.com/reference/javax/crypto/KeyGenerator#init(int)) method.\n- **`KeyPairGenerator`**: The [`KeyPairGenerator`](https://developer.android.com/reference/java/security/KeyPairGenerator) class is used for generating key pairs for asymmetric encryption (e.g., RSA, EC). The key size can be specified using the [`initialize(int keysize)`](https://developer.android.com/reference/java/security/KeyPairGenerator#initialize(int)) method.\n\nFor more information you can consult the MASTG section about [\"Key Generation\"](../../../Document/0x05e-Testing-Cryptography.md#key-generation).\n\n## Steps\n\n1. Run a static analysis tool such as [@MASTG-TOOL-0110](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0110/) on the code and look for uses of the cryptographic functions that generate keys.\n\n## Observation\n\nThe output should contain a list of locations where insufficient key lengths are used.\n\n## Evaluation\n\nThe test case fails if you can find the use of inappropriate key sizes within the source code. For example, a 1024-bit key size is considered weak for RSA encryption and a 128-bit key size is considered weak for AES encryption considering quantum computing attacks.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0009"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0212",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 1200
+      },
+      "data": {
+        "name": "Use of Hardcoded Cryptographic Keys in Code",
+        "description": "## Overview\n\nIn this test case, we will look for the use of hardcoded keys in Android applications. To do this, we need to focus on the cryptographic implementations of hardcoded keys. The Java Cryptography Architecture (JCA) provides the [`SecretKeySpec`](https://developer.android.com/reference/javax/crypto/spec/SecretKeySpec) class, which allows you to create a [`SecretKey`](https://developer.android.com/reference/javax/crypto/SecretKey) from a byte array.\n\n## Steps\n\n1. Use either [@MASTG-TECH-0014](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0014/) with a tool such as [@MASTG-TOOL-0110](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0110/) or [@MASTG-TECH-0033](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0033/) (dynamic analysis) with a tool like [@MASTG-TOOL-0001](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0001/) to identify all the instances of symmetric key encryption in code and look for uses of the hardcoded cryptographic keys.\n\n## Observation\n\nThe output should contain a list of locations where hardcoded keys are used.\n\n## Evaluation\n\nThe test case fails if you find any hardcoded keys that are used in security-sensitive contexts.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0014"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0221",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 1320
+      },
+      "data": {
+        "name": "Weak Symmetric Encryption Algorithms",
+        "description": "## Overview\n\nTo test for the [use of weak encryption algorithms](../../../Document/0x04g-Testing-Cryptography.md#identifying-insecure-andor-deprecated-cryptographic-algorithms) in Android apps, we need to focus on methods from cryptographic frameworks and libraries that are used to perform encryption and decryption operations.\n\n- [`Cipher.getInstance`](https://developer.android.com/reference/javax/crypto/Cipher#getInstance(java.lang.String)): Initializes a Cipher object for encryption or decryption. The `algorithm` parameter can be one of the [supported algorithms](https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#Cipher).\n- [`SecretKeyFactory.getInstance`](https://developer.android.com/reference/javax/crypto/SecretKeyFactory#getInstance(java.lang.String)): Returns a SecretKeyFactory object that converts keys into key specifications and vice versa. The `algorithm` parameter can be one of the [supported algorithms](https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#SecretKeyFactory).\n- [`KeyGenerator.getInstance`](https://developer.android.com/reference/javax/crypto/KeyGenerator#getInstance(java.lang.String)): Returns a `KeyGenerator` object that generates secret keys for symmetric algorithms. The `algorithm` parameter can be one of the [supported algorithms](https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#KeyGenerator).\n\nSome weak symmetric encryption algorithms include:\n\n- **DES (Data Encryption Standard)**: 56-bit key, breakable, [withdrawn by NIST in 2005](https://csrc.nist.gov/pubs/fips/46-3/final).\n- **3DES (Triple DES, officially the Triple Data Encryption Algorithm (TDEA or Triple DEA))**: Weak 64-bit blocks, [vulnerable to Sweet32 birthday attacks](https://sweet32.info/), [withdrawn by NIST on January 1, 2024](https://csrc.nist.gov/pubs/sp/800/67/r2/final).\n- **RC4**: Predictable key stream, allows plaintext recovery [RC4 Weakness](https://www.rc4nomore.com/), disapproved by [NIST](https://nvlpubs.nist.gov/nistpubs/specialpublications/nist.sp.800-52r1.pdf) in 2014 and prohibited by [IETF](https://datatracker.ietf.org/doc/html/rfc7465) in 2015.\n- **Blowfish**: 64-bit block size, [vulnerable to Sweet32 attacks](https://en.wikipedia.org/wiki/Birthday_attack), never FIPS-approved, and listed under [\"Non-Approved algorithms\" in FIPS](https://csrc.nist.gov/csrc/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp2092.pdf).\n\nAndroid also provides additional guidance on [broken cryptographic algorithms](https://developer.android.com/privacy-and-security/risks/broken-cryptographic-algorithm).\n\n## Steps\n\n1. Run [@MASTG-TECH-0014](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0014/) with a tool such as [@MASTG-TOOL-0110](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0110/) on the app binary, or use [@MASTG-TECH-0033](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0033/) (dynamic analysis) with a tool like [@MASTG-TOOL-0001](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0001/), and look for uses of the cryptographic functions that perform encryption and decryption operations.\n\n## Observation\n\nThe output should contain a list of locations where insecure symmetric encryption algorithms are used.\n\n## Evaluation\n\nThe test case fails if you can find [insecure or deprecated](../../../Document/0x04g-Testing-Cryptography.md#identifying-insecure-andor-deprecated-cryptographic-algorithms) encryption algorithms being used.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0020"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0232",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 1440
+      },
+      "data": {
+        "name": "Weak Symmetric Encryption Modes",
+        "description": "## Overview\n\nTo test for the [use of weak encryption modes](../../../Document/0x04g-Testing-Cryptography.md#weak-block-cipher-mode) in Android apps, we need to focus on methods from cryptographic frameworks and libraries that are used to configure and apply encryption modes.\n\nIn Android development, the `Cipher` class from the Java Cryptography Architecture (JCA) is the primary API that allows you to specify the encryption mode for cryptographic operations. [`Cipher.getInstance`](https://developer.android.com/reference/javax/crypto/Cipher#getInstance(java.lang.String)) defines the transformation string, which includes the encryption algorithm, mode of operation, and padding scheme. The general format is `\"Algorithm/Mode/Padding\"`. For example:\n\n```kotlin\nCipher.getInstance(\"AES/ECB/PKCS5Padding\")\n```\n\nIn this test we're going to focus on symmetric encryption modes such as [ECB (Electronic Codebook)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Electronic_codebook_(ECB)).\n\nECB (defined in [NIST SP 800-38A](https://csrc.nist.gov/pubs/sp/800/38/a/final)) is generally discouraged [see NIST announcement in 2023](https://csrc.nist.gov/news/2023/decision-to-revise-nist-sp-800-38a) due to its inherent security weaknesses. While not explicitly prohibited, its use is limited and advised against in most scenarios. ECB is a block cipher mode that operate deterministically, dividing plaintext into blocks and encrypting them separately, which reveals patterns in the ciphertext. This makes it vulnerable to attacks like [known-plaintext attacks](https://en.wikipedia.org/wiki/Known-plaintext_attack) and [chosen-plaintext attacks](https://en.wikipedia.org/wiki/Chosen-plaintext_attack).\n\nFor example, the following transformations are all [considered vulnerable](https://support.google.com/faqs/answer/10046138?hl=en):\n\n- `\"AES\"` (uses AES/ECB mode by [default](https://docs.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html#Cipher))\n- `\"AES/ECB/NoPadding\"`\n- `\"AES/ECB/PKCS5Padding\"`\n- `\"AES/ECB/ISO10126Padding\"`\n\nYou can learn more about ECB and other modes in [NIST SP 800-38A - Recommendation for Block Cipher Modes of Operation: Methods and Techniques](https://csrc.nist.gov/pubs/sp/800/38/a/final). Also check the [Decision to Revise NIST SP 800-38A, Recommendation for Block Cipher Modes of Operation: Methods and Techniques](https://csrc.nist.gov/news/2023/decision-to-revise-nist-sp-800-38a) and [NIST IR 8459 Report on the Block Cipher Modes of Operation in the NIST SP 800-38 Series](https://nvlpubs.nist.gov/nistpubs/ir/2024/NIST.IR.8459.pdf) for the latest information.\n\n**Out of Scope**: Asymmetric encryption modes like RSA are out of scope for this test because they don't use block modes like ECB.\n\nIn the transformation strings like `\"RSA/ECB/OAEPPadding\"` or `\"RSA/ECB/PKCS1Padding\"`, the inclusion of `ECB` in this context is misleading. Unlike symmetric ciphers, **RSA doesn't operate in block modes like ECB**. The `ECB` designation is a [placeholder in some cryptographic APIs](https://github.com/openjdk/jdk/blob/680ac2cebecf93e5924a441a5de6918cd7adf118/src/java.base/share/classes/com/sun/crypto/provider/RSACipher.java#L126) and doesn't imply that RSA uses ECB mode. Understanding these nuances helps prevent false positives.\n\n## Steps\n\n1. Run [@MASTG-TECH-0014](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0014/) with a tool such as [@MASTG-TOOL-0110](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0110/) on the app binary, or use [@MASTG-TECH-0033](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0033/) (dynamic analysis) with a tool like [@MASTG-TOOL-0001](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0001/), and look for cryptographic functions specifying the encryption mode to insecure modes.\n\n## Observation\n\nThe output should contain a list of locations where insecure or deprecated encryption modes are used in cryptographic operations.\n\n## Evaluation\n\nThe test case fails if any insecure encryption modes are identified in the app.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0020"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "category-masvs-network",
+      "type": "custom",
+      "position": {
+        "x": 0,
+        "y": 1560
+      },
+      "data": {
+        "name": "MASVS-NETWORK",
+        "description": "## NETWORK\\n**OWASP MASVS Category**",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false
+        },
+        "tags": [
+          "category"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0217",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 1680
+      },
+      "data": {
+        "name": "Insecure TLS Protocols Explicitly Allowed in Code",
+        "description": "## Overview\n\nThe Android Network Security Configuration does not provide direct control over specific TLS versions (unlike [iOS](https://developer.apple.com/documentation/bundleresources/information_property_list/nsexceptionminimumtlsversion)), and starting with Android 10, [TLS v1.3 is enabled by default](https://developer.android.com/privacy-and-security/security-ssl#Updates%20to%20SSL) for all TLS connections.\n\nThere are still several ways to enable insecure versions of TLS, including:\n\n### Java Sockets\n\nAn app can obtain an SSLContext using an insecure TLS protocol by calling `SSLContext.getInstance(\"TLSv1.1\")` and can also enable specific, potentially insecure, protocol versions using the API call `javax.net.ssl.SSLSocket.setEnabledProtocols(String[] protocols)`.\n\n### Third-party Libraries\n\nSome third-party libraries, such as [OkHttp](https://square.github.io/okhttp/), [Retrofit](https://square.github.io/retrofit/) or Apache HttpClient, provide custom configurations for TLS protocols. These libraries may allow enabling outdated protocols if not carefully managed:\n\nFor example, using `ConnectionSpec.COMPATIBLE_TLS` in OkHttp (via `okhttp3.ConnectionSpec.Builder.connectionSpecs(...)`) can lead to insecure TLS versions, like TLS 1.1, being enabled by default in certain versions. Refer to OkHttp's [configuration history](https://square.github.io/okhttp/security/tls_configuration_history/) for details on supported protocols.\n\nThe API call `okhttp3.ConnectionSpec.Builder.tlsVersions(...)` can also be used to set the enabled protocols ([OkHttp documentation](https://square.github.io/okhttp/features/https/)).\n\n## Steps\n\n1. Reverse engineer the app ([@MASTG-TECH-0017](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0017/)).\n2. Run a static analysis ([@MASTG-TECH-0014](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0014/)) tool on the reverse engineered app targeting calls to APIs setting the TLS protocol.\n\n## Observation\n\nThe output contains a list of all enabled TLS versions in the above mentioned API calls.\n\n## Evaluation\n\nThe test case fails if any [insecure TLS version](https://mas.owasp.org/MASTG/0x04f-Testing-Network-Communication/#recommended-tls-settings) is directly enabled, or if the app enabled any settings allowing the use of outdated TLS versions, such as `okhttp3.ConnectionSpec.COMPATIBLE_TLS`.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0050"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0218",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 1800
+      },
+      "data": {
+        "name": "Insecure TLS Protocols in Network Traffic",
+        "description": "## Overview\n\nWhile static analysis can identify configurations that allow insecure TLS versions, it may not accurately reflect the actual protocol used during live communications. This is because TLS version negotiation occurs between the client (app) and the server at runtime, where they agree on the most secure, mutually supported version.\n\nBy capturing and analyzing real network traffic, you can observe the TLS version actually negotiated and in use. This approach provides an accurate view of the protocol's security, accounting for the server's configuration, which may enforce or limit specific TLS versions.\n\nIn cases where static analysis is either incomplete or infeasible, examining network traffic can reveal instances where insecure TLS versions (e.g., TLS 1.0 or TLS 1.1) are actively in use.\n\n## Steps\n\n1. Set up [@MASTG-TECH-0010](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0010/) (for Android) or [@MASTG-TECH-0062](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0062/) (for iOS).\n2. View the TLS version e.g., using [@MASTG-TOOL-0081](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0081/).\n\n## Observation\n\nThe output shows the actually used TLS version.\n\n## Evaluation\n\nThe test case fails if any [insecure TLS version](https://mas.owasp.org/MASTG/0x04f-Testing-Network-Communication/#recommended-tls-settings) is used.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "network",
+          "test_type": "network",
+          "weakness": "MASWE-0050"
+        },
+        "tags": [
+          "test",
+          "network",
+          "network"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0233",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 1920
+      },
+      "data": {
+        "name": "Hardcoded HTTP URLs",
+        "description": "## Overview\n\nAn Android app may have hardcoded HTTP URLs embedded in the app binary, library binaries, or other resources within the APK. These URLs may indicate potential locations where the app communicates with servers over an unencrypted connection.\n\n!!! warning Limitations\n    The presence of HTTP URLs alone does not necessarily mean they are actively used for communication. Their usage may depend on runtime conditions, such as how the URLs are invoked and whether cleartext traffic is allowed in the app's configuration. For example, HTTP requests may fail if cleartext traffic is disabled in the AndroidManifest.xml or restricted by the Network Security Configuration. See [@MASTG-TEST-0235](https://mas.owasp.org/MASTG/techniques/android/MASTG-TEST-0235/).\n\n## Steps\n\n1. Reverse engineer the app ([@MASTG-TECH-0017](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0017/)).\n2. Run a static analysis ([@MASTG-TECH-0014](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0014/)) tool and look for any `http://` URLs.\n\n## Observation\n\nThe output contains a list of URLs and their locations within the app.\n\n## Evaluation\n\nThe test case fails if any HTTP URLs are confirmed to be used for communication.\n\nThe presence of hardcoded HTTP URLs does not inherently mean they are used; their actual usage must be validated through careful inspection and testing:\n\n- **Reverse Engineering**: Inspect the code locations where the HTTP URLs are referenced. Determine if they are merely stored as constants or actively used to create HTTP requests through networking APIs like `HttpURLConnection` or `OkHttp`.\n- **Static Analysis**: Analyze the app's configuration to identify whether cleartext traffic is permitted. For example, check the AndroidManifest.xml for `android:usesCleartextTraffic=\"true\"` or inspect the `network_security_config`. Refer to [@MASTG-TEST-0235](https://mas.owasp.org/MASTG/techniques/android/MASTG-TEST-0235/) for detailed guidance.\n\nAdditionally, complement this static inspection with dynamic testing methods:\n\n- **Dynamic Analysis**: Use tools like Frida to hook into networking APIs at runtime. This can reveal how and when the HTTP URLs are used during execution. See [@MASTG-TEST-0238](https://mas.owasp.org/MASTG/techniques/android/MASTG-TEST-0238/) for more details.\n\n- **Network Traffic Interception**: Capture and analyze network traffic using tools like Burp Suite, mitmproxy, or Wireshark. This approach confirms whether the app connects to the identified HTTP URLs during real-world usage but depends on the tester's ability to exercise the app's functionality comprehensively. See [@MASTG-TEST-0236](https://mas.owasp.org/MASTG/techniques/android/MASTG-TEST-0236/).",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0050"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0234",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 2040
+      },
+      "data": {
+        "name": "SSLSockets not Properly Verifying Hostnames",
+        "description": "## Overview\n\n`SSLSocket` does not perform hostname verification by default unless the app explicitly uses [`HostnameVerifier.verify()`](https://developer.android.com/reference/javax/net/ssl/HostnameVerifier#verify(java.lang.String,%20javax.net.SSL.SSLSession)). See the [\"Android documentation\"](https://developer.android.com/privacy-and-security/security-ssl#WarningsSslSocket) and [\"Unsafe HostnameVerifier\"](https://developer.android.com/privacy-and-security/risks/unsafe-hostname) for more details.\n\n## Steps\n\n1. Reverse engineer the app ([@MASTG-TECH-0017](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0017/)).\n2. Run a static analysis ([@MASTG-TECH-0014](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0014/)) tool and look for all usages of `SSLSocket` and `HostnameVerifier`.\n\n## Observation\n\nThe output contains a list of locations where `SSLSocket` and `HostnameVerifier` are used.\n\n## Evaluation\n\nThe test case fails if hostname verification is missing or implemented incorrectly.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0052"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0235",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 2160
+      },
+      "data": {
+        "name": "Android App Configurations Allowing Cleartext Traffic",
+        "description": "## Overview\n\nSince Android 9 (API level 28) cleartext HTTP traffic is blocked by default (thanks to the [default Network Security Configuration](../../../Document/0x05g-Testing-Network-Communication.md#default-configurations)) but there are multiple ways in which an application can still send it:\n\n- **AndroidManifest.xml**: Setting the [`android:usesCleartextTraffic`](https://developer.android.com/guide/topics/manifest/application-element#usesCleartextTraffic) attribute of the `<application>` tag. Note that this flag is ignored in case the Network Security Configuration is configured.\n- **Network Security Configuration**: Setting the [`cleartextTrafficPermitted`](https://developer.android.com/privacy-and-security/security-config#CleartextTrafficPermitted) attribute to `true` on `<base-config>` or `<domain-config>` elements.\n\n## Steps\n\n1. Reverse engineer the app ([@MASTG-TECH-0017](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0017/)).\n2. Obtain the AndroidManifest.xml.\n3. Obtain the Network Security Configuration.\n4. Read the value of `usesCleartextTraffic` from the AndroidManifest.xml.\n5. Read the value of `cleartextTrafficPermitted` from the NSC `<base-config>` element.\n6. Read the value of `cleartextTrafficPermitted` from the NSC `<domain-config>` elements.\n\n## Observation\n\nThe output contains a list of configurations potentially allowing for cleartext traffic.\n\n## Evaluation\n\nThe test case fails if cleartext traffic is permitted. This can happen if any of the following is true:\n\n1. The AndroidManifest sets `usesCleartextTraffic` to `true` and there's no NSC.\n2. The NSC sets `cleartextTrafficPermitted` to `true` in the `<base-config>`.\n3. The NSC sets `cleartextTrafficPermitted` to `true` in any `<domain-config>`.\n\n**Note:** The test doesn't fail if the AndroidManifest sets `usesCleartextTraffic` to `true` and there's a NSC, even if it only has an empty `<network-security-config>` element. For example:\n\n```xml\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<network-security-config>\n</network-security-config>\n```",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0050"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0236",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 2280
+      },
+      "data": {
+        "name": "Cleartext Traffic Observed on the Network",
+        "description": "## Overview\n\nThis test intercepts the app's incoming and outgoing network traffic, and checks for any cleartext communication.\nWhilst the static checks can only show _potential_ cleartext traffic, this dynamic test shows all communication the application definitely makes.\n\n!!! warning Limitation\n    - Intercepting traffic on a network level will show all traffic _the device_ performs, not only the single app. Linking the traffic back to a specific app can be difficult, especially when more apps are installed on the device.\n    - Linking the intercepted traffic back to specific locations in the app can be difficult and requires manual analysis of the code.\n    - Dynamic analysis works best when you interact extensively with the app. But even then there could be corner cases which are difficult or impossible to execute on every device. The results from this test therefore are likely not exhaustive.\n\n## Steps\n\nYou can use one of the following approaches:\n\n- Set up [@MASTG-TECH-0010](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0010/) (for Android) or [@MASTG-TECH-0062](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0062/) (for iOS) to capture all traffic.\n- Set up [@MASTG-TECH-0011](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0011/) (for Android) or [@MASTG-TECH-0063](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0063/) (for iOS) to capture all traffic.\n\n**Notes**:\n\n- Interception proxies will show HTTP(S) traffic only. You can, however, use some tool-specific plugins such as [Burp-non-HTTP-Extension](https://github.com/summitt/Burp-Non-HTTP-Extension) or other tools like [@MASTG-TOOL-0078](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0078/) to decode and visualize communication via XMPP and other protocols.\n- Some apps may not function correctly with proxies like Burp and [@MASTG-TOOL-0079](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0079/) because of certificate pinning. In such a scenario, you can still use basic network sniffing to detect cleartext traffic. Otherwise, you can try to disable pinning (see [@MASTG-TECH-0012](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0012/) for Android and [@MASTG-TECH-0064](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0064/) for iOS)\n\n## Observation\n\nThe output contains the captured network traffic.\n\n## Evaluation\n\nThe test case fails if any clear text traffic originates from the target app.\n\n**Note**: This can be challenging to determine because traffic can potentially come from any app on the device. See the [Overview](#overview) section.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "network",
+          "test_type": "dynamic",
+          "weakness": "MASWE-0050"
+        },
+        "tags": [
+          "test",
+          "network",
+          "dynamic"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0237",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 2400
+      },
+      "data": {
+        "name": "Cross-Platform Framework Configurations Allowing Cleartext Traffic",
+        "description": "",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0050"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0238",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 2520
+      },
+      "data": {
+        "name": "Runtime Use of Network APIs Transmitting Cleartext Traffic",
+        "description": "",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "dynamic",
+          "weakness": "MASWE-0050"
+        },
+        "tags": [
+          "test",
+          "android",
+          "dynamic"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0239",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 2640
+      },
+      "data": {
+        "name": "Using low-level APIs (e.g. Socket) to set up a custom HTTP connection",
+        "description": "",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0050"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0242",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 2760
+      },
+      "data": {
+        "name": "Missing Certificate Pinning in Network Security Configuration",
+        "description": "## Overview\n\nApps can configure [certificate pinning using the Network Security Configuration](\"../../../Document/0x05g-Testing-Network-Communication.md#pinning-via-network-security-configuration-api-24\"). For each domain, one or multiple digests can be pinned.\n\nThe goal of this test is to check if the app does not implement certificate pinning using the NSC. However, note that the app may be using other pinning methods covered in other tests.\n\n## Steps\n\n1. Reverse engineer the app ([@MASTG-TECH-0017](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0017/)).\n2. Obtain the AndroidManifest.xml ([@MASTG-TECH-0117](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0117/)), and check if a `networkSecurityConfig` is set in the `<application>` tag.\n3. Inspect the referenced network security config file, and extract all domains from `<domain-config>` which have a pin set (`<pin-set>`).\n\n## Observation\n\nThe output should contain a list of domains which enable certificate pinning.\n\n## Evaluation\n\nThe test case fails if no `networkSecurityConfig` is set, or any relevant domain does not enable certificate pinning.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0047"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0243",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 2880
+      },
+      "data": {
+        "name": "Expired Certificate Pins in the Network Security Configuration",
+        "description": "## Overview\n\nApps can configure expiration dates for pinned certificates in the [Network Security Configuration (NSC)](\"../../../Document/0x05g-Testing-Network-Communication.md#certificate-pinning\") by using the `expiration` attribute. When a pin expires, the app no longer enforces certificate pinning and instead relies on its configured trust anchors. This means the connection will still succeed if the server presents a valid certificate from a trusted CA (such as a system CA or a custom CA defined in the app's configuration). However, if no trusted certificate is available, the connection will fail.\n\nIf developers assume pinning is still in effect but don't realize it has expired, the app may start trusting CAs it was never intended to.\n\n> Example: A financial app previously pinned to its own private CA but, after expiration, starts trusting publicly trusted CAs, increasing the risk of compromise if a CA is breached.\n\nThe goal of this test is to check if any expiration date is in the past.\n\n## Steps\n\n1. Reverse engineer the app ([@MASTG-TECH-0017](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0017/)).\n2. Inspect the AndroidManifest.xml, and check if a `networkSecurityConfig` is set in the `<application>` tag. If yes, inspect the referenced file, and extract the expiration dates for every domain.\n\n## Observation\n\nThe output should contain a list of expiration dates for pinned certificates.\n\n## Evaluation\n\nThe test case fails if any expiration date is in the past.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0047"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0244",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 3000
+      },
+      "data": {
+        "name": "Missing Certificate Pinning in Network Traffic",
+        "description": "## Overview\n\nThere are multiple ways an application can implement certificate pinning, including via the Android Network Security Config, custom TrustManager implementations, third-party libraries, and native code. Since some implementations might be difficult to identify through static analysis, especially when obfuscation or dynamic code loading is involved, this test uses network interception techniques to determine if certificate pinning is enforced at runtime.\n\nThe goal of this test case is to observe whether a [MITM attack](../../../Document/0x04f-Testing-Network-Communication.md#intercepting-network-traffic-through-mitm) can intercept HTTPS traffic from the app. A successful MITM interception indicates that the app is either not using certificate pinning or implementing it incorrectly.\n\nIf the app is properly implementing certificate pinning, the MITM attack should fail because the app rejects certificates issued by an unauthorized CA, even if the CA is trusted by the system.\n\n_Testing Tip:_ While performing the MITM attack, it can be useful to monitor the system logs (see [@MASTG-TECH-0009](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0009/)). If a certificate pinning/validation check fails, an event similar to the following log entry might be visible, indicating that the app detected the MITM attack and did not establish a connection.\n\n`I/X509Util: Failed to validate the certificate chain, error: Pin verification failed`\n\n## Steps\n\n1. Set up an interception proxy, see [@MASTG-TECH-0011](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0011/).\n2. Install the application on a device connected to that proxy, and intercept the communication.\n3. Extract all domains which were intercepted.\n\n## Observation\n\nThe output should contain a list of domains for which the interception was successful.\n\n## Evaluation\n\nThe test case fails if any relevant domain was intercepted.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "network",
+          "test_type": "network",
+          "weakness": "MASWE-0047"
+        },
+        "tags": [
+          "test",
+          "network",
+          "network"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "category-masvs-platform",
+      "type": "custom",
+      "position": {
+        "x": 0,
+        "y": 3120
+      },
+      "data": {
+        "name": "MASVS-PLATFORM",
+        "description": "## PLATFORM\\n**OWASP MASVS Category**",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false
+        },
+        "tags": [
+          "category"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0250",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 3240
+      },
+      "data": {
+        "name": "References to Content Provider Access in WebViews",
+        "description": "## Overview\n\nThis test checks for references to Content Provider access in WebViews which is enabled by default and can be disabled using the `setAllowContentAccess` method in the `WebSettings` class. If improperly configured, this can introduce security risks such as unauthorized file access and data exfiltration.\n\nThe JavaScript code would have access to any content providers on the device such as:\n\n- declared by the app, **even if they are not exported**.\n- declared by other apps, **only if they are exported** and if they are not following recommended [best practices](https://developer.android.com/privacy-and-security/security-tips#content-providers) to restrict access.\n\nRefer to [WebView Content Provider Access](../../../Document/0x05h-Testing-Platform-Interaction.md/#webview-content-provider-access) for more information on the `setAllowContentAccess` method, the specific files that can be accessed and the conditions under which they can be accessed.\n\n**Example Attack Scenario:**\n\nSuppose a banking app uses a WebView to display dynamic content. The developers have not explicitly set the `setAllowContentAccess` method, so it defaults to `true`. Additionally, JavaScript is enabled in the WebView as well as the `setAllowUniversalAccessFromFileURLs` method.\n\n1. An attacker exploits a vulnerability (such as an XSS flaw) to inject malicious JavaScript into the WebView. This could occur through a compromised or malicious link that the WebView loads without proper validation.\n2. Thanks to `setAllowUniversalAccessFromFileURLs(true)`, the malicious JavaScript can issue requests to `content://` URIs to read locally stored files or data exposed by content providers. Even those content providers from the app that are not exported can be accessed because the malicious code is running in the same process and same origin as the trusted code.\n3. The attacker-controlled script exfiltrates sensitive data from the device to an external server.\n\n**Note 1:** We do not consider `minSdkVersion` since `setAllowContentAccess` defaults to `true` regardless of the Android version.\n\n**Note 2:** The provider's `android:grantUriPermissions` attribute is irrelevant in this scenario as it does not affect the app itself accessing its own content providers. It allows **other apps** to temporary access URIs from the provider even though restrictions such as `permission` attributes, or `android:exported=\"false\"` are set. Also, if the app uses a `FileProvider`, the `android:grantUriPermissions` attribute must be set to `true` by [definition](https://developer.android.com/reference/androidx/core/content/FileProvider#:~:text=Set%20the%20android:grantUriPermissions%20attribute%20to%20true%2C%20to%20allow%20you%20to%20grant%20temporary%20access%20to%20files.%20) (otherwise you'll get a `SecurityException: Provider must grant uri permissions\"`).\n\n**Note 3:** `allowUniversalAccessFromFileURLs` is critical in the attack since it relaxes the default restrictions, allowing pages loaded from `file://` to access content from any origin, including `content://` URIs.\n\nIf this setting is not enabled, the following error will appear in `logcat`:\n\n```text\n[INFO:CONSOLE(0)] \"Access to XMLHttpRequest at 'content://org.owasp.mastestapp.provider/sensitive.txt'\nfrom origin 'null' has been blocked by CORS policy: Cross origin requests are only supported\nfor protocol schemes: http, data, chrome, https, chrome-untrusted.\", source: file:/// (0)\n```\n\nWhile the `fetch` request to the external server would still work, retrieving the file content via `content://` would fail.\n\n## Steps\n\n1. Use a tool like semgrep to search for references to:\n      - the `WebView` class.\n      - the `WebSettings` class.\n      - the `setJavaScriptEnabled` method.\n      - the `setAllowContentAccess` method from the `WebSettings` class.\n      - the `setAllowUniversalAccessFromFileURLs` method from the `WebSettings` class.\n2. Obtain all content providers declared in the app's AndroidManifest.xml file.\n\n## Observation\n\nThe output should contain:\n\n- A list of WebView instances including the following methods and their arguments:\n    - `setAllowContentAccess`\n    - `setJavaScriptEnabled`\n    - `setAllowUniversalAccessFromFileURLs`\n- A list of content providers declared in the app's AndroidManifest.xml file.\n\n## Evaluation\n\n**Fail:**\n\nThe test fails if all of the following are true:\n\n- `setJavaScriptEnabled` is explicitly set to `true`.\n- `setAllowContentAccess` is explicitly set to `true` or _not used at all_ (inheriting the default value, `true`).\n- `setAllowUniversalAccessFromFileURLs` method is explicitly set to `true`.\n\nYou should use the list of content providers obtained in the observation step to verify if they handle sensitive data.\n\n**Note:** The `setAllowContentAccess` method being set to `true` does not represent a security vulnerability by itself, but it can be used in combination with other vulnerabilities to escalate the impact of an attack. Therefore, it is recommended to explicitly set it to `false` if the app does not need to access content providers.\n\n**Pass:**\n\nThe test passes if any of the following are true:\n\n- `setJavaScriptEnabled` is explicitly set to `false` or _not used at all_ (inheriting the default value, `false`).\n- `setAllowContentAccess` method is explicitly set to `false`.\n- `setAllowUniversalAccessFromFileURLs` method is explicitly set to `false`.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0069"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0251",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 3360
+      },
+      "data": {
+        "name": "Runtime Use of Content Provider Access APIs in WebViews",
+        "description": "## Overview\n\nThis test is the dynamic counterpart to [@MASTG-TEST-0250](https://mas.owasp.org/MASTG/techniques/android/MASTG-TEST-0250/).\n\n## Steps\n\n1. Run a dynamic analysis tool like [@MASTG-TOOL-0039](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0039/) and either:\n    - enumerate instances of `WebView` in the app and list their configuration values\n    - or explicitly hook the setters of the `WebView` settings\n\n## Observation\n\nThe output should contain a list of WebView instances and corresponding settings.\n\n## Evaluation\n\n**Fail:**\n\nThe test fails if all of the following are true:\n\n- `JavaScriptEnabled` is `true`.\n- `AllowContentAccess` is `true`.\n- `AllowUniversalAccessFromFileURLs` is `true`.\n\nYou should use the list of content providers obtained in [@MASTG-TEST-0250](https://mas.owasp.org/MASTG/techniques/android/MASTG-TEST-0250/) to verify if they handle sensitive data.\n\n**Note:** `AllowContentAccess` being `true` does not represent a security vulnerability by itself, but it can be used in combination with other vulnerabilities to escalate the impact of an attack. Therefore, it is recommended to explicitly set it to `false` if the app does not need to access content providers.\n\n**Pass:**\n\nThe test passes if any of the following are true:\n\n- `JavaScriptEnabled` is `false`.\n- `AllowContentAccess` is `false`.\n- `AllowUniversalAccessFromFileURLs` is `false`.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "dynamic",
+          "weakness": "MASWE-0069"
+        },
+        "tags": [
+          "test",
+          "android",
+          "dynamic"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0252",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 3480
+      },
+      "data": {
+        "name": "References to Local File Access in WebViews",
+        "description": "## Overview\n\nThis test checks for references to methods from the [`WebSettings`](https://developer.android.com/reference/android/webkit/WebSettings.html) class used by Android WebViews which [enable loading content from various sources, including local files](../../../Document/0x05h-Testing-Platform-Interaction.md/#webview-local-file-access-settings). If improperly configured, these methods can introduce security risks such as unauthorized file access and data exfiltration. These methods are:\n\n- `setAllowFileAccess`: allows the WebView to load local files from the app's internal storage or external storage.\n- `setAllowFileAccessFromFileURLs`: lets JavaScript within those local files access other local files.\n- `setAllowUniversalAccessFromFileURLs`: removes any cross-origin restrictions, allowing that JavaScript to read data across origins. The JavaScript **can always send data to any origin** (e.g. via `POST`), regardless of this setting; this setting only affects reading data (e.g. the code wouldn't get a response to a `POST` request but the data would still be sent).\n\nWhen these settings are combined, they can enable an attack in which a malicious HTML file gains elevated privileges, accesses local resources, and exfiltrates data over the network, effectively bypassing the security boundaries typically enforced by the same-origin policy.\n\nEven though these methods have secure defaults and are **deprecated in Android 10 (API level 29) and later**, they can still be explicitly set to `true` or their insecure defaults may be used in apps that run on older versions of Android (due to their `minSdkVersion`).\n\nRefer to [Android WebView Local File Access Settings](../../../Document/0x05h-Testing-Platform-Interaction.md/#webview-local-file-access-settings) for more information on these methods (default values, deprecation status, security implications), the specific files that can be accessed, and the conditions under which they can be accessed.\n\n**Example Attack Scenario**:\n\nSuppose a banking app uses a WebView to display dynamic content, and the developers enabled all three insecure settings. Additionally, JavaScript is enabled in the WebView.\n\n1. An attacker injects a malicious HTML file into the device (via phishing or another exploit) into a location that the attacker _knows_ the WebView will access it from (e.g. thanks to reverse engineering). For example, an HTML file used to display the app's terms and conditions.\n2. The WebView can load the malicious file because of `setAllowFileAccess(true)`.\n3. Thanks to `setJavaScriptEnabled(true)` and `setAllowFileAccessFromFileURLs(true)`, the JavaScript in the malicious file (running in a `file://` context) is able to access other local files using `file://` URLs.\n4. The attacker-controlled script exfiltrates sensitive data from the device to an external server.\n\n**Note 1**: Either `setAllowFileAccessFromFileURLs` or `setAllowUniversalAccessFromFileURLs` must be set to `true` for the attack to work. If both settings are set to `false`, the following error will appear in `logcat`:\n\n```bash\n[INFO:CONSOLE(0)] \"Access to XMLHttpRequest at 'file:///data/data/org.owasp.mastestapp/files/api-key.txt' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, data, chrome, https, chrome-untrusted.\", source: file:/// (0)\n[INFO:CONSOLE(31)] \"File content sent successfully.\", source: file:/// (31)\n```\n\nAnd the server would not receive the file content:\n\n```bash\n[*] Received POST data from 127.0.0.1:\n\nError reading file: 0\n```\n\n**Note 2**: As indicated in the Android docs, the value of [**`setAllowFileAccessFromFileURLs` is ignored**](https://developer.android.com/reference/android/webkit/WebSettings#setAllowFileAccessFromFileURLs(boolean)) if `allowUniversalAccessFromFileURLs=true`.\n\n## Steps\n\n1. Determine the `minSdkVersion` of the app.\n2. Use a tool like semgrep to search for references to:\n      - the `WebView` class.\n      - the `WebSettings` class.\n      - the `setJavaScriptEnabled` method.\n      - the `setAllowFileAccess`, `setAllowFileAccessFromFileURLs`, and `setAllowUniversalAccessFromFileURLs` methods from the `WebSettings` class.\n\nNote that in this case **the lack of references to the `setAllow*` methods is especially interesting** and must be captured, because it could mean that the app is using the default values, which in some scenarios are insecure. For this reason, it's highly recommended to try to identify every WebView instance in the app.\n\n## Observation\n\nThe output should contain a list of WebView instances where the abovementioned methods are used.\n\n## Evaluation\n\nThe evaluation of this test is based on the [API behavior across different Android versions](../../../Document/0x05h-Testing-Platform-Interaction.md/#webview-local-file-access-settings).\n\n**Fail:**\n\nThe test fails if:\n\n- `setJavaScriptEnabled` is explicitly set to `true`.\n- `setAllowFileAccess` is explicitly set to `true` (or not used at all when `minSdkVersion` < 30, inheriting the default value, `true`).\n- Either `setAllowFileAccessFromFileURLs` or `setAllowUniversalAccessFromFileURLs` is explicitly set to `true` (or not used at all when `minSdkVersion` < 16, inheriting the default value, `true`).\n\n**Pass:**\n\nThe test passes if:\n\n- `setJavaScriptEnabled` is explicitly set to `false`.\n- `setAllowFileAccess` is explicitly set to `false` (or not used at all when `minSdkVersion` >= 30, inheriting the default value, `false`).\n- Both `setAllowFileAccessFromFileURLs` and `setAllowUniversalAccessFromFileURLs` are explicitly set to `false` (or not used at all when `minSdkVersion` >= 16, inheriting the default value, `false`).",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0069"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0253",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 3600
+      },
+      "data": {
+        "name": "Runtime Use of Local File Access APIs in WebViews",
+        "description": "## Overview\n\nThis test is the dynamic counterpart to [@MASTG-TEST-0252](https://mas.owasp.org/MASTG/techniques/android/MASTG-TEST-0252/).\n\n## Steps\n\n1. Run a dynamic analysis tool like [@MASTG-TOOL-0039](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0039/) and either:\n    - enumerate instances of `WebView` in the app and list their configuration values\n    - or explicitly hook the setters of the `WebView` settings\n\n## Observation\n\nThe output should contain a list of WebView instances and corresponding settings.\n\n## Evaluation\n\n**Fail:**\n\nThe test fails if all of the following are true:\n\n- `AllowFileAccess` is `true`.\n- `AllowFileAccessFromFileURLs` is `true`.\n- `AllowUniversalAccessFromFileURLs` is `true`.\n\n**Note:** `AllowFileAccess` being `true` does not represent a security vulnerability by itself, but it can be used in combination with other vulnerabilities to escalate the impact of an attack. Therefore, it is recommended to explicitly set it to `false` if the app does not need to access local files.\n\n**Pass:**\n\nThe test passes if any of the following are true:\n\n- `AllowFileAccess` is `false`.\n- `AllowFileAccessFromFileURLs` is `false`.\n- `AllowUniversalAccessFromFileURLs` is `false`.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "dynamic",
+          "weakness": "MASWE-0069"
+        },
+        "tags": [
+          "test",
+          "android",
+          "dynamic"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "category-masvs-privacy",
+      "type": "custom",
+      "position": {
+        "x": 0,
+        "y": 3720
+      },
+      "data": {
+        "name": "MASVS-PRIVACY",
+        "description": "## PRIVACY\\n**OWASP MASVS Category**",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false
+        },
+        "tags": [
+          "category"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0206",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 3840
+      },
+      "data": {
+        "name": "Sensitive Data in Network Traffic Capture",
+        "description": "## Overview\n\nAttackers may capture network traffic from Android devices using an intercepting proxy, such as [@MASTG-TOOL-0079](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0079/), [@MASTG-TOOL-0077](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0077/), or [@MASTG-TOOL-0097](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0097/), to analyze the data being transmitted by the app. This works even if the app uses HTTPS, as the attacker can install a custom root certificate on the Android device to decrypt the traffic. Inspecting traffic that is not encrypted with HTTPS is even easier and can be done without installing a custom root certificate for example by using [@MASTG-TOOL-0081](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0081/).\n\nThe goal of this test is to verify that sensitive data is not being sent over the network, even if the traffic is encrypted. This test is especially important for apps that handle sensitive data, such as financial or health data, and should be performed in conjunction with a review of the app's privacy policy and the App Store Privacy declarations.\n\n## Steps\n\n1. Start the device.\n2. Start logging sensitive data from network traffic ([@MASTG-TECH-0100](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0100/)). For example using [@MASTG-TOOL-0097](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0097/).\n3. Launch and use the app going through the various workflows while inputting sensitive data wherever you can. Especially, places where you know that will trigger network traffic.\n\n## Observation\n\nThe output should contain a network traffic sensitive data log that includes the decrypted HTTPS traffic.\n\n## Evaluation\n\nThe test case fails if you can find the sensitive data you entered in the app that is not stated in the App Store Privacy declarations.\n\nNote that this test does not provide any code locations where the sensitive data is being sent over the network. In order to identify the code locations, you can use static analysis tools like [@MASTG-TOOL-0110](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0110/) or dynamic analysis tools like [@MASTG-TOOL-0031](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0031/).",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "dynamic",
+          "weakness": "MASWE-0108"
+        },
+        "tags": [
+          "test",
+          "android",
+          "dynamic"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0254",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 3960
+      },
+      "data": {
+        "name": "Dangerous App Permissions",
+        "description": "## Overview\n\nIn Android apps, permissions are acquired through different methods to access information and system functionalities, including the camera, location, or storage. The necessary permissions are specified in the `AndroidManifest.xml` file with `<uses-permission>` tags.\n\n## Steps\n\nThere are multiple tools that can help in finding permissions in use by an app. Refer [@MASTG-TECH-0118](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0118/) to and use any of the mentioned tools.\n\n1. Extract the `AndroidManifest.xml` file from the APK (see [@MASTG-TECH-0117](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0117/)).\n2. Obtain the list of declared permissions (see [@MASTG-TECH-0126](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0126/)).\n\n## Observation\n\nThe output shows the list of permissions declared by the app.\n\n## Evaluation\n\nThe test fails if there are any dangerous permissions in the app.\n\nCompare the list of declared permissions with the list of [dangerous permissions](https://android.googlesource.com/platform/frameworks/base/%2B/master/core/res/AndroidManifest.xml) defined by Android. You can find more details in the [Android documentation](https://developer.android.com/reference/android/Manifest.permission).\n\n**Context Consideration**:\n\nContext is essential when evaluating permissions. For example, an app that uses the camera to scan QR codes should have the `CAMERA` permission. However, if the app does not have a camera feature, the permission is unnecessary and should be removed.\n\nAlso, consider if there are any privacy-preserving alternatives to the permissions used by the app. For example, instead of using the `CAMERA` permission, the app could [use the device's built-in camera app](https://developer.android.com/privacy-and-security/minimize-permission-requests#take-photo) to capture photos or videos by invoking the `ACTION_IMAGE_CAPTURE` or `ACTION_VIDEO_CAPTURE` intent actions. This approach allows the app to access the camera functionality without directly requesting the `CAMERA` permission, thereby enhancing user privacy.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0117"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0255",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 4080
+      },
+      "data": {
+        "name": "Permission Requests Not Minimized",
+        "description": "",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "unknown",
+          "weakness": "MASWE-0117"
+        },
+        "tags": [
+          "test",
+          "android"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0256",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 4200
+      },
+      "data": {
+        "name": "Missing Permission Rationale",
+        "description": "",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "unknown",
+          "weakness": "MASWE-0117"
+        },
+        "tags": [
+          "test",
+          "android"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0257",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 4320
+      },
+      "data": {
+        "name": "Not Resetting Unused Permissions",
+        "description": "",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "unknown",
+          "weakness": "MASWE-0117"
+        },
+        "tags": [
+          "test",
+          "android"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0258",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 4440
+      },
+      "data": {
+        "name": "References to Keyboard Caching Attributes in UI Elements",
+        "description": "## Overview\n\nThis test verifies that the app appropriately configures text input fields to prevent the [keyboard from caching](../../../Document/0x05d-Testing-Data-Storage.md#keyboard-cache) sensitive information, such as passwords or personal data.\n\nAndroid apps can configure the behavior of text input fields using XML attributes in the layout files or programmatically in the code. If the app doesn't use [non-caching input types](../../../Document/0x05d-Testing-Data-Storage.md#non-caching-input-types) for sensitive data, the keyboard may cache sensitive information.\n\n## Steps\n\n1. Reverse engineer the app ([@MASTG-TECH-0017](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0017/)).\n2. Search for XML attributes in the layout files within the `res/layout` directory.\n3. Search for calls to the `setInputType` method and the input type values passed to it ([@MASTG-TECH-0014](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0014/)).\n4. In case the app uses Jetpack Compose, search for calls to [`KeyboardOptions` constructors](https://developer.android.com/reference/kotlin/androidx/compose/foundation/text/KeyboardOptions#public-constructors_1) and their parameters in the reversed code ([@MASTG-TECH-0014](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0014/)). Especially `keyboardType` and `autoCorrect`.\n\n## Observation\n\nThe output should include:\n\n- All `android:inputType` XML attributes, if using XML for the UI.\n- All calls to the `setInputType` method and the input type values passed to it.\n\n## Evaluation\n\nThe test case fails if there are any fields handling sensitive data for which the app does not use [non-caching input types](../../../Document/0x05d-Testing-Data-Storage.md#keyboard-cache).",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0053"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "category-masvs-resilience",
+      "type": "custom",
+      "position": {
+        "x": 0,
+        "y": 4560
+      },
+      "data": {
+        "name": "MASVS-RESILIENCE",
+        "description": "## RESILIENCE\\n**OWASP MASVS Category**",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false
+        },
+        "tags": [
+          "category"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0224",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 4680
+      },
+      "data": {
+        "name": "Usage of Insecure Signature Version",
+        "description": "## Overview\n\nNot using newer APK signing schemes means that the app lacks the enhanced security provided by more robust, updated mechanisms.\n\nThis test checks if the outdated v1 signature scheme is enabled. The v1 scheme is vulnerable to certain attacks, such as the \"Janus\" vulnerability ([CVE-2017-13156](https://nvd.nist.gov/vuln/detail/CVE-2017-13156)), because it does not cover all parts of the APK file, allowing malicious actors to potentially **modify parts of the APK without invalidating the signature**. Relying solely on v1 signing therefore increases the risk of tampering and compromises app security.\n\nTo learn more about APK Signing Schemes, see [\"Signing Process\"](../../../Document/0x05a-Platform-Overview.md#signing-process).\n\n## Steps\n\n1. Obtain the `minSdkVersion` attribute from the AndroidManifest.xml, e.g., via [@MASTG-TECH-0117](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0117/).\n2. List all used signature schemes as shown in [@MASTG-TECH-0116](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0116/).\n\n## Observation\n\nThe output should contain the value of the `minSdkVersion` attribute and the used signature schemes (for example `Verified using v3 scheme (APK Signature Scheme v3): true`).\n\n## Evaluation\n\nThe test case fails if the app has a `minSdkVersion` attribute of 24 and above, and only the v1 signature scheme is enabled.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0104"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0225",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 4800
+      },
+      "data": {
+        "name": "Usage of Insecure Signature Key Size",
+        "description": "## Overview\n\nFor Android apps, the cryptographic strength of the APK signature is essential for maintaining the app's integrity and authenticity. Using a signature key with insufficient length, such as an RSA key shorter than 2048 bits, weakens security, making it easier for attackers to compromise the signature. This vulnerability could allow malicious actors to forge signatures, tamper with the app's code, or distribute unauthorized, modified versions.\n\n## Steps\n\n1. List the additional signature information using [@MASTG-TECH-0116](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0116/).\n\n## Observation\n\nThe output should contain the information about the key size in a line like: `Signer #1 key size (bits):`.\n\n## Evaluation\n\nThe test case fails if any of the key sizes (in bits) is less than 2048 (RSA). For example, `Signer #1 key size (bits): 1024`.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0104"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0226",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 4920
+      },
+      "data": {
+        "name": "Debuggable Flag Enabled in the AndroidManifest",
+        "description": "## Overview\n\nThis test case checks if the app has the `debuggable` flag ([`android:debuggable`](https://developer.android.com/guide/topics/manifest/application-element#debug)) set to `true` in the `AndroidManifest.xml`. When this flag is enabled, it allows the app to be debugged enabling attackers to inspect the app's internals, bypass security controls, or manipulate runtime behavior.\n\nAlthough having the `debuggable` flag set to `true` [is not considered a direct vulnerability](https://developer.android.com/privacy-and-security/risks/android-debuggable), it significantly increases the attack surface by providing unauthorized access to app data and resources, particularly in production environments.\n\n## Steps\n\n1. Obtain the `AndroidManifest.xml` file using [@MASTG-TECH-0117](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0117/).\n2. Search for the `debuggable` flag:\n    - Look for `android:debuggable` if analyzing raw XML using tools like [@MASTG-TOOL-0011](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0011/).\n    - Look for `application-debuggable` if using [@MASTG-TOOL-0124](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0124/).\n\n## Observation\n\nThe output should explicitly show whether the `debuggable` flag is set (`true` or `false`). If the flag is not specified, it is treated as `false` by default for release builds.\n\n## Evaluation\n\nThe test case fails if the `debuggable` flag is explicitly set to `true`. This indicates that the app is configured to allow debugging, which is inappropriate for production environments.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0067"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0227",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 5040
+      },
+      "data": {
+        "name": "Debugging Enabled for WebViews",
+        "description": "## Overview\n\nThe `WebView.setWebContentsDebuggingEnabled(true)` API enables debugging for **all** WebViews in the application. This feature can be useful during development, but introduces significant security risks if left enabled in production. When enabled, a connected PC can debug, eavesdrop, or modify communication within any WebView in the application. See the [\"Android Documentation\"](https://developer.chrome.com/docs/devtools/remote-debugging/webviews/#configure_webviews_for_debugging) for more details.\n\nNote that this flag works independently of the `debuggable` attribute in the `AndroidManifest.xml` (see [@MASTG-TEST-0226](https://mas.owasp.org/MASTG/techniques/android/MASTG-TEST-0226/)). Even if the app is not marked as debuggable, the WebViews can still be debugged by calling this API.\n\n## Steps\n\n1. Run [@MASTG-TECH-0014](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0014/) with a tool such as [@MASTG-TOOL-0110](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0110/) on the app binary and look for uses of:\n    - `WebView.setWebContentsDebuggingEnabled` being set to `true`.\n    - `ApplicationInfo.FLAG_DEBUGGABLE`.\n\n## Observation\n\nThe output should list:\n\n- All locations where `WebView.setWebContentsDebuggingEnabled` is called with `true` at runtime.\n- Any references to `ApplicationInfo.FLAG_DEBUGGABLE`.\n\n## Evaluation\n\nThe test case fails if `WebView.setWebContentsDebuggingEnabled(true)` is called unconditionally or in contexts where the `ApplicationInfo.FLAG_DEBUGGABLE` flag is not checked.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0067"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0247",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 5160
+      },
+      "data": {
+        "name": "References to APIs for Detecting Secure Screen Lock",
+        "description": "## Overview\n\nThis test verifies whether an app is running on a device with a passcode set. Android apps can determine whether a secure [screen lock (such as PIN, or password)](https://support.google.com/android/answer/9079129) is enabled by using platform-provided APIs. Specifically, apps can utilize the [KeyguardManager](https://developer.android.com/reference/android/app/KeyguardManager) API, which provides the [isDeviceSecure()](https://developer.android.com/reference/android/app/KeyguardManager#isDeviceSecure()) and [isKeyguardSecure()](https://developer.android.com/reference/android/app/KeyguardManager#isKeyguardLocked()) methods to check if the device has a secure lock mechanism in place.\n\nAdditionally, apps can use the [BiometricManager#canAuthenticate(int)](https://developer.android.com/reference/android/hardware/biometrics/BiometricManager#canAuthenticate(int)) API to check whether biometric authentication is available and can be used. Since biometric authentication on Android requires a secure screen lock as a fallback, this method can serve as an alternative check when [KeyguardManager](https://developer.android.com/reference/android/app/KeyguardManager) is unavailable or restricted by device manufacturers.\n\nIf an app relies on biometrics for authentication, it should ensure that biometric authentication is enforced using the [BiometricPrompt](https://developer.android.com/reference/android/hardware/biometrics/BiometricPrompt) API or by requiring authentication for cryptographic key access via the **Android KeyStore System**. However, apps **cannot force** users to enable biometrics at the system level, only enforce its use within the app for accessing sensitive functionality.\n\n## Steps\n\n1. Use [@MASTG-TOOL-0110](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0110/) to identify the API that checks whether a secure screen lock has been set.\n\n## Observation\n\nThe output should contain a list of locations where relevant APIs are used.\n\n## Evaluation\n\nThe test fails if an app doesn't use any API to verify the secure screen lock presence.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0008"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0249",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 5280
+      },
+      "data": {
+        "name": "Runtime Use of Secure Screen Lock Detection APIs",
+        "description": "## Overview\n\nThis test is the dynamic counterpart to [@MASTG-TEST-0247](https://mas.owasp.org/MASTG/techniques/android/MASTG-TEST-0247/).\n\n## Steps\n\n1. Run a dynamic analysis tool like [@MASTG-TOOL-0039](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0039/) and look for uses of `KeyguardManager.isDeviceSecure` and `BiometricManager.canAuthenticate` APIs.\n\n## Observation\n\nThe output should contain a list of locations where relevant APIs are used.\n\n## Evaluation\n\nThe test fails if an app doesn't use any API to verify the secure screen lock presence.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "dynamic",
+          "weakness": "MASWE-0008"
+        },
+        "tags": [
+          "test",
+          "android",
+          "dynamic"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0263",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 5400
+      },
+      "data": {
+        "name": "Logging of StrictMode Violations",
+        "description": "## Overview\n\nThis test checks whether an app enables [`StrictMode`](../../../Document/0x05i-Testing-Code-Quality-and-Build-Settings.md#strictmode) in production. While useful for developers to log policy violations such as disk I/O or network operations in production apps, leaving `StrictMode` enabled can expose sensitive implementation details in the logs that could be exploited by attackers.\n\n## Steps\n\n1. Install the production build of your app on your device or emulator.\n2. Uses [@MASTG-TECH-0009](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0009/) to show the system logs `StrictMode` creates.\n3. Open the app and let it execute.\n\n## Observation\n\nThe output should contain a list of log statements related to `StrictMode`.\n\n## Evaluation\n\nThe test fails if an app logs any `StrictMode` policy violations.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "dynamic",
+          "weakness": "MASWE-0094"
+        },
+        "tags": [
+          "test",
+          "android",
+          "dynamic"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0264",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 5520
+      },
+      "data": {
+        "name": "Runtime Use of StrictMode APIs",
+        "description": "",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "dynamic",
+          "weakness": "MASWE-0094"
+        },
+        "tags": [
+          "test",
+          "android",
+          "dynamic"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0265",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 5640
+      },
+      "data": {
+        "name": "References to StrictMode APIs",
+        "description": "",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0094"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "category-masvs-storage",
+      "type": "custom",
+      "position": {
+        "x": 0,
+        "y": 5760
+      },
+      "data": {
+        "name": "MASVS-STORAGE",
+        "description": "## STORAGE\\n**OWASP MASVS Category**",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false
+        },
+        "tags": [
+          "category"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0200",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 5880
+      },
+      "data": {
+        "name": "Files Written to External Storage",
+        "description": "## Overview\n\nThe goal of this test is to retrieve the files written to the [external storage](../../../0x05d-Testing-Data-Storage.md/#external-storage) and inspect them regardless of the APIs used to write them. It uses a simple approach based on file retrieval from the device storage ([@MASTG-TECH-0002](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0002/)) before and after the app is exercised to identify the files created during the app's execution and to check if they contain sensitive data.\n\n## Steps\n\n1. Make sure you have [@MASTG-TOOL-0004](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0004/) installed.\n2. Install the app ([@MASTG-TECH-0005](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0005/)).\n3. Before running the app, get the current list of files ([@MASTG-TECH-0002](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0002/)) in the external storage.\n4. Exercise the app.\n5. After running the app, retrieve the list of files in the external storage again.\n6. Calculate the difference between the two lists.\n\n## Observation\n\nThe output should contain a list of files that were created on the external storage during the app's execution.\n\n## Evaluation\n\nThe test case fails if the files found above are not encrypted and leak sensitive data.\n\nTo confirm this, you can reverse engineer the app([@MASTG-TECH-0017](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0017/)) and inspect the code([@MASTG-TECH-0023](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0023/)).",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "dynamic",
+          "weakness": "MASWE-0007"
+        },
+        "tags": [
+          "test",
+          "android",
+          "dynamic"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0201",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 6000
+      },
+      "data": {
+        "name": "Runtime Use of APIs to Access External Storage",
+        "description": "## Overview\n\nAndroid apps use a variety of [APIs to access the external storage](../../../0x05d-Testing-Data-Storage.md/#external-storage-apis). Collecting a comprehensive list of these APIs can be challenging, especially if an app uses a third-party framework, loads code at runtime, or includes native code. The most effective approach to testing applications that write to device storage is usually dynamic analysis, and specifically method tracing ([@MASTG-TECH-0033](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0033/)).\n\n## Steps\n\n1. Make sure you have [@MASTG-TOOL-0001](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0001/) installed.\n2. Install the app.\n3. Execute a script to spawn the app with Frida and log all interactions with files.\n4. Navigate to the screen of the app that you want to analyse.\n5. Close the app to stop Frida.\n\nThe Frida script should log all file interactions by hooking into the relevant APIs such as `getExternalStorageDirectory`, `getExternalStoragePublicDirectory`, `getExternalFilesDir` or `FileOutPutStream`. You could also use `open` as a catch-all for file interactions. However, this won't catch all file interactions, such as those that use the `MediaStore` API and should be done with additional filtering as it can generate a lot of noise.\n\n## Observation\n\nThe output should contain a list of files that the app wrote to the external storage during execution and, if possible, the APIs used to write them.\n\n## Evaluation\n\nThe test case fails if the files found above are not encrypted and leak sensitive data.\n\nTo confirm this, you can manually inspect the files using adb shell ([@MASTG-TECH-0002](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0002/)) to retrieve them from the device, and reverse engineer the app ([@MASTG-TECH-0017](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0017/)) and inspect the code ([@MASTG-TECH-0023](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0023/)).",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "dynamic",
+          "weakness": "MASWE-0007"
+        },
+        "tags": [
+          "test",
+          "android",
+          "dynamic"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0202",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 6120
+      },
+      "data": {
+        "name": "References to APIs and Permissions for Accessing External Storage",
+        "description": "## Overview\n\nThis test uses static analysis to look for uses of APIs allowing an app to write to locations that are shared with other apps ([@MASTG-TEST-0001](https://mas.owasp.org/MASTG/techniques/android/MASTG-TEST-0001/)) such as the [external storage APIs](../../../0x05d-Testing-Data-Storage.md/#external-storage-apis) or the [`MediaStore` API](../../../0x05d-Testing-Data-Storage.md/#mediastore-api) as well as the relevant [Android manifest storage-related permissions](../../../0x05d-Testing-Data-Storage.md/#manifest-permissions).\n\nThis static test is great for identifying all code locations where the app is writing data to shared storage. However, it does not provide the actual data being written, and in some cases, the actual path in the device storage where the data is being written. Therefore, it is recommended to combine this test with others that take a dynamic approach, as this will provide a more complete view of the data being written to shared storage.\n\n## Steps\n\n1. Reverse engineer the app ([@MASTG-TECH-0017](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0017/)).\n2. Run a static analysis ([@MASTG-TECH-0014](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0014/)) tool on the reverse engineered app targeting calls to any external storage APIs and Android manifest storage permissions.\n\nThe static analysis tool should be able to identify all possible APIs and permissions used to write to shared storage, such as `getExternalStoragePublicDirectory`, `getExternalStorageDirectory`, `getExternalFilesDir`, `MediaStore`, `WRITE_EXTERNAL_STORAGE`, and `MANAGE_EXTERNAL_STORAGE`. See the [Android documentation](https://developer.android.com/training/data-storage/shared) for more information on these APIs and permissions.\n\n## Observation\n\nThe output should contain a list of APIs and storage-related permissions used to write to shared storage and their code locations.\n\n## Evaluation\n\nThe test case fails if:\n\n- the app has the proper permissions declared in the Android manifest (e.g. `WRITE_EXTERNAL_STORAGE`, `MANAGE_EXTERNAL_STORAGE`, etc.)\n- **and** the data being written to shared storage is sensitive and not encrypted.\n\nTo determine the latter, you may need to carefully review the reversed code ([@MASTG-TECH-0023](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0023/)) and/or combine this test with others that take a dynamic approach, as this will provide a more complete view of the data being written to shared storage.\n\n## References\n\n- [Manage all files on a storage device](https://developer.android.com/training/data-storage/manage-all-files)\n- [Access media files from shared storage](https://developer.android.com/training/data-storage/shared/media)",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0007"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0203",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 6240
+      },
+      "data": {
+        "name": "Runtime Use of Logging APIs",
+        "description": "## Overview\n\nOn Android platforms, [logging APIs](../../../0x05d-Testing-Data-Storage.md/#logs) like `Log`, `Logger`, `System.out.print`, `System.err.print`, and `java.lang.Throwable#printStackTrace` can inadvertently lead to the leakage of sensitive information. Log messages are recorded in logcat, a shared memory buffer, accessible since Android 4.1 (API level 16) only to privileged system applications that declare the `READ_LOGS` permission. Nonetheless, the vast ecosystem of Android devices includes pre-loaded apps with the `READ_LOGS` privilege, increasing the risk of sensitive data exposure. Therefore, direct logging to logcat is generally advised against due to its susceptibility to data leaks.\n\n## Steps\n\n1. Install and run the app.\n2. Navigate to the screen of the mobile app you want to analyse the log output from.\n3. Execute a method trace ([@MASTG-TECH-0033](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0033/)) (using e.g. [@MASTG-TOOL-0001](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0001/)) by attaching to the running app, targeting logging APIs and save the output.\n\n## Observation\n\nThe output should contain a list of locations where logging APIs are used in the app for the current execution.\n\n## Evaluation\n\nThe test case fails if you can find sensitive data being logged using those APIs.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "dynamic",
+          "weakness": "MASWE-0001"
+        },
+        "tags": [
+          "test",
+          "android",
+          "dynamic"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0207",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 6360
+      },
+      "data": {
+        "name": "Data Stored in the App Sandbox at Runtime",
+        "description": "## Overview\n\nThe goal of this test is to retrieve the files written to the [internal storage](../../../0x05d-Testing-Data-Storage.md/#internal-storage) and inspect them regardless of the APIs used to write them. It uses a simple approach based on file retrieval from the device storage ([@MASTG-TECH-0002](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0002/)) before and after the app is exercised to identify the files created during the app's execution and to check if they contain sensitive data.\n\n## Steps\n\n1. Start the device.\n\n2. Take a first copy of the app's private data directory ([@MASTG-TECH-0008](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0008/)) to have as a reference for offline analysis. You can use [@MASTG-TOOL-0004](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0004/) for example.\n\n3. Launch and use the app going through the various workflows while inputting sensitive data wherever you can. Taking note of the data you input can help identify it later using tools to search for it.\n\n4. Take a second copy of the app's private data directory for offline analysis and make a diff using the first copy to identify all files created or modify during your testing session.\n\n## Observation\n\nThe output should contain a list of files that were created in the app's private storage during execution.\n\n## Evaluation\n\nAttempt to identify and decode data that has been encoded using methods such as base64 encoding, hexadecimal representation, URL encoding, escape sequences, wide characters and common data obfuscation methods such as xoring. Also consider identifying and decompressing compressed files such as tar or zip. These methods obscure but do not protect sensitive data.\n\nSearch the extracted data for items such as keys, passwords and any sensitive data inputted into the app. The test case fails if you find any of this sensitive data.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "dynamic",
+          "weakness": "MASWE-0006"
+        },
+        "tags": [
+          "test",
+          "android",
+          "dynamic"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0216",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 6480
+      },
+      "data": {
+        "name": "Sensitive Data Not Excluded From Backup",
+        "description": "## Overview\n\nThis test verifies whether apps correctly instruct the system to exclude sensitive files from backups by performing a backup and restore of the app data and checking which files are restored.\n\nSee [@MASTG-TEST-0262](https://mas.owasp.org/MASTG/techniques/android/MASTG-TEST-0262/) for a static analysis counterpart.\n\nAndroid provides a way to start the backup daemon to back up and restore app files, which you can use to verify which files are actually restored from the backup.\n\n## Steps\n\n1. Start the device.\n2. Install an app on your device.\n3. Launch and use the app going through the various workflows while inputting sensitive data wherever you can.\n4. Perform a backup and restore of the app data ([@MASTG-TECH-0128](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0128/)).\n5. Uninstall and reinstall the app but don't open it anymore.\n6. Restore the data from the backup and get the list of restored files.\n\n## Observation\n\nThe output should contain a list of files that are restored from the backup.\n\n## Evaluation\n\nThe test fails if any of the files are considered sensitive.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "dynamic",
+          "weakness": "MASWE-0004"
+        },
+        "tags": [
+          "test",
+          "android",
+          "dynamic"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0231",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 6600
+      },
+      "data": {
+        "name": "References to Logging APIs",
+        "description": "## Overview\n\nThis test verifies if an app uses [logging APIs](../../../0x05d-Testing-Data-Storage.md/#logs) like `android.util.Log`, `Log`, `Logger`, `System.out.print`, `System.err.print`, and `java.lang.Throwable#printStackTrace`.\n\n## Steps\n\n1. Use either [@MASTG-TECH-0014](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0014/) with a tool such as [@MASTG-TOOL-0110](https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0110/) to identify all logging APIs.\n\n## Observation\n\nThe output should contain a list of locations where logging APIs are used.\n\n## Evaluation\n\nThe test fails if an app logs sensitive information from any of the listed locations.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0001"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    },
+    {
+      "id": "MASTG-TEST-0262",
+      "type": "custom",
+      "position": {
+        "x": 300,
+        "y": 6720
+      },
+      "data": {
+        "name": "References to Backup Configurations Not Excluding Sensitive Data",
+        "description": "## Overview\n\nThis test verifies whether apps correctly instruct the system to exclude sensitive files from backups by analyzing the app's AndroidManifest.xml and backup rule configuration files.\n\n[\"Android Backups\"](../../../Document/0x05d-Testing-Data-Storage.md/#backups) can be implemented via [Auto Backup](https://developer.android.com/identity/data/autobackup) (Android 6.0 (API level 23) and higher) and [Key-value backup](https://developer.android.com/identity/data/keyvaluebackup) (Android 2.2 (API level 8) and higher). Auto Backup is the recommended approach by Android as it is enabled by default and requires no work to implement.\n\nTo exclude specific files when using Auto Backup, developers must explicitly define exclusion rules in the `exclude` tag in:\n\n- `data_extraction_rules.xml` (for Android 12 and higher using `android:dataExtractionRules`)\n- `backup_rules.xml` (for Android 11 or lower using `android:fullBackupContent`)\n\nThe `cloud-backup` and `device-transfer` parameters can be used to exclude files from cloud backups and device-to-device transfers, respectively.\n\nThe key-value backup approach requires developers to set up a [`BackupAgent`](https://developer.android.com/identity/data/keyvaluebackup#BackupAgent) or [`BackupAgentHelper`](https://developer.android.com/identity/data/keyvaluebackup#BackupAgentHelper) and specify what data should be backed up.\n\nRegardless of which approach the app used, Android provides a way to start the backup daemon to back up and restore app files. You can use this daemon for testing purposes and initiate the backup process and restore the app's data, allowing you to verify which files were restored from the backup.\n\n## Steps\n\n1. Obtain the `AndroidManifest.xml` file using [@MASTG-TECH-0117](https://mas.owasp.org/MASTG/techniques/android/MASTG-TECH-0117/).\n2. Search for the `allowBackup` flag in the `AndroidManifest.xml`.\n3. Search for the `fullBackupContent` attribute (for Android 11 or lower) or the `dataExtractionRules` attribute (for Android 12 and higher) in the `AndroidManifest.xml`.\n4. Retrieve the `backup_rules.xml` or `data_extraction_rules.xml` file.\n\n## Observation\n\nThe output should explicitly show:\n\n- whether the `allowBackup` flag is set to `true` or `false`. If the flag is not specified, it is treated as `true` by default.\n- whether the `fullBackupContent` and/or `dataExtractionRules` attributes are present in the `AndroidManifest.xml`.\n- the contents of the `backup_rules.xml` or `data_extraction_rules.xml` file, if present.\n\n## Evaluation\n\nThe test fails if the app allows sensitive data to be backed up. Specifically, if the following conditions are met:\n\n- `android:allowBackup=\"true\"` in the `AndroidManifest.xml`\n- `android:fullBackupContent=\"@xml/backup_rules\"` isn't declared in the `AndroidManifest.xml` (for Android 11 or lower)\n- `android:dataExtractionRules=\"@xml/data_extraction_rules\"` isn't declared in the `AndroidManifest.xml` (for Android 12 and higher)\n- `backup_rules.xml` or `data_extraction_rules.xml` aren't present or don't exclude all sensitive files.",
+        "status": "NOT_STARTED",
+        "properties": {
+          "showPosition": false,
+          "showId": false,
+          "platform": "android",
+          "test_type": "static",
+          "weakness": "MASWE-0004"
+        },
+        "tags": [
+          "test",
+          "android",
+          "static"
+        ]
+      },
+      "sourcePosition": "right",
+      "targetPosition": "left"
+    }
+  ],
+  "edges": [
+    {
+      "id": "category-masvs-code->MASTG-TEST-0222",
+      "source": "category-masvs-code",
+      "target": "MASTG-TEST-0222",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-code->MASTG-TEST-0223",
+      "source": "category-masvs-code",
+      "target": "MASTG-TEST-0223",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-code->MASTG-TEST-0245",
+      "source": "category-masvs-code",
+      "target": "MASTG-TEST-0245",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-code->MASTG-TEST-0272",
+      "source": "category-masvs-code",
+      "target": "MASTG-TEST-0272",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-code->MASTG-TEST-0274",
+      "source": "category-masvs-code",
+      "target": "MASTG-TEST-0274",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-crypto->MASTG-TEST-0204",
+      "source": "category-masvs-crypto",
+      "target": "MASTG-TEST-0204",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-crypto->MASTG-TEST-0205",
+      "source": "category-masvs-crypto",
+      "target": "MASTG-TEST-0205",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-crypto->MASTG-TEST-0208",
+      "source": "category-masvs-crypto",
+      "target": "MASTG-TEST-0208",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-crypto->MASTG-TEST-0212",
+      "source": "category-masvs-crypto",
+      "target": "MASTG-TEST-0212",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-crypto->MASTG-TEST-0221",
+      "source": "category-masvs-crypto",
+      "target": "MASTG-TEST-0221",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-crypto->MASTG-TEST-0232",
+      "source": "category-masvs-crypto",
+      "target": "MASTG-TEST-0232",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-network->MASTG-TEST-0217",
+      "source": "category-masvs-network",
+      "target": "MASTG-TEST-0217",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-network->MASTG-TEST-0218",
+      "source": "category-masvs-network",
+      "target": "MASTG-TEST-0218",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-network->MASTG-TEST-0233",
+      "source": "category-masvs-network",
+      "target": "MASTG-TEST-0233",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-network->MASTG-TEST-0234",
+      "source": "category-masvs-network",
+      "target": "MASTG-TEST-0234",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-network->MASTG-TEST-0235",
+      "source": "category-masvs-network",
+      "target": "MASTG-TEST-0235",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-network->MASTG-TEST-0236",
+      "source": "category-masvs-network",
+      "target": "MASTG-TEST-0236",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-network->MASTG-TEST-0237",
+      "source": "category-masvs-network",
+      "target": "MASTG-TEST-0237",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-network->MASTG-TEST-0238",
+      "source": "category-masvs-network",
+      "target": "MASTG-TEST-0238",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-network->MASTG-TEST-0239",
+      "source": "category-masvs-network",
+      "target": "MASTG-TEST-0239",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-network->MASTG-TEST-0242",
+      "source": "category-masvs-network",
+      "target": "MASTG-TEST-0242",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-network->MASTG-TEST-0243",
+      "source": "category-masvs-network",
+      "target": "MASTG-TEST-0243",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-network->MASTG-TEST-0244",
+      "source": "category-masvs-network",
+      "target": "MASTG-TEST-0244",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-platform->MASTG-TEST-0250",
+      "source": "category-masvs-platform",
+      "target": "MASTG-TEST-0250",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-platform->MASTG-TEST-0251",
+      "source": "category-masvs-platform",
+      "target": "MASTG-TEST-0251",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-platform->MASTG-TEST-0252",
+      "source": "category-masvs-platform",
+      "target": "MASTG-TEST-0252",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-platform->MASTG-TEST-0253",
+      "source": "category-masvs-platform",
+      "target": "MASTG-TEST-0253",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-privacy->MASTG-TEST-0206",
+      "source": "category-masvs-privacy",
+      "target": "MASTG-TEST-0206",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-privacy->MASTG-TEST-0254",
+      "source": "category-masvs-privacy",
+      "target": "MASTG-TEST-0254",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-privacy->MASTG-TEST-0255",
+      "source": "category-masvs-privacy",
+      "target": "MASTG-TEST-0255",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-privacy->MASTG-TEST-0256",
+      "source": "category-masvs-privacy",
+      "target": "MASTG-TEST-0256",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-privacy->MASTG-TEST-0257",
+      "source": "category-masvs-privacy",
+      "target": "MASTG-TEST-0257",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-privacy->MASTG-TEST-0258",
+      "source": "category-masvs-privacy",
+      "target": "MASTG-TEST-0258",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-resilience->MASTG-TEST-0224",
+      "source": "category-masvs-resilience",
+      "target": "MASTG-TEST-0224",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-resilience->MASTG-TEST-0225",
+      "source": "category-masvs-resilience",
+      "target": "MASTG-TEST-0225",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-resilience->MASTG-TEST-0226",
+      "source": "category-masvs-resilience",
+      "target": "MASTG-TEST-0226",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-resilience->MASTG-TEST-0227",
+      "source": "category-masvs-resilience",
+      "target": "MASTG-TEST-0227",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-resilience->MASTG-TEST-0247",
+      "source": "category-masvs-resilience",
+      "target": "MASTG-TEST-0247",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-resilience->MASTG-TEST-0249",
+      "source": "category-masvs-resilience",
+      "target": "MASTG-TEST-0249",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-resilience->MASTG-TEST-0263",
+      "source": "category-masvs-resilience",
+      "target": "MASTG-TEST-0263",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-resilience->MASTG-TEST-0264",
+      "source": "category-masvs-resilience",
+      "target": "MASTG-TEST-0264",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-resilience->MASTG-TEST-0265",
+      "source": "category-masvs-resilience",
+      "target": "MASTG-TEST-0265",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-storage->MASTG-TEST-0200",
+      "source": "category-masvs-storage",
+      "target": "MASTG-TEST-0200",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-storage->MASTG-TEST-0201",
+      "source": "category-masvs-storage",
+      "target": "MASTG-TEST-0201",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-storage->MASTG-TEST-0202",
+      "source": "category-masvs-storage",
+      "target": "MASTG-TEST-0202",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-storage->MASTG-TEST-0203",
+      "source": "category-masvs-storage",
+      "target": "MASTG-TEST-0203",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-storage->MASTG-TEST-0207",
+      "source": "category-masvs-storage",
+      "target": "MASTG-TEST-0207",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-storage->MASTG-TEST-0216",
+      "source": "category-masvs-storage",
+      "target": "MASTG-TEST-0216",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-storage->MASTG-TEST-0231",
+      "source": "category-masvs-storage",
+      "target": "MASTG-TEST-0231",
+      "type": "default"
+    },
+    {
+      "id": "category-masvs-storage->MASTG-TEST-0262",
+      "source": "category-masvs-storage",
+      "target": "MASTG-TEST-0262",
+      "type": "default"
+    }
+  ]
+}
